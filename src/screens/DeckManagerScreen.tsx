@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import Header from '../components/Header';
 
@@ -12,7 +12,7 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, {}> {
     return (
       <>
         <Header toggleDrawer={this.props.navigation.toggleDrawer} />
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={[styles.center]}>
           <Text>This is the Deckmanager</Text>
           <Button
             onPress={() => this.props.navigation.openDrawer()}
@@ -23,5 +23,13 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, {}> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default DeckManagerScreen;

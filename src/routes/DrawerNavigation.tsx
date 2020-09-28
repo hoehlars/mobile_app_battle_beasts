@@ -20,9 +20,7 @@ const DrawerNavigation: React.FC = () => {
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="Home"
-        drawerStyle={{
-          backgroundColor: '#21888f',
-        }}
+        drawerStyle={[styles.drawerBackground]}
         drawerContentOptions={{
           activeTintColor: '#ffffff',
           itemStyle: {marginVertical: 10},
@@ -59,6 +57,9 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
+  },
+  drawerBackground: {
+    backgroundColor: '#21888f',
   },
 });
 

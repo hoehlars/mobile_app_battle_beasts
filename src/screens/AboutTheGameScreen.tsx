@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import Header from '../components/Header';
 
@@ -16,12 +16,20 @@ class AboutTheGameScreen extends React.Component<AboutTheGameProps, {}> {
     return (
       <>
         <Header toggleDrawer={this.props.navigation.toggleDrawer} />
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={[styles.center]}>
           <Text>Here you learn everything about BattleBeasts!</Text>
         </View>
       </>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default AboutTheGameScreen;
