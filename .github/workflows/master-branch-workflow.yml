@@ -50,11 +50,11 @@ jobs:
           cd ios && pod install
       - name: Build app
         run: |       
-          xcodebuild -workspace myapp.xcworkspace -scheme myapp archive -archivePath myapp.xcarchive -allowProvisioningUpdates
-          xcodebuild -exportArchive -archivePath ./myapp.xcarchive -exportPath . -exportOptionsPlist myapp/Info.plist
-          mv myapp.ipa ../myapp.ipa
+          xcodebuild -workspace mobile_app_battle_beasts.xcworkspace -scheme mobile_app_battle_beasts archive -archivePath mobile_app_battle_beasts.xcarchive -allowProvisioningUpdates
+          xcodebuild -exportArchive -archivePath ./mobile_app_battle_beasts.xcarchive -exportPath . -exportOptionsPlist mobile_app_battle_beasts/Info.plist
+          mv mobile_app_battle_beasts.ipa ../mobile_app_battle_beasts.ipa
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: myapp.ipa
+          name: mobile_app_battle_beasts.ipa
           path: ios/build/
