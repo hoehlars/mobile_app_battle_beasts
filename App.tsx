@@ -8,17 +8,14 @@
  * @format
  */
 
-
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import DrawerNavigation from './src/routes/DrawerNavigation'
-
-
+import DrawerNavigation from './src/routes/DrawerNavigation';
 
 export const App = () => {
   return (
     <>
-      <DrawerNavigation></DrawerNavigation>
+      <DrawerNavigation />
     </>
   );
 };
