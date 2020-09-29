@@ -39,7 +39,7 @@ jobs:
 
   build-ios:
     needs: install-and-test
-    runs-on: macos-latest
+    runs-on: [self-hosted, macos]
     steps: 
       - uses: actions/checkout@v2
       - name: Install npm dependencies
@@ -48,6 +48,9 @@ jobs:
       - name: Install pod dependencies
         run: |
           cd ios && pod install
+      - name: Update cocoapods
+        run: | 
+          gem install cocoapods --pre
       - name: Build app
         run: |       
           xcodebuild -workspace mobile_app_battle_beasts.xcworkspace -scheme mobile_app_battle_beasts archive -archivePath mobile_app_battle_beasts.xcarchive -allowProvisioningUpdates
