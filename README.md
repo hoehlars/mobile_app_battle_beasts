@@ -1,4 +1,8 @@
-# mobile_app_battle_beasts
+# Projektarbeit Mobile App Battle Beasts (Höhener Lars, Paul Ilbien)
+
+## Ziel der Projektarbeit
+Das Ziel der Projektarbeit ist mit dem bereits vorhandenen Backend (https://github.com/ItsEcholot/BattleBeasts) eine Mobile App zu entwickeln auf dem ebenfalls bereits vorhandenen React-Frontend. BattleBeasts wurde in PSIT3 erstellt und in PSIT4 weiterentwickelt. Battle Beasts lief aber nur im Web und es fehlte die Mobile App dazu, weshalb diese Projektarbeit daraus entstand.
+
 
 ## Installationsguide um die Mobile App auf einem Android-Gerät (Windows) laufen zu lassen
 1. Klone git repository
