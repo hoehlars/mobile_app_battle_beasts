@@ -36,31 +36,3 @@ jobs:
         with:
           name: app-release.apk
           path: android/app/build/outputs/apk/release/
-
-  build-ios:
-    needs: install-and-test
-    runs-on: macos-latest
-    steps: 
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          npm install
-      - name: Install pod dependencies
-        run: |
-          cd ios && pod install
-      - name: Update cocoapods
-        run: | 
-          gem install cocoapods --pre
-      - name: Close xcode
-        run: |
-          kill $(ps aux | grep 'Xcode' | awk '{print $2}')
-      - name: Build app
-        run: |       
-          xcodebuild -workspace mobile_app_battle_beasts.xcworkspace -scheme mobile_app_battle_beasts archive -archivePath mobile_app_battle_beasts.xcarchive -allowProvisioningUpdates
-          xcodebuild -exportArchive -archivePath ./mobile_app_battle_beasts.xcarchive -exportPath . -exportOptionsPlist mobile_app_battle_beasts/Info.plist
-          mv mobile_app_battle_beasts.ipa ../mobile_app_battle_beasts.ipa
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: mobile_app_battle_beasts.ipa
-          path: ios/build/
