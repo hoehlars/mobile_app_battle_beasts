@@ -51,6 +51,9 @@ jobs:
       - name: Update cocoapods
         run: | 
           gem install cocoapods --pre
+      - name: Close xcode
+        run: |
+          kill $(ps aux | grep 'Xcode' | awk '{print $2}')
       - name: Build app
         run: |       
           xcodebuild -workspace mobile_app_battle_beasts.xcworkspace -scheme mobile_app_battle_beasts archive -archivePath mobile_app_battle_beasts.xcarchive -allowProvisioningUpdates
