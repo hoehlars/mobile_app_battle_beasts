@@ -8,7 +8,7 @@ Das Ziel der Projektarbeit ist mit dem bereits vorhandenen Backend (https://gith
 1. Klone git repository
 2. npm install
 3. Füge ein File namens local.properties unter android/ hinzu und spezifiziere die Android SDK Location dort, falls die Android SDK nicht im Path gesetzt wurde.
-   (Normalerweise Android SDK sieht wie folgt aus sdk.dir=C:\\Users\\*username*\\AppData\\Local\\Android\\sdk
+   (Normalerweise Android SDK sieht wie folgt aus sdk.dir=C:\\Users\\*username*\\AppData\\Local\\Android\\sdk ( \ nicht zu escapen vergessen!)
 4. Füge den adb command von der Android SDK zum Path hinzu. Dieser wird von react gebraucht, um angeschlossene Devices zu erkennen. Folgende Schritte ausführen:
   1. In der Windows-Suche nach "Systemumgebungsvariablen bearbeiten" suchen
   2. Unten recht auf "Umgebungsvariablen..." klicken
