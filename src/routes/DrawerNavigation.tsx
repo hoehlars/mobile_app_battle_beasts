@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeScreen from '../screens/HomeScreen';
-import DeckManagerScreen from '../screens/DeckManagerScreen';
-import AboutTheGameScreen from '../screens/AboutTheGameScreen';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import DeckManagerScreen from '../screens/DeckManagerScreen/DeckManagerScreen';
+import AboutTheGameScreen from '../screens/AboutTheGameScreen/AboutTheGameScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Image, StyleSheet} from 'react-native';
-import LeaderboardScreen from '../screens/LeaderboardScreen'
+import {Image} from 'react-native';
+import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen'
+import styles from './styles.module'
 
 
 const Tab = createBottomTabNavigator();
@@ -26,9 +27,9 @@ const TabNavigation: React.FC = () => {
         name="Home" 
         component={HomeScreen} 
         options={{
-          tabBarIcon: ({color,size}) => {
-            return <Image source={require('./../screens/images/iconfinder_home_126572.png')}
-            style={[styles.icon]} />
+          tabBarIcon: () => {
+            return <Image source={require('./../images/icons/home_icon.png')}
+            style={[styles.Icon]} />
           }
         }} 
         />
@@ -40,12 +41,5 @@ const TabNavigation: React.FC = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  icon: {
-    width: 24,
-    height: 24,
-  }
-});
 
 export default TabNavigation;
