@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {DrawerNavigationProp} from '@react-navigation/drawer';
-import Header from '../../components/Header';
-
+import {Button, Text, View} from 'react-native';
 
 class HomeScreen extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {

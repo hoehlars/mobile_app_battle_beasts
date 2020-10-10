@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {DrawerNavigationProp} from '@react-navigation/drawer';
-import Header from '../../components/Header';
-
+import {Text, View} from 'react-native';
 
 class AboutTheGameScreen extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {
