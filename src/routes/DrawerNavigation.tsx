@@ -3,52 +3,40 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import DeckManagerScreen from '../screens/DeckManagerScreen';
 import AboutTheGameScreen from '../screens/AboutTheGameScreen';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Image, StyleSheet} from 'react-native';
+import LeaderboardScreen from '../screens/LeaderboardScreen'
 
-type DrawerParamList = {
-  Header: undefined;
-  Home: undefined;
-  DeckManager: undefined;
-  AboutBattleBeasts: undefined;
-};
 
-const Drawer = createDrawerNavigator<DrawerParamList>();
+const Tab = createBottomTabNavigator();
 
-const DrawerNavigation: React.FC = () => {
+const TabNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
+      <Tab.Navigator
+
+        // when first opened home is rendered
         initialRouteName="Home"
-        drawerStyle={[styles.drawerBackground]}
-        drawerContentOptions={{
-          activeTintColor: '#ffffff',
-          itemStyle: {marginVertical: 10},
-        }}>
-        <Drawer.Screen
-          name="Home"
-          options={{
-            drawerIcon: () => (
-              <Image
-                source={require('./../screens/images/iconfinder_home_126572.png')}
-                style={[styles.icon]}
-              />
-            ),
-            title: 'Battle Beasts',
-          }}
-          component={HomeScreen}
+
+        // return to last visited tab when back button pressed
+        backBehavior="history">
+
+
+        <Tab.Screen 
+        name="Home" 
+        component={HomeScreen} 
+        options={{
+          tabBarIcon: ({color,size}) => {
+            return <Image source={require('./../screens/images/iconfinder_home_126572.png')}
+            style={[styles.icon]} />
+          }
+        }} 
         />
-        <Drawer.Screen
-          name="DeckManager"
-          options={{drawerLabel: 'Deck Manager', title: 'Deck Manager'}}
-          component={DeckManagerScreen}
-        />
-        <Drawer.Screen
-          name="AboutBattleBeasts"
-          options={{drawerLabel: 'About the game', title: 'About the game'}}
-          component={AboutTheGameScreen}
-        />
-      </Drawer.Navigator>
+
+        <Tab.Screen name="Deck Manager" component={DeckManagerScreen} />
+        <Tab.Screen name="Leaderboard" component={LeaderboardScreen} />
+        <Tab.Screen name="About" component={AboutTheGameScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
@@ -57,10 +45,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
-  },
-  drawerBackground: {
-    backgroundColor: '#21888f',
-  },
+  }
 });
 
-export default DrawerNavigation;
+export default TabNavigation;
