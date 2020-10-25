@@ -8,12 +8,10 @@ import {Image} from 'react-native';
 import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
-import { ThemeContext } from 'react-navigation';
 
 const Tab = createBottomTabNavigator();
 
 class TabNavigation extends React.Component<{}, {}> {
-
   render(): JSX.Element {
     return (
       <NavigationContainer>
@@ -22,13 +20,11 @@ class TabNavigation extends React.Component<{}, {}> {
           initialRouteName="Home"
           // return to last visited tab when back button pressed
           backBehavior="history"
-          
           // dont display text
           tabBarOptions={{
-            showLabel: false, 
+            showLabel: false,
             activeBackgroundColor: theme.PRIMARY_COLOR,
-            }}
-          >
+          }}>
           <Tab.Screen
             name="Home"
             component={HomeScreen}
@@ -38,59 +34,62 @@ class TabNavigation extends React.Component<{}, {}> {
                   <Image
                     source={require('../assets/images/icons/home_icon.png')}
                     style={[styles.Icon]}
-                    resizeMode='contain'
+                    resizeMode="contain"
                   />
                 );
               },
             }}
           />
-  
-          <Tab.Screen name="Deck Manager" 
-          component={DeckManagerScreen} 
-          options={{
-            tabBarIcon: () => {
-              return (
-                <Image
-                source={require('../assets/images/icons/deckmanager_icon.png')}
-                style={[styles.Icon]}
-                resizeMode='contain'
-                />
-              );
-            },
-          }}
+
+          <Tab.Screen
+            name="Deck Manager"
+            component={DeckManagerScreen}
+            options={{
+              tabBarIcon: () => {
+                return (
+                  <Image
+                    source={require('../assets/images/icons/deckmanager_icon.png')}
+                    style={[styles.Icon]}
+                    resizeMode="contain"
+                  />
+                );
+              },
+            }}
           />
-          <Tab.Screen name="Leaderboard" 
-          component={LeaderboardScreen} 
-          options={{
-            tabBarIcon: () => {
-              return (
-                <Image
-                source={require('../assets/images/icons/leaderboard_icon.png')}
-                style={[styles.Icon]}
-                resizeMode='contain'
-                />
-              );
-            },
-          }}
+          <Tab.Screen
+            name="Leaderboard"
+            component={LeaderboardScreen}
+            options={{
+              tabBarIcon: () => {
+                return (
+                  <Image
+                    source={require('../assets/images/icons/leaderboard_icon.png')}
+                    style={[styles.Icon]}
+                    resizeMode="contain"
+                  />
+                );
+              },
+            }}
           />
-          <Tab.Screen name="About" 
-          component={AboutTheGameScreen}
-          options={{
-            tabBarIcon: () => {
-              return (
-                <Image
-                source={require('../assets/images/icons/about_icon.png')}
-                style={[styles.Icon]}
-                resizeMode='contain'
-                />
-              );
-            },
-          }} 
+          <Tab.Screen
+            name="About"
+            component={AboutTheGameScreen}
+            options={{
+              tabBarIcon: () => {
+                return (
+                  <Image
+                    source={require('../assets/images/icons/about_icon.png')}
+                    style={[styles.Icon]}
+                    resizeMode="contain"
+                  />
+                );
+              },
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>
     );
   }
-};
+}
 
 export default TabNavigation;
