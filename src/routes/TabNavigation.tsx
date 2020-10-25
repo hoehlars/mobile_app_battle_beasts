@@ -7,38 +7,90 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
 import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
+import theme from '../assets/styles/theme.style';
+import { ThemeContext } from 'react-navigation';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigation: React.FC = () => {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        // when first opened home is rendered
-        initialRouteName="Home"
-        // return to last visited tab when back button pressed
-        backBehavior="history">
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
+class TabNavigation extends React.Component<{}, {}> {
+
+  render(): JSX.Element {
+    return (
+      <NavigationContainer>
+        <Tab.Navigator
+          // when first opened home is rendered
+          initialRouteName="Home"
+          // return to last visited tab when back button pressed
+          backBehavior="history"
+          
+          // dont display text
+          tabBarOptions={{
+            showLabel: false, 
+            activeBackgroundColor: theme.PRIMARY_COLOR,
+            }}
+          >
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              tabBarIcon: () => {
+                return (
+                  <Image
+                    source={require('../assets/images/icons/home_icon.png')}
+                    style={[styles.Icon]}
+                    resizeMode='contain'
+                  />
+                );
+              },
+            }}
+          />
+  
+          <Tab.Screen name="Deck Manager" 
+          component={DeckManagerScreen} 
           options={{
             tabBarIcon: () => {
               return (
                 <Image
-                  source={require('./../images/icons/home_icon.png')}
-                  style={[styles.Icon]}
+                source={require('../assets/images/icons/deckmanager_icon.png')}
+                style={[styles.Icon]}
+                resizeMode='contain'
                 />
               );
             },
           }}
-        />
-
-        <Tab.Screen name="Deck Manager" component={DeckManagerScreen} />
-        <Tab.Screen name="Leaderboard" component={LeaderboardScreen} />
-        <Tab.Screen name="About" component={AboutTheGameScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+          />
+          <Tab.Screen name="Leaderboard" 
+          component={LeaderboardScreen} 
+          options={{
+            tabBarIcon: () => {
+              return (
+                <Image
+                source={require('../assets/images/icons/leaderboard_icon.png')}
+                style={[styles.Icon]}
+                resizeMode='contain'
+                />
+              );
+            },
+          }}
+          />
+          <Tab.Screen name="About" 
+          component={AboutTheGameScreen}
+          options={{
+            tabBarIcon: () => {
+              return (
+                <Image
+                source={require('../assets/images/icons/about_icon.png')}
+                style={[styles.Icon]}
+                resizeMode='contain'
+                />
+              );
+            },
+          }} 
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
+  }
 };
 
 export default TabNavigation;
