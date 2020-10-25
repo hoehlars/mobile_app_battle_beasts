@@ -1,6 +1,6 @@
-import { Card } from '../models/card';
-import { slimFetch, HttpResponse } from './apiService';
-import { Deck } from '../models/deck';
+import {Card} from '../models/card';
+import {slimFetch, HttpResponse} from './apiService';
+import {Deck} from '../models/deck';
 
 /**
  * PaymentService
@@ -15,7 +15,10 @@ export class PaymentService {
    * @method
    * @returns {Promise<HttpResponse<string>>} Promise fulfilled by redirect url to paypal
    */
-  static async initializePayment(authorization: string, count: number): Promise<HttpResponse<string>> {
+  static async initializePayment(
+    authorization: string,
+    count: number,
+  ): Promise<HttpResponse<string>> {
     return slimFetch(`${this.REACT_API_BASE_URL}/api/cards/buy`, {
       method: 'POST',
       headers: {
@@ -23,7 +26,7 @@ export class PaymentService {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ amount: count }),
+      body: JSON.stringify({amount: count}),
     });
   }
 
@@ -49,7 +52,7 @@ export class PaymentService {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ payerId, paymentId, amount: count }),
+      body: JSON.stringify({payerId, paymentId, amount: count}),
     });
   }
 
@@ -61,7 +64,10 @@ export class PaymentService {
    * @method
    * @returns {Promise<HttpResponse<string>>} Promise fulfilled by redirect url to paypal
    */
-  static async initializePaymentforDeckSpaces(authorization: string, count: number): Promise<HttpResponse<string>> {
+  static async initializePaymentforDeckSpaces(
+    authorization: string,
+    count: number,
+  ): Promise<HttpResponse<string>> {
     return slimFetch(`${this.REACT_API_BASE_URL}/api/decks/buy`, {
       method: 'POST',
       headers: {
@@ -69,7 +75,7 @@ export class PaymentService {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ amount: count }),
+      body: JSON.stringify({amount: count}),
     });
   }
 
@@ -95,7 +101,7 @@ export class PaymentService {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ payerId, paymentId, amount: count }),
+      body: JSON.stringify({payerId, paymentId, amount: count}),
     });
   }
 }

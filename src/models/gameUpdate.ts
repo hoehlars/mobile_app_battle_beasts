@@ -1,13 +1,13 @@
-import { Round } from './round';
-import { Card } from './card';
+import {Round} from './round';
+import {Card} from './card';
 
 export interface GameUpdate {
   round: Round;
-  actionPoints: { [username: string]: number };
+  actionPoints: {[username: string]: number};
   playerTurn: string;
   handCards: Card[];
   opponentHandCards: number[];
-  boardCards: { [username: string]: Card[] };
-  healthPoints: { [username: string]: number };
+  boardCards: {[username: string]: Card[]};
+  healthPoints: {[username: string]: number};
   forPlayer: string;
 }

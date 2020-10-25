@@ -1,5 +1,5 @@
-import { Card } from '../models/card';
-import { slimFetch, HttpResponse } from './apiService';
+import {Card} from '../models/card';
+import {slimFetch, HttpResponse} from './apiService';
 
 /**
  * Card service
@@ -14,7 +14,9 @@ export class CardService {
    * @returns {Promise<Card>}
    */
   static async getCard(cardId: number): Promise<Card> {
-    const res = await slimFetch(`${this.REACT_API_BASE_URL}/api/cards/id/${cardId}`);
+    const res = await slimFetch(
+      `${this.REACT_API_BASE_URL}/api/cards/id/${cardId}`,
+    );
     return res.json();
   }
 
@@ -44,7 +46,9 @@ export class CardService {
    * @method
    * @returns {Promise<Card[]>} Promise fulfilled by array of cards
    */
-  static async getOwnedCards(authorization: string): Promise<HttpResponse<Card[]>> {
+  static async getOwnedCards(
+    authorization: string,
+  ): Promise<HttpResponse<Card[]>> {
     return slimFetch(`${this.REACT_API_BASE_URL}/api/cards/owned`, {
       headers: {
         Authorization: `Bearer ${authorization}`,

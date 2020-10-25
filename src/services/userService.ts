@@ -1,4 +1,3 @@
-
 /**
  * User service
  */
@@ -64,7 +63,9 @@ export class UserService {
    * @async
    * @returns {Promise<Response>} Promise fulfilled by response
    */
-  static async getUsersAroundCurrUsersRank(authorization: string): Promise<Response> {
+  static async getUsersAroundCurrUsersRank(
+    authorization: string,
+  ): Promise<Response> {
     return fetch(`${this.REACT_API_BASE_URL}/api/users/aroundyourrank`, {
       method: 'GET',
       headers: {

@@ -1,5 +1,5 @@
-import { FetchMock } from 'jest-fetch-mock';
-import { DeckService } from '../../src/services/deckService';
+import {FetchMock} from 'jest-fetch-mock';
+import {DeckService} from '../../src/services/deckService';
 
 describe('DeckService', () => {
   const fetchMock = fetch as FetchMock;
@@ -23,7 +23,7 @@ describe('DeckService', () => {
     });
     expect(fetchMock).toHaveBeenCalledWith('http://localhost:5000/api/deck', {
       method: 'GET',
-      headers: { Authorization: 'Bearer mytoken' },
+      headers: {Authorization: 'Bearer mytoken'},
     });
   });
 
@@ -35,7 +35,9 @@ describe('DeckService', () => {
       }),
     );
 
-    const deck = await (await DeckService.patchDeck('mytoken', 'TestDeck2', [])).json();
+    const deck = await (
+      await DeckService.patchDeck('mytoken', 'TestDeck2', [])
+    ).json();
 
     expect(deck).toEqual({
       name: 'TestDeck2',
@@ -63,7 +65,9 @@ describe('DeckService', () => {
       }),
     );
 
-    const deck = await (await DeckService.postDeck('mytoken', 'TestDeck3', [])).json();
+    const deck = await (
+      await DeckService.postDeck('mytoken', 'TestDeck3', [])
+    ).json();
 
     expect(deck).toEqual({
       name: 'TestDeck3',
@@ -97,9 +101,12 @@ describe('DeckService', () => {
       used: 1,
       owned: 3,
     });
-    expect(fetchMock).toHaveBeenCalledWith('http://localhost:5000/api/deck/spaces', {
-      method: 'GET',
-      headers: { Authorization: 'Bearer mytoken' },
-    });
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://localhost:5000/api/deck/spaces',
+      {
+        method: 'GET',
+        headers: {Authorization: 'Bearer mytoken'},
+      },
+    );
   });
 });

@@ -8,15 +8,18 @@ export interface HttpResponse<T> extends Response {
  * @param options {RequestInit} Request options
  * @returns {Promise<HttpResponse<T>>} Promise fulfilled by HttpResponse
  */
-export const slimFetch = <T>(request: RequestInfo, options?: RequestInit): Promise<HttpResponse<T>> => {
+export const slimFetch = <T>(
+  request: RequestInfo,
+  options?: RequestInit,
+): Promise<HttpResponse<T>> => {
   return new Promise((resolve, reject): void => {
     let response: HttpResponse<T>;
     fetch(request, options)
-      .then(res => {
+      .then((res) => {
         response = res;
         return res.clone().json();
       })
-      .then(body => {
+      .then((body) => {
         if (response.ok) {
           response.parsedBody = body;
           resolve(response);
@@ -24,7 +27,7 @@ export const slimFetch = <T>(request: RequestInfo, options?: RequestInit): Promi
           reject(response);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         reject(err);
       });
   });

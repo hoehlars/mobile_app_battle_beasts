@@ -1,4 +1,3 @@
-
 /**
  * Deck service
  */
@@ -27,7 +26,11 @@ export class DeckService {
    * @param selcetedCards {number[]} - Cards in the deck
    * @returns {Promise<Response>} Promise fulfilled by response
    */
-  static async patchDeck(authorization: string, selectedDeckName: string, selcetedCards: number[]): Promise<Response> {
+  static async patchDeck(
+    authorization: string,
+    selectedDeckName: string,
+    selcetedCards: number[],
+  ): Promise<Response> {
     return fetch(`${this.REACT_API_BASE_URL}/api/deck`, {
       method: 'PATCH',
       headers: {
@@ -80,7 +83,11 @@ export class DeckService {
    * @async
    * @returns {Promise<Response>} Promise fulfilled by response
    */
-  static async postDeck(authorization: string, createdDeckName: string, deckCards: number[]): Promise<Response> {
+  static async postDeck(
+    authorization: string,
+    createdDeckName: string,
+    deckCards: number[],
+  ): Promise<Response> {
     return fetch(`${this.REACT_API_BASE_URL}/api/deck`, {
       method: 'POST',
       headers: {
@@ -103,7 +110,10 @@ export class DeckService {
    * @async
    * @returns {Promise<Response>} Promise fulfilled by response
    */
-  static async deleteDeck(authorization: string, createdDeckName: string): Promise<Response> {
+  static async deleteDeck(
+    authorization: string,
+    createdDeckName: string,
+  ): Promise<Response> {
     return fetch(`${this.REACT_API_BASE_URL}/api/deck`, {
       method: 'DELETE',
       headers: {
@@ -140,7 +150,10 @@ export class DeckService {
    * @method
    * @returns {Promise<Response>} Promise fulfilled by response
    */
-  static async postDeckSpaces(authorization: string, amountOfDecks: number): Promise<Response> {
+  static async postDeckSpaces(
+    authorization: string,
+    amountOfDecks: number,
+  ): Promise<Response> {
     return fetch(`${this.REACT_API_BASE_URL}/api/deck/spaces/buy`, {
       method: 'POST',
       headers: {

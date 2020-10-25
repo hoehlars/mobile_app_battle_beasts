@@ -1,5 +1,5 @@
-import { FetchMock } from 'jest-fetch-mock';
-import { CardService } from '../../src/services/cardService'
+import {FetchMock} from 'jest-fetch-mock';
+import {CardService} from '../../src/services/cardService';
 
 describe('CardService', () => {
   const fetchMock = fetch as FetchMock;
@@ -17,8 +17,11 @@ describe('CardService', () => {
 
     const card = await CardService.getCard(1);
 
-    expect(card).toEqual({ name: 'TestAnimal', type: 'Herbivore' });
-    expect(fetchMock).toHaveBeenCalledWith('http://localhost:5000/api/cards/id/1', undefined);
+    expect(card).toEqual({name: 'TestAnimal', type: 'Herbivore'});
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://localhost:5000/api/cards/id/1',
+      undefined,
+    );
   });
 
   it('returns multiple cards', async () => {
@@ -47,7 +50,10 @@ describe('CardService', () => {
         type: 'Herbivore',
       },
     ]);
-    expect(fetchMock).toHaveBeenCalledWith('http://localhost:5000/api/cards', undefined);
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://localhost:5000/api/cards',
+      undefined,
+    );
   });
 
   it('returns owned cards', async () => {
@@ -76,8 +82,15 @@ describe('CardService', () => {
         type: 'Herbivore',
       },
     ]);
-    expect(fetchMock).toHaveBeenCalledWith('http://localhost:5000/api/cards/owned', {
-      headers: { Accept: 'application/json', Authorization: 'Bearer mytoken', 'Content-Type': 'application/json' },
-    });
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://localhost:5000/api/cards/owned',
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'Bearer mytoken',
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   });
 });

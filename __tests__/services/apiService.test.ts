@@ -1,5 +1,5 @@
-import { FetchMock } from 'jest-fetch-mock';
-import { slimFetch } from '../../src/services/apiService';
+import {FetchMock} from 'jest-fetch-mock';
+import {slimFetch} from '../../src/services/apiService';
 
 describe('ApiService', () => {
   const fetchMock = fetch as FetchMock;
@@ -17,7 +17,9 @@ describe('ApiService', () => {
 
     const card = await slimFetch('/api/test');
 
-    expect(card).toMatchObject({ parsedBody: { name: 'TestAnimal', type: 'Herbivore' } });
+    expect(card).toMatchObject({
+      parsedBody: {name: 'TestAnimal', type: 'Herbivore'},
+    });
   });
 
   it('returns an error', async () => {
