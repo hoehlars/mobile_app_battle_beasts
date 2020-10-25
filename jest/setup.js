@@ -18,3 +18,7 @@ jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
 require('jest-fetch-mock').enableMocks();
 
+// https://github.com/facebook/jest/issues/6434 for no errors
+jest.useFakeTimers();
+
+
