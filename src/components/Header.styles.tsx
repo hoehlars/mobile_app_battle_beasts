@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     color: theme.LIGHT_COLOR,
     fontSize: 36,
     fontFamily: 'Nunito-Regular',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   Background: {
     backgroundColor: theme.DARK_GRAY_COLOR,

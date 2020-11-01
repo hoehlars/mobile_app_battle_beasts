@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, View} from 'react-native';
-import styles from './Header.styles'
+import styles from './Header.styles';
 
 interface HeaderProps {
   title: string;
