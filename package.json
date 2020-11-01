@@ -16,6 +16,7 @@
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/drawer": "^5.9.2",
     "@react-navigation/native": "^5.7.5",
+    "jest-fetch-mock": "^3.0.3",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-floating-action": "^1.21.0",
