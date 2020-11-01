@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import theme from '../../assets/styles/theme.style';
 import Header from '../../components/Header';
@@ -87,8 +87,13 @@ renderHiddenItem = (data:any, rowMap: any) => (
       <TouchableOpacity
           style={[styles.DeleteButton]}
           onPress={() => this.deleteRow(rowMap, data.item.key)}
-      ></TouchableOpacity>
-      <Text style={styles.DeleteText}>Delete</Text>
+      >
+      <Image
+        source={require('../../assets/images/icons/delete_icon.png')}
+        style={[styles.DeleteIcon]}
+        resizeMode="contain"
+      />
+      </TouchableOpacity>
   </View>
 );
 

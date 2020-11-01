@@ -10,9 +10,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.DARK_GRAY_COLOR,
     flex: 1,
 },
-DeleteText: {
-    color: theme.LIGHT_COLOR,
-},
 RowFront: {
     alignItems: 'center',
     backgroundColor: theme.DARK_GRAY_COLOR,
@@ -36,9 +33,13 @@ DeleteButton: {
   position: 'absolute',
   top: 0,
   width: 75,
-  backgroundColor: 'red',
+  backgroundColor: theme.ERROR_COLOR,
   left: 0,
 }, 
+DeleteIcon: {
+  width: 41,
+  height: 50
+},
 ListItem: {
 color: theme.LIGHT_COLOR,
 fontWeight: 'bold',
