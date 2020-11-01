@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   SwipeableList: {
     backgroundColor: theme.DARK_GRAY_COLOR,
     flex: 1,
+    marginBottom: 0
 },
 RowFront: {
     alignItems: 'center',
@@ -44,6 +45,15 @@ ListItem: {
 color: theme.LIGHT_COLOR,
 fontWeight: 'bold',
 fontSize: 36
+}, 
+FloatingAction: {
+  flex: 1,
+  backgroundColor: theme.DARK_GRAY_COLOR
+},
+TextInput: {
+  height: 60, 
+  borderColor: theme.GRAY_COLOR, 
+  borderWidth: 1
 }
 
 });
