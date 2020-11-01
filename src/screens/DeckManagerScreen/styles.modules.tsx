@@ -2,56 +2,49 @@ import {StyleSheet} from 'react-native';
 import theme from './../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
-  Container: {
-    padding: 10,
-    marginTop: 5,
-    backgroundColor: theme.GRAY_COLOR,
-    alignItems: 'center',
+  Line: {
+    borderBottomColor: theme.LIGHT_COLOR,
+    borderBottomWidth: 1,
   },
-  Text: {
-    color: theme.LIGHT_COLOR,
-    fontSize: 35,
-    fontFamily: theme.FONT,
-  },
-  container: {
-    backgroundColor: 'white',
+  SwipeableList: {
+    backgroundColor: theme.DARK_GRAY_COLOR,
     flex: 1,
 },
-backTextWhite: {
-    color: '#FFF',
+DeleteText: {
+    color: theme.LIGHT_COLOR,
 },
-rowFront: {
+RowFront: {
     alignItems: 'center',
-    backgroundColor: '#CCC',
-    borderBottomColor: 'black',
+    backgroundColor: theme.DARK_GRAY_COLOR,
+    borderBottomColor: theme.LIGHT_COLOR,
     borderBottomWidth: 1,
     justifyContent: 'center',
-    height: 50,
+    height: 80,
 },
-rowBack: {
+RowBack: {
     alignItems: 'center',
-    backgroundColor: '#DDD',
+    backgroundColor: theme.DARK_GRAY_COLOR,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingLeft: 15,
 },
-backRightBtn: {
-    alignItems: 'center',
-    bottom: 0,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 0,
-    width: 75,
-},
-backRightBtnLeft: {
-    backgroundColor: 'blue',
-    right: 75,
-},
-backRightBtnRight: {
-    backgroundColor: 'red',
-    right: 0,
-},
+DeleteButton: {
+  alignItems: 'center',
+  bottom: 0,
+  justifyContent: 'center',
+  position: 'absolute',
+  top: 0,
+  width: 75,
+  backgroundColor: 'red',
+  left: 0,
+}, 
+ListItem: {
+color: theme.LIGHT_COLOR,
+fontWeight: 'bold',
+fontSize: 36
+}
+
 });
 
 export default styles;

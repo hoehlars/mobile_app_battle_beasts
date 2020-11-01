@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
+import theme from '../../assets/styles/theme.style';
 import Header from '../../components/Header';
 import styles from './styles.modules';
+import {Deck} from '../../models/deck'
 
 
-interface ListItem {
-  key: string;
-  text:string
+interface DeckItemList extends Deck {
+  key: string
 }
 
 interface DeckManagerState {
-  listViewData: ListItem[];
+  decks: DeckItemList[];
 }
 
 class DeckManagerScreen extends React.Component<{}, DeckManagerState> {
@@ -19,83 +20,92 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerState> {
   constructor(props: Readonly<{}>) {
     super(props);
 
-    let listViewDataPrep = Array(20)
-    .fill("")
-    .map((_, i) => ({ key: `${i}`, text: `item #${i}` }));
+    let decks: DeckItemList[] = [
+      {
+        key: '0',
+        _id: '0',
+        name: 'Deckname 1',
+        createdByUser: 'helloUser',
+        cards: [1,2,3,4]
+      },
+      {
+        key: '1',
+        _id: '1',
+        name: 'Deckname 2',
+        createdByUser: 'helloUser',
+        cards: [1,2,3,4]
+      },
+      {
+        key: '2',
+        _id: '2',
+        name: 'Deckname 3',
+        createdByUser: 'helloUser',
+        cards: [1,2,3,4]
+      }
+    ]
 
     this.state = {
-      listViewData: listViewDataPrep
+      decks: decks
     }
   
   }
 
-  closeRow = (rowMap: any, rowKey: any) => {
+  closeRow = (rowMap: any, rowKey: string) => {
     if (rowMap[rowKey]) {
         rowMap[rowKey].closeRow();
     }
   }
 
-deleteRow = (rowMap: any, rowKey: any) => {
+deleteRow = (rowMap: any, rowKey: string) => {
   this.closeRow(rowMap, rowKey);
-  const newData = [...this.state.listViewData];
-  const prevIndex = this.state.listViewData.findIndex(item => item.key === rowKey);
+  const newData = [...this.state.decks];
+  const prevIndex = this.state.decks.findIndex(deck => deck.key === rowKey);
   newData.splice(prevIndex, 1);
   this.setState({
-    listViewData: newData
+    decks: newData
   })
 }
 
-onRowDidOpen = (rowKey: any) => {
-  console.log('This row opened', rowKey);
-}
-
-renderItem = (data: any) => (
+renderItem = (data: any): JSX.Element => (
+  // responsible for the on click of a row
   <TouchableHighlight
+      // TODO: add function to open deckmanager
       onPress={() => console.log('You touched me')}
-      style={styles.rowFront}
-      underlayColor={'#AAA'}
+      style={styles.RowFront}
+      underlayColor={theme.PRIMARY_COLOR}
   >
+     {/* displays deck name*/}
       <View>
-          <Text>I am {data.item.text} in a SwipeListView</Text>
+          <Text style={styles.ListItem}>{data.item.name}</Text>
       </View>
   </TouchableHighlight>
 )
 
-renderHiddenItem = (data:any, rowMap:any) => (
-  <View style={styles.rowBack}>
-      <Text>Left</Text>
+renderHiddenItem = (data:any, rowMap: any) => (
+  // responsible for the delete on click
+  <View style={styles.RowBack}>
       <TouchableOpacity
-          style={[styles.backRightBtn, styles.backRightBtnLeft]}
-          onPress={() => this.closeRow(rowMap, data.item.key)}
-      >
-          <Text style={styles.backTextWhite}>Close</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-          style={[styles.backRightBtn, styles.backRightBtnRight]}
+          style={[styles.DeleteButton]}
           onPress={() => this.deleteRow(rowMap, data.item.key)}
-      >
-          <Text style={styles.backTextWhite}>Delete</Text>
-      </TouchableOpacity>
+      ></TouchableOpacity>
+      <Text style={styles.DeleteText}>Delete</Text>
   </View>
 );
-
-
 
   render() {
     return (
       <>
         <Header title="Your decks"></Header>
-        <View style={styles.container}>
+        {/* add line below header  */}
+        <View style={styles.Line}/>
+        <View style={styles.SwipeableList}>
             <SwipeListView
-                data={this.state.listViewData}
+                data={this.state.decks}
                 renderItem={this.renderItem}
                 renderHiddenItem={this.renderHiddenItem}
                 leftOpenValue={75}
-                rightOpenValue={-150}
-                previewRowKey={'0'}
-                previewOpenValue={-40}
-                previewOpenDelay={3000}
-                onRowDidOpen={this.onRowDidOpen}
+                disableLeftSwipe={true}
+                stopLeftSwipe={75}
             />
         </View>
       </>

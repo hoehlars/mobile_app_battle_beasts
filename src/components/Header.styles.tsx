@@ -4,12 +4,13 @@ import theme from './../assets/styles/theme.style';
 const styles = StyleSheet.create({
   HeaderText: {
     color: theme.LIGHT_COLOR,
-    fontSize: 30,
+    fontSize: 36,
     fontFamily: 'Nunito-Regular',
+    fontWeight: 'bold'
   },
   Background: {
     backgroundColor: theme.DARK_GRAY_COLOR,
-    height: 100,
+    height: 150,
     alignItems: 'center',
     justifyContent: 'center',
   },
