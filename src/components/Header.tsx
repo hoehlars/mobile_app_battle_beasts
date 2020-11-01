@@ -14,7 +14,7 @@ class Header extends React.Component<HeaderProps, {}> {
   render() {
     return (
       <View>
-        <View style={[styles.Background]}>
+        <View testID="header" style={[styles.Background]}>
           <Text style={[styles.HeaderText]}>{this.props.title}</Text>
         </View>
       </View>
