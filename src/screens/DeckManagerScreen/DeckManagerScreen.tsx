@@ -79,7 +79,8 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
 
   renderDeckItem = (data: any): JSX.Element => (
     // responsible for the on click of a row
-    <TouchableHighlight testID="deckItem"
+    <TouchableHighlight
+      testID="deckItem"
       // TODO: add function to open deckmanager
       onPress={() => console.log('You touched me')}
       style={styles.RowFront}
@@ -94,7 +95,8 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
   renderDeleteDeckButton = (data: any, rowMap: any) => (
     // responsible for the delete on click
     <View style={styles.RowBack}>
-      <TouchableOpacity testID="deleteDeckButton"
+      <TouchableOpacity
+        testID="deleteDeckButton"
         style={[styles.DeleteButton]}
         onPress={() => this.deleteDeckItem(rowMap, data.item.key)}>
         <Image
@@ -156,7 +158,8 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
         {/* add line below header  */}
         <View testID="lineBelowHeader" style={styles.Line} />
         <View style={styles.SwipeableList}>
-          <SwipeListView testID="swipeableList"
+          <SwipeListView
+            testID="swipeableList"
             data={this.state.decks}
             renderItem={this.renderDeckItem}
             renderHiddenItem={this.renderDeleteDeckButton}
@@ -175,7 +178,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
             placeholder="Gib deinem neuen Deck einen Namen."
           />
         ) : null}
-        <FloatingAction 
+        <FloatingAction
           testID="floatingAction"
           ref={(ref) => {
             this.floatingAction = ref!;
