@@ -7,7 +7,7 @@ const theme = {
   DARK_GRAY_COLOR: '#181b20',
   ERROR_COLOR: '#f52f26',
   SUCCESS_COLOR: '#79b86f',
-  FONT: 'Nunito',
+  FONT: 'Nunito-Regular',
 
   /* Cards */
   CARNIVORE_COLOR: '#d36f63',

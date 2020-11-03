@@ -25,6 +25,7 @@
     "react-native-gesture-handler": "^1.8.0",
     "react-native-notifications": "^3.3.4",
     "react-native-reanimated": "^1.13.1",
+    "react-native-responsive-fontsize": "^0.4.3",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.11.0",
     "react-native-swipe-list-view": "^3.2.5",
@@ -42,6 +43,7 @@
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
