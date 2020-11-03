@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "test:coverage": "jest --collectCoverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
@@ -16,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/drawer": "^5.9.2",
     "@react-navigation/native": "^5.7.5",
+    "@testing-library/react-native": "^7.1.0",
     "jest-fetch-mock": "^3.0.3",
     "react": "16.13.1",
     "react-native": "0.63.2",

@@ -223,8 +223,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -258,8 +258,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -339,8 +339,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -374,8 +374,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -455,8 +455,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -490,8 +490,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -571,8 +571,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }
@@ -606,8 +606,8 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 24,
-                      "width": 24,
+                      "height": 28,
+                      "width": 30,
                     },
                   ]
                 }

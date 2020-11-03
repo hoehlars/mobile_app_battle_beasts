@@ -80,6 +80,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
   renderDeckItem = (data: any): JSX.Element => (
     // responsible for the on click of a row
     <TouchableHighlight
+      testID="deckItem"
       // TODO: add function to open deckmanager
       onPress={() => console.log('You touched me')}
       style={styles.RowFront}
@@ -95,6 +96,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
     // responsible for the delete on click
     <View style={styles.RowBack}>
       <TouchableOpacity
+        testID="deleteDeckButton"
         style={[styles.DeleteButton]}
         onPress={() => this.deleteDeckItem(rowMap, data.item.key)}>
         <Image
@@ -154,9 +156,10 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
       <>
         <Header title="Your decks" />
         {/* add line below header  */}
-        <View style={styles.Line} />
+        <View testID="lineBelowHeader" style={styles.Line} />
         <View style={styles.SwipeableList}>
           <SwipeListView
+            testID="swipeableList"
             data={this.state.decks}
             renderItem={this.renderDeckItem}
             renderHiddenItem={this.renderDeleteDeckButton}
@@ -167,6 +170,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
         </View>
         {this.state.showTextInput ? (
           <TextInput
+            testID="addNewDeckInput"
             style={styles.TextInput}
             onChangeText={(newDeck) => this.setState({textInput: newDeck})}
             value={this.state.textInput}
@@ -175,6 +179,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
           />
         ) : null}
         <FloatingAction
+          testID="floatingAction"
           ref={(ref) => {
             this.floatingAction = ref!;
           }}
