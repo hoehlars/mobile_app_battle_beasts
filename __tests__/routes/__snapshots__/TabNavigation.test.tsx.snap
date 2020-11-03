@@ -69,50 +69,179 @@ exports[`TabNavigation renders tabnavigation 1`] = `
               ]
             }
           >
-            <View>
-              <Text>
-                Welcome to Battle Beasts!
-              </Text>
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#181b20",
+                  "flex": 1,
+                }
+              }
+            >
               <View
-                accessibilityRole="button"
-                accessibilityState={Object {}}
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "opacity": 1,
+                    "alignItems": "center",
+                    "flex": 1,
                   }
                 }
               >
-                <View
+                <Text
                   style={
-                    Array [
-                      Object {},
-                    ]
+                    Object {
+                      "color": "white",
+                      "flex": 1,
+                      "fontFamily": "Nunito-Bold",
+                      "fontSize": 25,
+                      "marginTop": "5%",
+                    }
                   }
                 >
-                  <Text
+                  Welcome to Battle Beasts!
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flex": 4,
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "testUri": "../../../src/assets/images/logos/battlebeasts-logo-white.png",
+                      }
+                    }
                     style={
-                      Array [
-                        Object {
-                          "color": "#007AFF",
-                          "fontSize": 18,
-                          "margin": 8,
-                          "textAlign": "center",
-                        },
-                      ]
+                      Object {
+                        "height": 135,
+                        "marginTop": "10%",
+                        "width": 177,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flex": 2,
+                  }
+                }
+              >
+                <RNGestureHandlerButton
+                  collapsable={false}
+                  onGestureEvent={[Function]}
+                  onGestureHandlerEvent={[Function]}
+                  onGestureHandlerStateChange={[Function]}
+                  onHandlerStateChange={[Function]}
+                  rippleColor={0}
+                >
+                  <View
+                    accessible={true}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#3dcec1",
+                        "borderRadius": 10,
+                        "flexShrink": 0,
+                        "justifyContent": "center",
+                        "marginTop": "10%",
+                        "minHeight": "20%",
+                        "minWidth": "80%",
+                        "opacity": 1,
+                      }
                     }
                   >
-                    Play the game!
-                  </Text>
-                </View>
+                    <Text
+                      style={
+                        Object {
+                          "color": "#36393e",
+                          "fontFamily": "Nunito-Bold",
+                          "fontSize": 23,
+                        }
+                      }
+                    >
+                      PLAY RANKED!
+                    </Text>
+                  </View>
+                </RNGestureHandlerButton>
+                <RNGestureHandlerButton
+                  collapsable={false}
+                  onGestureEvent={[Function]}
+                  onGestureHandlerEvent={[Function]}
+                  onGestureHandlerStateChange={[Function]}
+                  onHandlerStateChange={[Function]}
+                  rippleColor={0}
+                >
+                  <View
+                    accessible={true}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#3dcec1",
+                        "borderRadius": 10,
+                        "flexShrink": 0,
+                        "justifyContent": "center",
+                        "marginTop": "10%",
+                        "minHeight": "20%",
+                        "minWidth": "80%",
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#36393e",
+                          "fontFamily": "Nunito-Bold",
+                          "fontSize": 23,
+                        }
+                      }
+                    >
+                      PLAY UNRANKED!
+                    </Text>
+                  </View>
+                </RNGestureHandlerButton>
+                <RNGestureHandlerButton
+                  collapsable={false}
+                  onGestureEvent={[Function]}
+                  onGestureHandlerEvent={[Function]}
+                  onGestureHandlerStateChange={[Function]}
+                  onHandlerStateChange={[Function]}
+                  rippleColor={0}
+                >
+                  <View
+                    accessible={true}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#3dcec1",
+                        "borderRadius": 10,
+                        "flexShrink": 0,
+                        "justifyContent": "center",
+                        "marginTop": "10%",
+                        "minHeight": "20%",
+                        "minWidth": "80%",
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#36393e",
+                          "fontFamily": "Nunito-Bold",
+                          "fontSize": 23,
+                        }
+                      }
+                    >
+                      PLAY AGAINST A BOT!
+                    </Text>
+                  </View>
+                </RNGestureHandlerButton>
               </View>
             </View>
           </View>
