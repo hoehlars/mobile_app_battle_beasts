@@ -3,13 +3,14 @@ import theme from './../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   HeaderText: {
-    color: theme.GRAY_COLOR,
-    fontSize: 30,
+    color: theme.LIGHT_COLOR,
+    fontSize: 36,
     fontFamily: 'Nunito-Regular',
+    fontWeight: 'bold',
   },
   Background: {
-    backgroundColor: theme.PRIMARY_COLOR,
-    height: 100,
+    backgroundColor: theme.DARK_GRAY_COLOR,
+    height: 150,
     alignItems: 'center',
     justifyContent: 'center',
   },
