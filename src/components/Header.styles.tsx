@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
   HeaderText: {
     color: theme.LIGHT_COLOR,
     fontSize: 36,
-    fontFamily: 'Nunito-Regular',
-    fontWeight: 'bold',
+    fontFamily: 'Nunito-Bold',
   },
   Background: {
     backgroundColor: theme.DARK_GRAY_COLOR,
