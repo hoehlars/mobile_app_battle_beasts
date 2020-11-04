@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   ListItem: {
     color: theme.LIGHT_COLOR,
-    fontWeight: 'bold',
+    fontFamily: 'Nunito-Bold',
     fontSize: 36,
   },
   FloatingAction: {
