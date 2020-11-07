@@ -13,6 +13,11 @@ import styles from './styles.modules';
 import {Deck} from '../../models/deck';
 import {FloatingAction} from 'react-native-floating-action';
 import {TextInput} from 'react-native-gesture-handler';
+import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationState } from '@react-navigation/native';
+import { NavigationParams, NavigationScreenProp } from 'react-navigation';
+
+const Stack = createStackNavigator();
 
 interface DeckItemList extends Deck {
   key: string;
@@ -24,10 +29,15 @@ interface DeckManagerScreenState {
   textInput: string;
 }
 
-class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
+
+interface DeckManagerScreenProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>
+}
+
+class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckManagerScreenState> {
   private floatingAction: FloatingAction | undefined;
 
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<DeckManagerScreenProps>) {
     super(props);
 
     let decks: DeckItemList[] = [
@@ -81,8 +91,10 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
     // responsible for the on click of a row
     <TouchableHighlight
       testID="deckItem"
-      // TODO: add function to open deckmanager
-      onPress={() => console.log('You touched me')}
+      // navigate to update deck screen with the corresponding deck
+      onPress={() => this.props.navigation.navigate('DeckManagerUpdateDeckScreen', {
+        deck: data.item
+      })}
       style={styles.RowFront}
       underlayColor={theme.PRIMARY_COLOR}>
       {/* displays deck name*/}
@@ -157,6 +169,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
         <Header title="Your decks" />
         {/* add line below header  */}
         <View testID="lineBelowHeader" style={styles.Line} />
+        
         <View style={styles.SwipeableList}>
           <SwipeListView
             testID="swipeableList"
@@ -166,6 +179,7 @@ class DeckManagerScreen extends React.Component<{}, DeckManagerScreenState> {
             leftOpenValue={75}
             disableLeftSwipe={true}
             stopLeftSwipe={75}
+
           />
         </View>
         {this.state.showTextInput ? (
