@@ -57,13 +57,13 @@ const styles = StyleSheet.create({
   },
   DeckError: {
     flex: 0.5,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   TextDeckError: {
     color: theme.ERROR_COLOR,
     fontFamily: 'Nunito-Bold',
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 });
 
 export default styles;

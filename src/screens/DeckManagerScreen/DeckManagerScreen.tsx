@@ -16,10 +16,9 @@ import styles from './styles.modules';
 import {Deck} from '../../models/deck';
 import {FloatingAction} from 'react-native-floating-action';
 import {TextInput} from 'react-native-gesture-handler';
-import {createStackNavigator} from '@react-navigation/stack';
-import { NavigationState } from '@react-navigation/native';
-import { NavigationParams, NavigationScreenProp } from 'react-navigation';
-import {UserService}from './../../services/userService';
+import {NavigationState} from '@react-navigation/native';
+import {NavigationParams, NavigationScreenProp} from 'react-navigation';
+import {UserService} from './../../services/userService';
 import {DeckService} from './../../services/deckService';
 
 interface DeckItemList extends Deck {
@@ -34,14 +33,37 @@ interface DeckManagerScreenState {
   token?: string;
 }
 
-
 interface DeckManagerScreenProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckManagerScreenState> {
+class DeckManagerScreen extends React.Component<
+  DeckManagerScreenProps,
+  DeckManagerScreenState
+> {
   private floatingAction: FloatingAction | undefined;
-  private readonly STANDARD_DECK: number[] = [0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,4];
+  private readonly STANDARD_DECK: number[] = [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+  ];
 
   constructor(props: Readonly<DeckManagerScreenProps>) {
     super(props);
@@ -50,16 +72,19 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
       showTextInput: false,
       textInput: '',
       decks: [],
-      error: ''
+      error: '',
     };
   }
 
   private async login(): Promise<void> {
-    const res = await UserService.postLogin({username: 'hello', password: '12345678'});
+    const res = await UserService.postLogin({
+      username: 'hello',
+      password: '12345678',
+    });
     const data = await res.json();
     this.setState({
-      token: data.token
-    })
+      token: data.token,
+    });
   }
 
   async getDecks(): Promise<void> {
@@ -67,20 +92,20 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
     const userDecks: Deck[] = await userDecksRes.json();
 
     // turn userDecks into DeckListItem with keys
-    const userDecksWithKey: DeckItemList[] = []
+    const userDecksWithKey: DeckItemList[] = [];
     let count: number = 0;
-    userDecks.forEach(deck => {
+    userDecks.forEach((deck) => {
       const deckListItem: DeckItemList = {
         key: count.toString(),
-        ...deck
-      }
+        ...deck,
+      };
       userDecksWithKey.push(deckListItem);
       count++;
-    })
+    });
 
     this.setState({
-      decks: userDecksWithKey
-    })
+      decks: userDecksWithKey,
+    });
   }
 
   /*
@@ -100,74 +125,79 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
     newData.splice(prevIndex, 1);
 
     // delete deck in backend
-    const deck = this.state.decks.find((deck) => deck.key === rowKey);
-    await DeckService.deleteDeck(this.state.token!, deck!.name);
+    const deckToDelete = this.state.decks.find((deck) => deck.key === rowKey);
+    await DeckService.deleteDeck(this.state.token!, deckToDelete!.name);
 
-    // clear error of no deckspace available 
+    // clear error of no deckspace available
     this.setState({
-      error: ''
-    })
+      error: '',
+    });
 
     this.setState({
       decks: newData,
     });
-  };
+  }
 
   private closeRow(rowMap: RowMap<DeckItemList>, rowKey: string) {
     if (rowMap[rowKey]) {
       rowMap[rowKey].closeRow();
     }
-  };
+  }
 
   private renderDeckItem(data: ListRenderItemInfo<DeckItemList>): JSX.Element {
-    return(
-    // responsible for the on click of a row
-    <TouchableHighlight
-      testID="deckItem"
-      // navigate to update deck screen with the corresponding deck
-      onPress={async () => {
+    return (
+      // responsible for the on click of a row
+      <TouchableHighlight
+        testID="deckItem"
+        // navigate to update deck screen with the corresponding deck
+        onPress={async () => {
+          // first update decks, because user might have changed them
+          await this.getDecks();
 
-        // first update decks, because user might have changed them
-        await this.getDecks();
+          this.props.navigation.navigate('DeckManagerUpdateDeckScreen', {
+            deck: data.item,
+            token: this.state.token,
+          });
+        }}
+        style={styles.RowFront}
+        underlayColor={theme.PRIMARY_COLOR}>
+        {/* displays deck name*/}
+        <View>
+          <Text style={styles.ListItem}>{data.item.name}</Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
 
-        this.props.navigation.navigate('DeckManagerUpdateDeckScreen', {
-        deck: data.item,
-        token: this.state.token
-      })}}
-      style={styles.RowFront}
-      underlayColor={theme.PRIMARY_COLOR}>
-      {/* displays deck name*/}
-      <View>
-        <Text style={styles.ListItem}>{data.item.name}</Text>
+  private renderDeleteDeckButton(
+    data: ListRenderItemInfo<DeckItemList>,
+    rowMap: RowMap<DeckItemList>,
+  ): JSX.Element {
+    return (
+      // responsible for the delete on click
+      <View style={styles.RowBack}>
+        <TouchableOpacity
+          testID="deleteDeckButton"
+          style={[styles.DeleteButton]}
+          onPress={async () => this.deleteDeckItem(rowMap, data.item.key)}>
+          <Image
+            source={require('../../assets/images/icons/delete_deck_icon.png')}
+            style={[styles.DeleteIcon]}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
       </View>
-    </TouchableHighlight>
-  );
-}
+    );
+  }
 
-  private renderDeleteDeckButton(data: ListRenderItemInfo<DeckItemList>, rowMap: RowMap<DeckItemList>): JSX.Element  {
-    return(
-    // responsible for the delete on click
-    <View style={styles.RowBack}>
-      <TouchableOpacity
-        testID="deleteDeckButton"
-        style={[styles.DeleteButton]}
-        onPress={async () => this.deleteDeckItem(rowMap, data.item.key)}>
-        <Image
-          source={require('../../assets/images/icons/delete_deck_icon.png')}
-          style={[styles.DeleteIcon]}
-          resizeMode="contain"
-        />
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-  private async addDeckItem(data: NativeSyntheticEvent<TextInputSubmitEditingEventData>): Promise<void>  {
+  private async addDeckItem(
+    data: NativeSyntheticEvent<TextInputSubmitEditingEventData>,
+  ): Promise<void> {
     // close & clear text input
     this.setState({
       showTextInput: false,
-      textInput: ''}
-    );
+      textInput: '',
+    });
 
     // close animation of floating action
     this.floatingAction!.animateButton();
@@ -179,43 +209,44 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
     const newDeckItemName: string = data.nativeEvent.text;
 
     // create new deck in backend
-    const saveDeckRes = await DeckService.postDeck(this.state.token!, newDeckItemName,
-       this.STANDARD_DECK);
+    const saveDeckRes = await DeckService.postDeck(
+      this.state.token!,
+      newDeckItemName,
+      this.STANDARD_DECK,
+    );
 
-    if(saveDeckRes.status === 200) {
+    if (saveDeckRes.status === 200) {
       const saveDeckResJson: Deck = await saveDeckRes.json();
       this.setState({
-        error: ''
-      })
+        error: '',
+      });
       // parse it into DeckItemList
-    const newDeckItem: DeckItemList = {
-      key: highestId,
-      ...saveDeckResJson
-    };
-    
-    const newDecks: DeckItemList[] = [...this.state.decks, newDeckItem];
-    this.setState({
-      decks: newDecks,
-    });
+      const newDeckItem: DeckItemList = {
+        key: highestId,
+        ...saveDeckResJson,
+      };
+
+      const newDecks: DeckItemList[] = [...this.state.decks, newDeckItem];
+      this.setState({
+        decks: newDecks,
+      });
     } else {
       const errorMsg = await saveDeckRes.json();
       this.setState({
-        error: errorMsg.error
-      })
+        error: errorMsg.error,
+      });
     }
-    
-
-    
-
-  };
+  }
 
   private getHighestIdOfDecks(): string {
     if (this.state.decks.length >= 1) {
       // get highest id and add 1
-        const deckItemHighestId = this.state.decks.reduce((item1: DeckItemList, item2: DeckItemList) => {
+      const deckItemHighestId = this.state.decks.reduce(
+        (item1: DeckItemList, item2: DeckItemList) => {
           return +item1.key > +item2.key ? item1 : item2;
-        });
-        return (+deckItemHighestId.key + 1).toString();
+        },
+      );
+      return (+deckItemHighestId.key + 1).toString();
     } else {
       // no elements in the list return 0
       return '0';
@@ -228,17 +259,18 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
         <Header title="Your decks" />
         {/* add line below header  */}
         <View testID="lineBelowHeader" style={styles.Line} />
-        
+
         <View style={styles.SwipeableList}>
           <SwipeListView
             testID="swipeableList"
             data={this.state.decks}
-            renderItem={data => this.renderDeckItem(data)}
-            renderHiddenItem={(data, rowMap) => this.renderDeleteDeckButton(data, rowMap)}
+            renderItem={(data) => this.renderDeckItem(data)}
+            renderHiddenItem={(data, rowMap) =>
+              this.renderDeleteDeckButton(data, rowMap)
+            }
             leftOpenValue={75}
             disableLeftSwipe={true}
             stopLeftSwipe={75}
-
           />
         </View>
         {this.state.showTextInput ? (
@@ -247,7 +279,7 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
             style={styles.TextInput}
             onChangeText={(newDeck) => this.setState({textInput: newDeck})}
             value={this.state.textInput}
-            onSubmitEditing={e => this.addDeckItem(e)}
+            onSubmitEditing={(e) => this.addDeckItem(e)}
             placeholder="Gib deinem neuen Deck einen Namen."
           />
         ) : null}
@@ -268,10 +300,11 @@ class DeckManagerScreen extends React.Component<DeckManagerScreenProps, DeckMana
           }}
         />
 
-        {this.state.error === '' ? null : 
-        <View style={styles.DeckError}>
-          <Text style={styles.TextDeckError}>{this.state.error}</Text>
-        </View>}
+        {this.state.error === '' ? null : (
+          <View style={styles.DeckError}>
+            <Text style={styles.TextDeckError}>{this.state.error}</Text>
+          </View>
+        )}
       </>
     );
   }
