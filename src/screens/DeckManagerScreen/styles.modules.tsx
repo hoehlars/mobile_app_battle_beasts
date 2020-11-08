@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   SwipeableList: {
     backgroundColor: theme.DARK_GRAY_COLOR,
-    flex: 1,
+    flex: 10,
     marginBottom: 0,
   },
   RowFront: {
@@ -55,6 +55,15 @@ const styles = StyleSheet.create({
     borderColor: theme.GRAY_COLOR,
     borderWidth: 1,
   },
+  DeckError: {
+    flex: 0.5,
+    alignItems: 'center'
+  },
+  TextDeckError: {
+    color: theme.ERROR_COLOR,
+    fontFamily: 'Nunito-Bold',
+    fontSize: 18
+  }
 });
 
 export default styles;
