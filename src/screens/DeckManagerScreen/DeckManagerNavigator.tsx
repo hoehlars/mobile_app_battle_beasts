@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import DeckManagerScreen from './DeckManagerScreen';
-import DeckManagerUpdateDeckScreen from './DeckManagerUpdateDeckScreen';
+import DeckManagerUpdateDeckScreen from './UpdateDeckScreen/DeckManagerUpdateDeckScreen';
 
 const Stack = createStackNavigator();
 

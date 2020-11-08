@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import theme from './../../assets/styles/theme.style';
+import theme from './../../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
     HeaderText: {
@@ -40,6 +40,34 @@ const styles = StyleSheet.create({
       },
       YourDeck: {
         flex: 1
+      },
+      item: {
+        backgroundColor: '#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+      },
+      title: {
+        fontSize: 32,
+      },
+      error: {
+        flex:0.5,
+        alignItems: 'center'
+
+      },
+      TextError: {
+        color: theme.ERROR_COLOR,
+        fontFamily: 'Nunito-Bold',
+        fontSize: 18
+      },
+      UpdateSuccess: {
+        flex: 0.5,
+        alignItems: 'center'
+      },
+      TextSuccess: {
+        color: theme.SUCCESS_COLOR,
+        fontFamily: 'Nunito-Bold',
+        fontSize: 18
       }
 });
 
