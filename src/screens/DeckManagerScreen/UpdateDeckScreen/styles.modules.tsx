@@ -1,12 +1,13 @@
 import {StyleSheet} from 'react-native';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 import theme from './../../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   HeaderText: {
     color: theme.LIGHT_COLOR,
-    fontSize: 18,
+    fontSize: RFPercentage(2.5),
     fontFamily: 'Nunito-Bold',
-    marginLeft: 10,
+    marginLeft: '5%',
   },
   Background: {
     backgroundColor: theme.DARK_GRAY_COLOR,
@@ -43,12 +44,12 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    padding: '10%',
+    marginVertical: '4%',
+    marginHorizontal: '10%',
   },
   title: {
-    fontSize: 32,
+    fontSize: RFPercentage(3.5),
   },
   error: {
     flex: 0.5,
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   TextError: {
     color: theme.ERROR_COLOR,
     fontFamily: 'Nunito-Bold',
-    fontSize: 18,
+    fontSize: RFPercentage(2.5),
   },
   UpdateSuccess: {
     flex: 0.5,
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   TextSuccess: {
     color: theme.SUCCESS_COLOR,
     fontFamily: 'Nunito-Bold',
-    fontSize: 18,
+    fontSize: RFPercentage(2.5),
   },
 });
 
