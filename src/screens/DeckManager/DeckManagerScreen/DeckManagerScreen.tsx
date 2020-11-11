@@ -131,7 +131,7 @@ class DeckManagerScreen extends React.Component<
     // clear error of no deckspace available
     this.setState({
       error: '',
-      decks: newData
+      decks: newData,
     });
   }
 
@@ -141,12 +141,16 @@ class DeckManagerScreen extends React.Component<
     }
   }
 
-  private async updateDecksAndNavigateToUpdateDeckScreen(deckChosen: DeckItemList): Promise<void> {
+  private async updateDecksAndNavigateToUpdateDeckScreen(
+    deckChosen: DeckItemList,
+  ): Promise<void> {
     // first update decks, because user might have changed them
     await this.getDecks();
 
     // transmit updated deck to deck manager updates screen
-    const updatedDeck = this.state.decks.find((deck => deck.name === deckChosen.name))
+    const updatedDeck = this.state.decks.find(
+      (deck) => deck.name === deckChosen.name,
+    );
     this.props.navigation.navigate('DeckManagerUpdateDeckScreen', {
       deck: updatedDeck,
       token: this.state.token,
@@ -156,7 +160,6 @@ class DeckManagerScreen extends React.Component<
   private async addDeckItem(
     data: NativeSyntheticEvent<TextInputSubmitEditingEventData>,
   ): Promise<void> {
-
     // close & clear text input
     this.setState({
       showTextInput: false,
@@ -182,13 +185,10 @@ class DeckManagerScreen extends React.Component<
     const saveDeckJson = await saveDeckRes.json();
 
     if (saveDeckJson.error) {
-
       this.setState({
         error: saveDeckJson.error,
       });
-
     } else {
-
       // clear error
       this.setState({
         error: '',
@@ -244,7 +244,9 @@ class DeckManagerScreen extends React.Component<
         <TouchableOpacity
           testID="deleteDeckButton"
           style={[styles.DeleteButton]}
-          onPress={async () => await this.deleteDeckItem(rowMap, data.item.key)}>
+          onPress={async () =>
+            await this.deleteDeckItem(rowMap, data.item.key)
+          }>
           <Image
             source={require('../../../assets/images/icons/delete_deck_icon.png')}
             style={[styles.DeleteIcon]}
