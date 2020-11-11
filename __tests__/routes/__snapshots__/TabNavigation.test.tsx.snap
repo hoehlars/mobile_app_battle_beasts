@@ -110,7 +110,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                   <Image
                     source={
                       Object {
-                        "testUri": "../../../src/assets/images/logos/battlebeasts-logo-white.png",
+                        "process": [Function],
                       }
                     }
                     style={
@@ -346,7 +346,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/home_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -381,7 +381,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/home_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -397,7 +397,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
           </View>
         </View>
         <View
-          accessibilityLabel="Deck Manager, tab, 2 of 4"
+          accessibilityLabel="DeckManagerNavigator, tab, 2 of 4"
           accessibilityRole="button"
           accessibilityState={
             Object {
@@ -462,7 +462,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/deckmanager_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -497,7 +497,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/deckmanager_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -578,7 +578,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/leaderboard_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -613,7 +613,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/leaderboard_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -694,7 +694,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/about_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
@@ -729,7 +729,7 @@ exports[`TabNavigation renders tabnavigation 1`] = `
                 resizeMode="contain"
                 source={
                   Object {
-                    "testUri": "../../../src/assets/images/icons/about_icon.png",
+                    "process": [Function],
                   }
                 }
                 style={
