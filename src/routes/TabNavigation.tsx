@@ -7,7 +7,7 @@ import {Image} from 'react-native';
 import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
-import DeckManagerNavigator from './../screens/DeckManagerScreen/DeckManagerNavigator';
+import DeckManagerNavigator from '../screens/DeckManager/DeckManagerNavigator';
 
 const Tab = createBottomTabNavigator();
 
