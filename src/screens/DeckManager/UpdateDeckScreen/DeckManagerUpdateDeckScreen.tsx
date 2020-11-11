@@ -163,9 +163,10 @@ class DeckManagerUpdateDeckScreen extends React.Component<
       cards,
     );
 
-    if (patchDeckRes.status === 400) {
-      const errorMsg = await patchDeckRes.json();
-      this.setState({error: errorMsg.error});
+    const patchDeckJson = await patchDeckRes.json();
+
+    if (patchDeckJson.error) {
+      this.setState({error: patchDeckJson.error});
       this.setState({updatedDeckSuccessfully: false});
     } else {
       this.setState({error: ''});

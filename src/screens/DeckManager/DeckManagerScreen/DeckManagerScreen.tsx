@@ -179,8 +179,15 @@ class DeckManagerScreen extends React.Component<
       this.STANDARD_DECK,
     );
 
-    if (saveDeckRes.status === 200) {
-      const saveDeckResJson: Deck = await saveDeckRes.json();
+    const saveDeckJson = await saveDeckRes.json();
+
+    if (saveDeckJson.error) {
+
+      this.setState({
+        error: saveDeckJson.error,
+      });
+
+    } else {
 
       // clear error
       this.setState({
@@ -190,16 +197,10 @@ class DeckManagerScreen extends React.Component<
       // parse it into DeckItemList
       const newDeckItem: DeckItemList = {
         key: highestId,
-        ...saveDeckResJson,
+        ...saveDeckJson,
       };
       this.setState({
         decks: [...this.state.decks, newDeckItem],
-      });
-
-    } else {
-      const errorMsg = await saveDeckRes.json();
-      this.setState({
-        error: errorMsg.error,
       });
     }
   }
@@ -258,12 +259,10 @@ class DeckManagerScreen extends React.Component<
     return (
       <>
         <Header title="Your decks" />
-        {/* add line below header  */}
         <View testID="lineBelowHeader" style={styles.Line} />
 
         <View style={styles.SwipeableList}>
           <SwipeListView
-            testID="swipeableList"
             data={this.state.decks}
             renderItem={(data) => this.renderDeckItem(data)}
             renderHiddenItem={(data, rowMap) =>
@@ -276,7 +275,6 @@ class DeckManagerScreen extends React.Component<
         </View>
         {this.state.showTextInput ? (
           <TextInput
-            testID="addNewDeckInput"
             style={styles.TextInput}
             onChangeText={(newDeck) => this.setState({textInput: newDeck})}
             value={this.state.textInput}
@@ -302,7 +300,7 @@ class DeckManagerScreen extends React.Component<
         />
 
         {this.state.error === '' ? null : (
-          <View style={styles.DeckError}>
+          <View testID="error" style={styles.DeckError}>
             <Text style={styles.TextDeckError}>{this.state.error}</Text>
           </View>
         )}
