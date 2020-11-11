@@ -168,7 +168,6 @@ class DeckManagerUpdateDeckScreen extends React.Component<
       this.setState({error: errorMsg.error});
       this.setState({updatedDeckSuccessfully: false});
     } else {
-      console.log(await patchDeckRes.json());
       this.setState({error: ''});
       this.setState({updatedDeckSuccessfully: true});
     }
