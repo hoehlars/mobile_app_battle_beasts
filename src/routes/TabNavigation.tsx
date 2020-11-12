@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import DeckManagerScreen from '../screens/DeckManagerScreen/DeckManagerScreen';
 import AboutTheGameScreen from '../screens/AboutTheGameScreen/AboutTheGameScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
 import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
+import DeckManagerNavigator from '../screens/DeckManager/DeckManagerNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,8 +42,8 @@ class TabNavigation extends React.Component<{}, {}> {
           />
 
           <Tab.Screen
-            name="Deck Manager"
-            component={DeckManagerScreen}
+            name="DeckManagerNavigator"
+            component={DeckManagerNavigator}
             options={{
               tabBarIcon: () => {
                 return (

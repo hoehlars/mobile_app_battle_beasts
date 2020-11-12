@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import theme from './../../assets/styles/theme.style';
+import {RFPercentage} from 'react-native-responsive-fontsize';
+import theme from '../../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   Line: {
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
   },
   SwipeableList: {
     backgroundColor: theme.DARK_GRAY_COLOR,
-    flex: 1,
+    flex: 10,
     marginBottom: 0,
   },
   RowFront: {
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: 15,
+    paddingLeft: '5%',
   },
   DeleteButton: {
     alignItems: 'center',
@@ -44,16 +45,25 @@ const styles = StyleSheet.create({
   ListItem: {
     color: theme.LIGHT_COLOR,
     fontFamily: 'Nunito-Bold',
-    fontSize: 36,
+    fontSize: RFPercentage(4),
   },
   FloatingAction: {
     flex: 1,
     backgroundColor: theme.DARK_GRAY_COLOR,
   },
   TextInput: {
-    height: 60,
+    height: '8%',
     borderColor: theme.GRAY_COLOR,
     borderWidth: 1,
+  },
+  DeckError: {
+    flex: 0.5,
+    alignItems: 'center',
+  },
+  TextDeckError: {
+    color: theme.ERROR_COLOR,
+    fontFamily: 'Nunito-Bold',
+    fontSize: RFPercentage(2.5),
   },
 });
 

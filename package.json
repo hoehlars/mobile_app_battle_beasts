@@ -17,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/drawer": "^5.9.2",
     "@react-navigation/native": "^5.7.5",
+    "@react-navigation/stack": "^5.9.0",
     "@testing-library/react-native": "^7.1.0",
     "jest-fetch-mock": "^3.0.3",
     "react": "16.13.1",
@@ -60,6 +61,9 @@
     ],
     "setupFiles": [
       "./jest/setup.js"
-    ]
+    ],
+    "moduleNameMapper": { 
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js", 
+      "\\.(css|less)$": "<rootDir>/assetsTransformer.js" }
   }
 }
