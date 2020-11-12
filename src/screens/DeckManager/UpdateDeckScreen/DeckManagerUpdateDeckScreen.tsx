@@ -225,13 +225,20 @@ class DeckManagerUpdateDeckScreen extends React.Component<
       <>
         <View testID="header" style={styles.Header}>
           <View style={styles.Background}>
-            <Text testID="headerText" style={[styles.HeaderText]}>Verfügbare Karten</Text>
+            <Text testID="headerText" style={[styles.HeaderText]}>
+              Verfügbare Karten
+            </Text>
           </View>
 
-          <View testID="lineInTheMiddleHeader" style={styles.LineInTheMiddleHeader} />
+          <View
+            testID="lineInTheMiddleHeader"
+            style={styles.LineInTheMiddleHeader}
+          />
 
           <View style={styles.Background}>
-            <Text testID="headerText" style={[styles.HeaderText]}>{this.state.deck.name}</Text>
+            <Text testID="headerText" style={[styles.HeaderText]}>
+              {this.state.deck.name}
+            </Text>
           </View>
         </View>
 
@@ -258,13 +265,17 @@ class DeckManagerUpdateDeckScreen extends React.Component<
 
         {this.state.error === '' ? null : (
           <View style={styles.error}>
-            <Text testID="error" style={styles.TextError}>{this.state.error}</Text>
+            <Text testID="error" style={styles.TextError}>
+              {this.state.error}
+            </Text>
           </View>
         )}
 
         {this.state.updatedDeckSuccessfully ? (
           <View style={styles.UpdateSuccess}>
-            <Text testID="success" style={styles.TextSuccess}>Updated Deck Successfully!</Text>
+            <Text testID="success" style={styles.TextSuccess}>
+              Updated Deck Successfully!
+            </Text>
           </View>
         ) : null}
       </>
