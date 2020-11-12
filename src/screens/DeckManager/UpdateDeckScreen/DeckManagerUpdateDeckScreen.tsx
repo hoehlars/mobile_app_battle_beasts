@@ -211,6 +211,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   ): JSX.Element {
     return (
       <TouchableOpacity
+        testID="availableCard"
         onPress={() => this.addCardToDeck(data)}
         style={styles.item}
         onLongPress={() => this.showCardInTheMiddle(data)}>
@@ -222,19 +223,19 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   render() {
     return (
       <>
-        <View style={styles.Header}>
+        <View testID="header" style={styles.Header}>
           <View style={styles.Background}>
-            <Text style={[styles.HeaderText]}>Verfügbare Karten</Text>
+            <Text testID="headerText" style={[styles.HeaderText]}>Verfügbare Karten</Text>
           </View>
 
-          <View style={styles.LineInTheMiddleHeader} />
+          <View testID="lineInTheMiddleHeader" style={styles.LineInTheMiddleHeader} />
 
           <View style={styles.Background}>
-            <Text style={[styles.HeaderText]}>{this.state.deck.name}</Text>
+            <Text testID="headerText" style={[styles.HeaderText]}>{this.state.deck.name}</Text>
           </View>
         </View>
 
-        <View style={styles.LineBelowHeader} />
+        <View testID="lineBelowHeader" style={styles.LineBelowHeader} />
 
         <View style={styles.Lists}>
           <SafeAreaView style={styles.YourDeck}>
@@ -257,13 +258,13 @@ class DeckManagerUpdateDeckScreen extends React.Component<
 
         {this.state.error === '' ? null : (
           <View style={styles.error}>
-            <Text style={styles.TextError}>{this.state.error}</Text>
+            <Text testID="error" style={styles.TextError}>{this.state.error}</Text>
           </View>
         )}
 
         {this.state.updatedDeckSuccessfully ? (
           <View style={styles.UpdateSuccess}>
-            <Text style={styles.TextSuccess}>Updated Deck Successfully!</Text>
+            <Text testID="success" style={styles.TextSuccess}>Updated Deck Successfully!</Text>
           </View>
         ) : null}
       </>
