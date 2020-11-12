@@ -1,12 +1,29 @@
 import * as React from 'react';
 import {Image, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-//import styles from '../../routes/TabNavigation.styles';
+import { NavigationRoute } from 'react-navigation';
+import { User } from '../../models/user';
 import styles from './HomeScreen.style';
 
-class HomeScreen extends React.Component<{}, {}> {
-  constructor(props: Readonly<{}>) {
-    super(props);
+interface HomeScreenProps {
+  route: NavigationRoute<NavigationParams>;
+}
+
+interface NavigationParams {
+  user: User
+}
+
+interface HomeScreenState {
+  user: User
+}
+
+class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
+  constructor(props: Readonly<HomeScreenProps>) {
+    super(props)
+
+    this.state = {
+      user: this.props.route.params!.user
+    }
   }
 
   render(): JSX.Element {

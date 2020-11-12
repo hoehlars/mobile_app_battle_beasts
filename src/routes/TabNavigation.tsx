@@ -8,13 +8,27 @@ import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
 import DeckManagerNavigator from '../screens/DeckManager/DeckManagerNavigator';
+import { NavigationRoute } from 'react-navigation';
+import { User } from '../models/user';
 
 const Tab = createBottomTabNavigator();
 
-class TabNavigation extends React.Component<{}, {}> {
+interface TabNavigationProps {
+  route: NavigationRoute<NavigationParams>;
+}
+
+interface NavigationParams {
+  user: User
+}
+
+class TabNavigation extends React.Component<TabNavigationProps, {}> {
+
+  constructor(props: Readonly<TabNavigationProps>) {
+    super(props);
+  }
+
   render(): JSX.Element {
     return (
-      <NavigationContainer>
         <Tab.Navigator
           // when first opened home is rendered
           initialRouteName="Home"
@@ -24,7 +38,8 @@ class TabNavigation extends React.Component<{}, {}> {
           tabBarOptions={{
             showLabel: false,
             activeBackgroundColor: theme.PRIMARY_COLOR,
-          }}>
+          }}
+          >
           <Tab.Screen
             name="Home"
             component={HomeScreen}
@@ -39,6 +54,8 @@ class TabNavigation extends React.Component<{}, {}> {
                 );
               },
             }}
+            initialParams={{user: this.props.route.params!.user}}
+            
           />
 
           <Tab.Screen
@@ -55,6 +72,7 @@ class TabNavigation extends React.Component<{}, {}> {
                 );
               },
             }}
+            initialParams={{user: this.props.route.params!.user}}
           />
           <Tab.Screen
             name="Leaderboard"
@@ -87,7 +105,6 @@ class TabNavigation extends React.Component<{}, {}> {
             }}
           />
         </Tab.Navigator>
-      </NavigationContainer>
     );
   }
 }
