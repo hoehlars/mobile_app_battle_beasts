@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import AboutTheGameScreen from '../screens/AboutTheGameScreen/AboutTheGameScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -8,8 +7,6 @@ import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
 import DeckManagerNavigator from '../screens/DeckManager/DeckManagerNavigator';
-import { NavigationRoute } from 'react-navigation';
-import { User } from '../models/user';
 
 const Tab = createBottomTabNavigator();
 
