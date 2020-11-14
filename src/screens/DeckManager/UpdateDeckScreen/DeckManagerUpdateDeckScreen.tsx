@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ListRenderItemInfo, Text, TouchableOpacity, View} from 'react-native';
+import {ListRenderItemInfo, Text, View} from 'react-native';
 import {Deck} from '../../../models/deck';
 import {
   NavigationRoute,
@@ -13,7 +13,6 @@ import {CardService} from '../../../services/cardService';
 import {Card} from '../../../models/card';
 import {DeckService} from '../../../services/deckService';
 import CardComponent from './CardComponent';
-
 
 interface NavigationParams {
   deck: Deck;
@@ -134,15 +133,11 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     });
   }
 
-  private showCardInTheMiddle(
-    pressedCard: CardFlatListData,
-  ): void {
+  private showCardInTheMiddle(pressedCard: CardFlatListData): void {
     console.log(pressedCard);
   }
 
-  private async addCardToDeck(
-    pressedCard: CardFlatListData,
-  ): Promise<void> {
+  private async addCardToDeck(pressedCard: CardFlatListData): Promise<void> {
     const highestId: string = this.getHighestIdOfOwnedCards();
 
     // override already existing id, because old id is the id from the available cards array
@@ -203,8 +198,8 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         testID="cardInDeck"
         card={data.item}
         onPress={this.deleteCardOutOfDeck.bind(this)}
-        onLongPress={this.showCardInTheMiddle.bind(this)}>
-      </CardComponent>
+        onLongPress={this.showCardInTheMiddle.bind(this)}
+      />
     );
   }
 
@@ -212,11 +207,12 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
     return (
-      <CardComponent 
-      testID="availableCards"
-      card={data.item}
-      onPress={this.addCardToDeck.bind(this)}
-      onLongPress={this.showCardInTheMiddle.bind(this)}/>
+      <CardComponent
+        testID="availableCards"
+        card={data.item}
+        onPress={this.addCardToDeck.bind(this)}
+        onLongPress={this.showCardInTheMiddle.bind(this)}
+      />
     );
   }
 

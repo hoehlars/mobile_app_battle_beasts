@@ -1,16 +1,12 @@
 import * as React from 'react';
 import {
-  Image,
   ListRenderItemInfo,
   NativeSyntheticEvent,
   Text,
   TextInputSubmitEditingEventData,
-  TouchableHighlight,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
-import theme from '../../../assets/styles/theme.style';
 import Header from '../../../components/Header/Header';
 import styles from './styles.modules';
 import {Deck} from '../../../models/deck';
@@ -21,10 +17,9 @@ import {NavigationParams, NavigationScreenProp} from 'react-navigation';
 import {DeckService} from '../../../services/deckService';
 import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
-import { DeckItemList } from '../../../models/deckItem';
+import {DeckItemList} from '../../../models/deckItem';
 import DeckItem from './DeckItem';
 import DeleteDeckButton from './DeleteDeckButton';
-
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -219,9 +214,12 @@ class DeckManagerScreen extends React.Component<
 
   private renderDeckItem(data: ListRenderItemInfo<DeckItemList>): JSX.Element {
     return (
-      <DeckItem 
-      deckItem={data.item}
-      updateDecksAndNavigateToUpdateDeckScreen={this.updateDecksAndNavigateToUpdateDeckScreen.bind(this)} />
+      <DeckItem
+        deckItem={data.item}
+        updateDecksAndNavigateToUpdateDeckScreen={this.updateDecksAndNavigateToUpdateDeckScreen.bind(
+          this,
+        )}
+      />
     );
   }
 
@@ -231,9 +229,10 @@ class DeckManagerScreen extends React.Component<
   ): JSX.Element {
     return (
       <DeleteDeckButton
-      deckItem={data.item}
-      rowMap={rowMap}
-      deleteDeckItem={this.deleteDeckItem.bind(this)} />
+        deckItem={data.item}
+        rowMap={rowMap}
+        deleteDeckItem={this.deleteDeckItem.bind(this)}
+      />
     );
   }
 
