@@ -1,28 +1,34 @@
 import * as React from 'react';
 import {Image, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import { NavigationRoute } from 'react-navigation';
-import { User } from '../../models/user';
+import {TouchableOpacity} from 'react-native'
+import { NavigationParams, NavigationScreenProp, NavigationState } from 'react-navigation';
+import { AsyncStorageService } from '../../services/asyncStorage';
 import styles from './HomeScreen.style';
 
+
 interface HomeScreenProps {
-  route: NavigationRoute<NavigationParams>;
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-interface NavigationParams {
-  user: User
-}
-
-interface HomeScreenState {
-  user: User
-}
-
-class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
+class HomeScreen extends React.Component<HomeScreenProps, {}> {
   constructor(props: Readonly<HomeScreenProps>) {
     super(props)
 
-    this.state = {
-      user: this.props.route.params!.user
+    this.props.navigation.addListener('beforeRemove', (event) => {
+      
+      // prevent user from going back to login
+      // only allow user going  back to login via the logout
+      if(event.data.action.type !== 'NAVIGATE') {
+        event.preventDefault();
+      }
+    })
+  }
+
+  private async logout() {
+    const isUserDeleted = await AsyncStorageService.deleteUser();
+
+    if(isUserDeleted) {
+      this.props.navigation.navigate('HomeScreenLogin')
     }
   }
 
@@ -30,8 +36,15 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
     return (
       <>
         <View style={styles.Background}>
-          <View style={styles.HeaderTextBox}>
-            <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
+          <View style={styles.HeaderBox}>
+            <View style={styles.HeaderTextBox}>
+              <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
+              <TouchableOpacity 
+                style={styles.LogoutButton} 
+                onPress={() => this.logout()}>
+                <Text style={styles.LogoutText}>Logout</Text>
+              </TouchableOpacity>
+            </View>
             <View style={styles.ImageBox}>
               <Image
                 style={styles.HeaderImage}
