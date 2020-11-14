@@ -23,6 +23,7 @@ import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
 import { DeckItemList } from '../../../models/deckItem';
 import DeckItem from './DeckItem';
+import DeleteDeckButton from './DeleteDeckButton';
 
 
 interface DeckManagerScreenState {
@@ -229,21 +230,10 @@ class DeckManagerScreen extends React.Component<
     rowMap: RowMap<DeckItemList>,
   ): JSX.Element {
     return (
-      // responsible for the delete on click
-      <View style={styles.RowBack}>
-        <TouchableOpacity
-          testID="deleteDeckButton"
-          style={[styles.DeleteButton]}
-          onPress={async () =>
-            await this.deleteDeckItem(rowMap, data.item.key)
-          }>
-          <Image
-            source={require('../../../assets/images/icons/delete_deck_icon.png')}
-            style={[styles.DeleteIcon]}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </View>
+      <DeleteDeckButton
+      deckItem={data.item}
+      rowMap={rowMap}
+      deleteDeckItem={this.deleteDeckItem.bind(this)} />
     );
   }
 
