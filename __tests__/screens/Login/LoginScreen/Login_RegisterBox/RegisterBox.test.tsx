@@ -1,18 +1,18 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 import renderer from 'react-test-renderer';
-import LoginBox from '../../../../../src/screens/Login/LoginScreen/Login_RegisterBox/LoginBox';
+import RegisterBox from '../../../../../src/screens/Login/LoginScreen/Login_RegisterBox/RegisterBox';
 
 
 describe('LoginBox', () => {
   describe('rendering', () => {
 
-    it('renders 2 text inputs', () => {
+    it('renders 4 text inputs', () => {
       const testRenderer = renderer.create(
-        <LoginBox onSubmit={jest.fn()} />,
+        <RegisterBox onSubmit={jest.fn()} />,
       );
       const testInstance = testRenderer.root;
-      expect(testInstance.findAllByType(TextInput).length).toBe(2);
+      expect(testInstance.findAllByType(TextInput).length).toBe(4);
     });
     });
 });
