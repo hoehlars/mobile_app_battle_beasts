@@ -13,17 +13,9 @@ import { User } from '../models/user';
 
 const Tab = createBottomTabNavigator();
 
-interface TabNavigationProps {
-  route: NavigationRoute<NavigationParams>;
-}
+class TabNavigation extends React.Component<{}, {}> {
 
-interface NavigationParams {
-  user: User
-}
-
-class TabNavigation extends React.Component<TabNavigationProps, {}> {
-
-  constructor(props: Readonly<TabNavigationProps>) {
+  constructor(props: Readonly<{}>) {
     super(props);
   }
 
@@ -53,9 +45,7 @@ class TabNavigation extends React.Component<TabNavigationProps, {}> {
                   />
                 );
               },
-            }}
-            initialParams={{user: this.props.route.params!.user}}
-            
+            }}    
           />
 
           <Tab.Screen
@@ -72,7 +62,6 @@ class TabNavigation extends React.Component<TabNavigationProps, {}> {
                 );
               },
             }}
-            initialParams={{user: this.props.route.params!.user}}
           />
           <Tab.Screen
             name="Leaderboard"

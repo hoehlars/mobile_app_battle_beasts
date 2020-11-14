@@ -17,10 +17,11 @@ import {Deck} from '../../../models/deck';
 import {FloatingAction} from 'react-native-floating-action';
 import {TextInput} from 'react-native-gesture-handler';
 import {NavigationState} from '@react-navigation/native';
-import {NavigationRoute, NavigationScreenProp} from 'react-navigation';
-import {UserService} from '../../../services/userService';
+import {NavigationParams, NavigationScreenProp} from 'react-navigation';
 import {DeckService} from '../../../services/deckService';
 import { User } from '../../../models/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorageService } from '../../../services/asyncStorage';
 
 interface DeckItemList extends Deck {
   key: string;
@@ -31,17 +32,13 @@ interface DeckManagerScreenState {
   showTextInput: boolean;
   textInput: string;
   error: string;
-  user: User;
+  user?: User;
 }
 
 interface DeckManagerScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-  route: NavigationRoute<NavigationParams>;
 }
 
-interface NavigationParams {
-  user: User
-}
 
 class DeckManagerScreen extends React.Component<
   DeckManagerScreenProps,
@@ -79,12 +76,11 @@ class DeckManagerScreen extends React.Component<
       textInput: '',
       decks: [],
       error: '',
-      user: this.props.route.params!.user
     };
   }
 
   async getDecks(): Promise<void> {
-    const userDecksRes = await DeckService.getDeck(this.state.user.token);
+    const userDecksRes = await DeckService.getDeck(this.state.user!.token);
     const userDecks: Deck[] = await userDecksRes.json();
 
     // turn userDecks into DeckListItem with keys
@@ -104,10 +100,15 @@ class DeckManagerScreen extends React.Component<
     });
   }
 
-  /*
-  Helper function for as long as login is not made
-  */
   async componentDidMount() {
+    const user: User |null = await AsyncStorageService.readUser();
+
+    if(user) {
+      this.setState({user: user})
+    } else {
+      this.setState({error: 'Database error'})
+    }
+
     await this.getDecks();
   }
 
@@ -121,7 +122,7 @@ class DeckManagerScreen extends React.Component<
 
     // delete deck in backend
     const deckToDelete = this.state.decks.find((deck) => deck.key === rowKey);
-    await DeckService.deleteDeck(this.state.user.token!, deckToDelete!.name);
+    await DeckService.deleteDeck(this.state.user!.token!, deckToDelete!.name);
 
     // clear error of no deckspace available
     this.setState({
@@ -148,7 +149,7 @@ class DeckManagerScreen extends React.Component<
     );
     this.props.navigation.navigate('DeckManagerUpdateDeckScreen', {
       deck: updatedDeck,
-      token: this.state.user.token,
+      token: this.state.user!.token,
     });
   }
 
@@ -172,7 +173,7 @@ class DeckManagerScreen extends React.Component<
 
     // create new deck in backend
     const saveDeckRes = await DeckService.postDeck(
-      this.state.user.token,
+      this.state.user!.token,
       newDeckItemName,
       this.STANDARD_DECK,
     );
