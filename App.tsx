@@ -1,13 +1,9 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import TabNavigation from './src/routes/TabNavigation';
+import HomeScreenNavigator from './src/screens/Login/LoginNavigator';
 
 export const App = () => {
-  return (
-    <>
-      <TabNavigation />
-    </>
-  );
+  return <HomeScreenNavigator />;
 };
 
 export default App;
