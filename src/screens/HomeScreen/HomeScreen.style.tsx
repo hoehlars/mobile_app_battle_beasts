@@ -6,16 +6,34 @@ const styles = StyleSheet.create({
     backgroundColor: theme.DARK_GRAY_COLOR,
     flex: 1,
   },
-  HeaderTextBox: {
+  HeaderBox: {
     flex: 1,
     alignItems: 'center',
   },
+  HeaderTextBox: {
+    flex: 1,
+    flexDirection: 'row'
+  },
   HeaderText: {
     marginTop: '5%',
-    color: 'white',
+    color: theme.LIGHT_COLOR,
     fontSize: 25,
     fontFamily: 'Nunito-Bold',
     flex: 1,
+  },
+  LogoutButton: {
+    backgroundColor: theme.PRIMARY_COLOR,
+    justifyContent: 'center',
+    marginTop: '5%',
+    alignItems: 'center',
+    borderRadius: 10,
+    flex: 0.2,
+    marginRight: '2%'
+  },
+  LogoutText: {
+    fontFamily: 'Nunito-Bold',
+    color: theme.LIGHT_COLOR,
+
   },
   ImageBox: {
     flex: 4,

@@ -40,6 +40,7 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
             <View style={styles.HeaderTextBox}>
               <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
               <TouchableOpacity 
+                testID="logoutButton"
                 style={styles.LogoutButton} 
                 onPress={() => this.logout()}>
                 <Text style={styles.LogoutText}>Logout</Text>
