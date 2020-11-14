@@ -21,10 +21,9 @@ import {NavigationParams, NavigationScreenProp} from 'react-navigation';
 import {DeckService} from '../../../services/deckService';
 import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
+import { DeckItemList } from '../../../models/deckItem';
+import DeckItem from './DeckItem';
 
-interface DeckItemList extends Deck {
-  key: string;
-}
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -219,15 +218,9 @@ class DeckManagerScreen extends React.Component<
 
   private renderDeckItem(data: ListRenderItemInfo<DeckItemList>): JSX.Element {
     return (
-      <TouchableHighlight
-        testID="deckItem"
-        onPress={() => this.updateDecksAndNavigateToUpdateDeckScreen(data.item)}
-        style={styles.RowFront}
-        underlayColor={theme.PRIMARY_COLOR}>
-        <View>
-          <Text style={styles.ListItem}>{data.item.name}</Text>
-        </View>
-      </TouchableHighlight>
+      <DeckItem 
+      deckItem={data.item}
+      updateDecksAndNavigateToUpdateDeckScreen={this.updateDecksAndNavigateToUpdateDeckScreen.bind(this)} />
     );
   }
 
