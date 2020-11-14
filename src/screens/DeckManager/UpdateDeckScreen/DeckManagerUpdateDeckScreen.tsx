@@ -12,6 +12,8 @@ import {FlatList} from 'react-native-gesture-handler';
 import {CardService} from '../../../services/cardService';
 import {Card} from '../../../models/card';
 import {DeckService} from '../../../services/deckService';
+import CardComponent from './CardComponent';
+
 
 interface NavigationParams {
   deck: Deck;
@@ -99,11 +101,11 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   }
 
   private async deleteCardOutOfDeck(
-    pressedCard: ListRenderItemInfo<CardFlatListData>,
+    pressedCard: CardFlatListData,
   ): Promise<void> {
     // filter out card that was clicked
     const newDeck = this.state.cardsInDeck.filter((card) => {
-      return pressedCard.item.id !== card.id;
+      return pressedCard.id !== card.id;
     });
 
     const cards: number[] = [];
@@ -133,19 +135,19 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   }
 
   private showCardInTheMiddle(
-    pressedCard: ListRenderItemInfo<CardFlatListData>,
+    pressedCard: CardFlatListData,
   ): void {
     console.log(pressedCard);
   }
 
   private async addCardToDeck(
-    pressedCard: ListRenderItemInfo<CardFlatListData>,
+    pressedCard: CardFlatListData,
   ): Promise<void> {
     const highestId: string = this.getHighestIdOfOwnedCards();
 
     // override already existing id, because old id is the id from the available cards array
     const cardFlatListData: CardFlatListData = {
-      ...pressedCard.item,
+      ...pressedCard,
       id: highestId,
     };
 
@@ -197,12 +199,12 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
     return (
-      <TouchableOpacity
-        onPress={() => this.deleteCardOutOfDeck(data)}
-        style={styles.item}
-        onLongPress={() => this.showCardInTheMiddle(data)}>
-        <Text style={styles.title}>{data.item.name}</Text>
-      </TouchableOpacity>
+      <CardComponent
+        testID="cardInDeck"
+        card={data.item}
+        onPress={this.deleteCardOutOfDeck.bind(this)}
+        onLongPress={this.showCardInTheMiddle.bind(this)}>
+      </CardComponent>
     );
   }
 
@@ -210,13 +212,11 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
     return (
-      <TouchableOpacity
-        testID="availableCard"
-        onPress={() => this.addCardToDeck(data)}
-        style={styles.item}
-        onLongPress={() => this.showCardInTheMiddle(data)}>
-        <Text style={styles.title}>{data.item.name}</Text>
-      </TouchableOpacity>
+      <CardComponent 
+      testID="availableCards"
+      card={data.item}
+      onPress={this.addCardToDeck.bind(this)}
+      onLongPress={this.showCardInTheMiddle.bind(this)}/>
     );
   }
 
