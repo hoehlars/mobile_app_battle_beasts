@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import theme from '../../../assets/styles/theme.style';
-import Header from '../../../components/Header';
+import Header from '../../../components/Header/Header';
 import styles from './styles.modules';
 import {Deck} from '../../../models/deck';
 import {FloatingAction} from 'react-native-floating-action';
