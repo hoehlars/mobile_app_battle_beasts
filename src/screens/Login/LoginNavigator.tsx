@@ -1,28 +1,24 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreenLogin from './LoginScreen/LoginScreen';
+import LoginScreen from './LoginScreen/LoginScreen';
 import TabNavigation from '../../routes/TabNavigation';
 
 const Stack = createStackNavigator();
 
 
-class HomeScreenNavigator extends React.Component<{}, {}> {
-  
-  constructor(props: Readonly<{}>) {
-    super(props);
-  }
+class LoginNavigator extends React.Component<{}, {}> {
 
   render(): JSX.Element {
     return (
     <NavigationContainer>
       <Stack.Navigator 
-      initialRouteName="HomeScreenLogin" 
+      initialRouteName="LoginScreen" 
       headerMode="none"
       >
         <Stack.Screen 
-        name="HomeScreenLogin" 
-        component={HomeScreenLogin}
+        name="LoginScreen" 
+        component={LoginScreen}
         options={{
           animationEnabled: false
         }} />
@@ -39,4 +35,4 @@ class HomeScreenNavigator extends React.Component<{}, {}> {
   }
 }
 
-export default HomeScreenNavigator;
+export default LoginNavigator;
