@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   HeaderTextBox: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   HeaderText: {
     marginTop: '5%',
@@ -28,12 +28,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     flex: 0.2,
-    marginRight: '2%'
+    marginRight: '2%',
   },
   LogoutText: {
     fontFamily: 'Nunito-Bold',
     color: theme.LIGHT_COLOR,
-
   },
   ImageBox: {
     flex: 4,

@@ -19,9 +19,8 @@ import {TextInput} from 'react-native-gesture-handler';
 import {NavigationState} from '@react-navigation/native';
 import {NavigationParams, NavigationScreenProp} from 'react-navigation';
 import {DeckService} from '../../../services/deckService';
-import { User } from '../../../models/user';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AsyncStorageService } from '../../../services/asyncStorage';
+import {User} from '../../../models/user';
+import {AsyncStorageService} from '../../../services/asyncStorage';
 
 interface DeckItemList extends Deck {
   key: string;
@@ -38,7 +37,6 @@ interface DeckManagerScreenState {
 interface DeckManagerScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
-
 
 class DeckManagerScreen extends React.Component<
   DeckManagerScreenProps,
@@ -100,15 +98,18 @@ class DeckManagerScreen extends React.Component<
     });
   }
 
-  async componentDidMount() {
-    const user: User |null = await AsyncStorageService.readUser();
+  private async readUserFromStorage() {
+    const user: User | null = await AsyncStorageService.readUser();
 
-    if(user) {
-      this.setState({user: user})
+    if (user) {
+      this.setState({user: user});
     } else {
-      this.setState({error: 'Database error'})
+      this.setState({error: 'Database error'});
     }
+  }
 
+  async componentDidMount() {
+    await this.readUserFromStorage();
     await this.getDecks();
   }
 

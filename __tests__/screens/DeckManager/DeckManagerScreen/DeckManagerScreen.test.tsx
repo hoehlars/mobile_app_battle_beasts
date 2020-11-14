@@ -2,34 +2,22 @@ import React from 'react';
 import {render} from '@testing-library/react-native';
 import {FetchMock} from 'jest-fetch-mock';
 import DeckManagerScreen from '../../../../src/screens/DeckManager/DeckManagerScreen/DeckManagerScreen';
-import {Deck} from '../../../../src/models/deck';
 import renderer, {act} from 'react-test-renderer';
 import {TextInput} from 'react-native-gesture-handler';
 import Header from '../../../../src/components/Header/Header';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import {FloatingAction} from 'react-native-floating-action';
-import { User } from '../../../../src/models/user';
-import { AsyncStorageService} from '../../../../src/services/asyncStorage'
-
-
-
-const deck: Deck = {
-  _id: '1234',
-  name: 'testdeck',
-  createdByUser: 'testuser',
-  cards: [1, 2, 3, 4],
-};
-
-const decks: Deck[] = [deck];
+import {User} from '../../../../src/models/user';
+import {AsyncStorageService} from '../../../../src/services/asyncStorage';
 
 const user: User = {
   username: 'test',
   email: 'test@test.ch',
-  token: '1234'
-}
+  token: '1234',
+};
 AsyncStorageService.readUser = jest.fn(async () => {
-    return user;
-})
+  return user;
+});
 
 describe('DeckManagerScreen', () => {
   const fetchMock = fetch as FetchMock;
@@ -94,5 +82,5 @@ describe('DeckManagerScreen', () => {
       );
       expect(testInstance.findByType(TextInput)).not.toBeNull();
     });
-});
+  });
 });

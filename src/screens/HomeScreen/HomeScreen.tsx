@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {Image, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native'
-import { NavigationParams, NavigationScreenProp, NavigationState } from 'react-navigation';
-import { AsyncStorageService } from '../../services/asyncStorage';
+import {TouchableOpacity} from 'react-native';
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
+import {AsyncStorageService} from '../../services/asyncStorage';
 import styles from './HomeScreen.style';
-
 
 interface HomeScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -12,23 +15,22 @@ interface HomeScreenProps {
 
 class HomeScreen extends React.Component<HomeScreenProps, {}> {
   constructor(props: Readonly<HomeScreenProps>) {
-    super(props)
+    super(props);
 
     this.props.navigation.addListener('beforeRemove', (event) => {
-      
       // prevent user from going back to login
       // only allow user going  back to login via the logout
-      if(event.data.action.type !== 'NAVIGATE') {
+      if (event.data.action.type !== 'NAVIGATE') {
         event.preventDefault();
       }
-    })
+    });
   }
 
   private async logout() {
     const isUserDeleted = await AsyncStorageService.deleteUser();
 
-    if(isUserDeleted) {
-      this.props.navigation.navigate('HomeScreenLogin')
+    if (isUserDeleted) {
+      this.props.navigation.navigate('HomeScreenLogin');
     }
   }
 
@@ -39,9 +41,9 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
           <View style={styles.HeaderBox}>
             <View style={styles.HeaderTextBox}>
               <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
-              <TouchableOpacity 
+              <TouchableOpacity
                 testID="logoutButton"
-                style={styles.LogoutButton} 
+                style={styles.LogoutButton}
                 onPress={() => this.logout()}>
                 <Text style={styles.LogoutText}>Logout</Text>
               </TouchableOpacity>

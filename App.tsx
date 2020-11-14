@@ -3,9 +3,7 @@ import * as React from 'react';
 import HomeScreenNavigator from './src/screens/Login/LoginNavigator';
 
 export const App = () => {
-  return (
-    <HomeScreenNavigator />
-  );
+  return <HomeScreenNavigator />;
 };
 
 export default App;
