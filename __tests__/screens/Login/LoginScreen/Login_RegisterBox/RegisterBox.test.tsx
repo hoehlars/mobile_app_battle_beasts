@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import RegisterBox from '../../../../../src/screens/Login/LoginScreen/Login_RegisterBox/RegisterBox';
 
 
-describe('LoginBox', () => {
+describe('RegisterBox', () => {
   describe('rendering', () => {
 
     it('renders 4 text inputs', () => {
