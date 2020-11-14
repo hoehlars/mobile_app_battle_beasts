@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler/jestSetup';
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
@@ -20,4 +21,8 @@ require('jest-fetch-mock').enableMocks();
 
 // https://github.com/facebook/jest/issues/6434 for no errors
 jest.useFakeTimers();
+
+
+// async storage
+jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
