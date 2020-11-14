@@ -30,7 +30,7 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
     const isUserDeleted = await AsyncStorageService.deleteUser();
 
     if (isUserDeleted) {
-      this.props.navigation.navigate('HomeScreenLogin');
+      this.props.navigation.navigate('LoginScreen');
     }
   }
 
