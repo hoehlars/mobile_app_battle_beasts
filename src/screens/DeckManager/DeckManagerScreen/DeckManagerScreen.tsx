@@ -1,16 +1,12 @@
 import * as React from 'react';
 import {
-  Image,
   ListRenderItemInfo,
   NativeSyntheticEvent,
   Text,
   TextInputSubmitEditingEventData,
-  TouchableHighlight,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
-import theme from '../../../assets/styles/theme.style';
 import Header from '../../../components/Header/Header';
 import styles from './styles.modules';
 import {Deck} from '../../../models/deck';
@@ -21,10 +17,9 @@ import {NavigationParams, NavigationScreenProp} from 'react-navigation';
 import {DeckService} from '../../../services/deckService';
 import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
-
-interface DeckItemList extends Deck {
-  key: string;
-}
+import {DeckItemList} from '../../../models/deckItem';
+import DeckItem from './DeckItem';
+import DeleteDeckButton from './DeleteDeckButton';
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -219,15 +214,12 @@ class DeckManagerScreen extends React.Component<
 
   private renderDeckItem(data: ListRenderItemInfo<DeckItemList>): JSX.Element {
     return (
-      <TouchableHighlight
-        testID="deckItem"
-        onPress={() => this.updateDecksAndNavigateToUpdateDeckScreen(data.item)}
-        style={styles.RowFront}
-        underlayColor={theme.PRIMARY_COLOR}>
-        <View>
-          <Text style={styles.ListItem}>{data.item.name}</Text>
-        </View>
-      </TouchableHighlight>
+      <DeckItem
+        deckItem={data.item}
+        updateDecksAndNavigateToUpdateDeckScreen={this.updateDecksAndNavigateToUpdateDeckScreen.bind(
+          this,
+        )}
+      />
     );
   }
 
@@ -236,21 +228,11 @@ class DeckManagerScreen extends React.Component<
     rowMap: RowMap<DeckItemList>,
   ): JSX.Element {
     return (
-      // responsible for the delete on click
-      <View style={styles.RowBack}>
-        <TouchableOpacity
-          testID="deleteDeckButton"
-          style={[styles.DeleteButton]}
-          onPress={async () =>
-            await this.deleteDeckItem(rowMap, data.item.key)
-          }>
-          <Image
-            source={require('../../../assets/images/icons/delete_deck_icon.png')}
-            style={[styles.DeleteIcon]}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </View>
+      <DeleteDeckButton
+        deckItem={data.item}
+        rowMap={rowMap}
+        deleteDeckItem={this.deleteDeckItem.bind(this)}
+      />
     );
   }
 
