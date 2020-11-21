@@ -1,10 +1,8 @@
-import Environment from '../../environment';
-
 /**
  * User service
  */
 export class UserService {
-  private static readonly REACT_API_BASE_URL: string = Environment.BASE_URL;
+  private static readonly REACT_API_BASE_URL: string = 'http://localhost:5000';
   /**
    * Logs user in
    * @param values {any} - User data

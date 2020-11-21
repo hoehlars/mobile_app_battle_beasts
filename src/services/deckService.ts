@@ -1,10 +1,8 @@
-import Environment from "../../environment";
-
 /**
  * Deck service
  */
 export class DeckService {
-  private static readonly REACT_API_BASE_URL: string = Environment.BASE_URL;
+  private static readonly REACT_API_BASE_URL: string = 'http://localhost:5000';
   /**
    * Retrieves all decks the user created
    * @param authorization {string} - Authorization token

@@ -1,4 +1,3 @@
-import Environment from '../../environment';
 import {Card} from '../models/card';
 import {slimFetch, HttpResponse} from './apiService';
 
@@ -6,7 +5,7 @@ import {slimFetch, HttpResponse} from './apiService';
  * Card service
  */
 export class CardService {
-  private static readonly REACT_API_BASE_URL: string = Environment.BASE_URL;
+  private static readonly REACT_API_BASE_URL: string = 'http://localhost:5000';
   /**
    * Retrieves the card by id
    * @async
