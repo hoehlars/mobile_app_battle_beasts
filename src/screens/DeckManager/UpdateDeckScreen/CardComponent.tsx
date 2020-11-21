@@ -1,11 +1,13 @@
 import * as React from 'react';
-import {Image, ImageBackground, ImageErrorEventData, ImageSourcePropType, NativeSyntheticEvent, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Card} from '../../../models/card';
 import styles from './styles.modules';
-
-/*import DefenceIcon from '../../../assets/images/icons/defense-icon.png';
-import AttackIcon from '../../../assets/images/icons/attack-icon.png';
-import ActionIcon from '../../../assets/images/icons/action-icon.png';*/
 
 interface CardProps {
   testID: string;
@@ -25,28 +27,27 @@ interface CardComponentState {
 }
 
 class CardComponent extends React.Component<CardProps, CardComponentState> {
-
-
   constructor(props: Readonly<CardProps>) {
     super(props);
 
-    this.state =  {
+    this.state = {
       isCarnivore: false,
       isNotAnimal: false,
       isHerbivore: false,
-      isFish: false
-    }  
+      isFish: false,
+    };
   }
 
-   async componentDidMount() {
-
-      // await because of setState operations
-      await this.checkForAnimal(this.props.card.isEquipment, this.props.card.isSpell);
-      await this.checkForCarnivore(this.props.card.type, this.state.isNotAnimal);
-      await this.checkForHerbivore(this.props.card.type, this.state.isNotAnimal);
-      await this.checkForFish(this.props.card.type, this.state.isNotAnimal);
+  async componentDidMount() {
+    // await because of setState operations
+    await this.checkForAnimal(
+      this.props.card.isEquipment,
+      this.props.card.isSpell,
+    );
+    await this.checkForCarnivore(this.props.card.type, this.state.isNotAnimal);
+    await this.checkForHerbivore(this.props.card.type, this.state.isNotAnimal);
+    await this.checkForFish(this.props.card.type, this.state.isNotAnimal);
   }
-
 
   private getIcon(): any {
     if (this.state.isCarnivore && this.state.isNotAnimal) {
@@ -67,80 +68,101 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     return undefined;
   }
 
-
-  private checkForAnimal(isEquipment: boolean | undefined, isSpell: boolean | undefined): void {
-    if ((isEquipment === undefined || false) && (isSpell === undefined || false)) {
-      this.setState({ isNotAnimal: true });
+  private checkForAnimal(
+    isEquipment: boolean | undefined,
+    isSpell: boolean | undefined,
+  ): void {
+    if (
+      (isEquipment === undefined || false) &&
+      (isSpell === undefined || false)
+    ) {
+      this.setState({isNotAnimal: true});
     } else {
-      this.setState({ isNotAnimal: false });
+      this.setState({isNotAnimal: false});
     }
   }
 
-  private checkForCarnivore(typeName: string, isNotAnimal: boolean | undefined): void {
+  private checkForCarnivore(
+    typeName: string,
+    isNotAnimal: boolean | undefined,
+  ): void {
     if (typeName === 'Carnivore' && isNotAnimal) {
-      this.setState({ isCarnivore: true });
+      this.setState({isCarnivore: true});
     } else {
-      this.setState({ isCarnivore: false });
+      this.setState({isCarnivore: false});
     }
   }
 
-  private checkForHerbivore(typeName: string, isNotAnimal: boolean | undefined): void {
+  private checkForHerbivore(
+    typeName: string,
+    isNotAnimal: boolean | undefined,
+  ): void {
     if (typeName === 'Herbivore' && isNotAnimal) {
-      this.setState({ isHerbivore: true });
+      this.setState({isHerbivore: true});
     } else {
-      this.setState({ isHerbivore: false });
+      this.setState({isHerbivore: false});
     }
   }
 
-  private checkForFish(typeName: string, isNotAnimal: boolean | undefined): void {
+  private checkForFish(
+    typeName: string,
+    isNotAnimal: boolean | undefined,
+  ): void {
     if (typeName === 'Fish' && isNotAnimal) {
-      this.setState({ isFish: true });
+      this.setState({isFish: true});
     } else {
-      this.setState({ isFish: false });
+      this.setState({isFish: false});
     }
   }
 
   render(): JSX.Element {
     return (
-
       <TouchableOpacity
         testID={this.props.testID}
         onPress={async () => this.props.onPress(this.props.card)}
         style={styles.item}
-        onLongPress={() => this.props.onLongPress(this.props.card)}
-        >
-        
-        <ImageBackground 
-        source={{uri: `http://192.168.1.104:5000/images/${this.props.card.cardId}_card.jpg`}}
-        style={styles.ImageBackground}
-        imageStyle={styles.Image}
-        >
+        onLongPress={() => this.props.onLongPress(this.props.card)}>
+        <ImageBackground
+          source={{
+            uri: `http://192.168.1.104:5000/images/${this.props.card.cardId}_card.jpg`,
+          }}
+          style={styles.ImageBackground}
+          imageStyle={styles.Image}>
           <View style={styles.IconView}>
-            <Image 
-            style={styles.IconImage} 
-            source={this.getIcon()}
-            resizeMode="contain"></Image>
+            <Image
+              style={styles.IconImage}
+              source={this.getIcon()}
+              resizeMode="contain"
+            />
           </View>
           <View>
             <Text style={styles.CardName}>{this.props.card.name}</Text>
           </View>
           <View style={styles.CardDescription}>
-            <Image 
-            style={styles.CardDescriptionIcon} 
-            source={require('../../../assets/images/icons/attack-icon.png')}
-            resizeMode="contain"></Image>
-            <Text style={styles.CardDescriptionPoints}>{this.props.card.attackPoints}</Text>
-            <Image 
-            style={styles.CardDescriptionIcon} 
-            source={require('../../../assets/images/icons/defense-icon.png')}
-            resizeMode="contain"></Image>
-            <Text style={styles.CardDescriptionPoints}>{this.props.card.defensePoints}</Text>
-            <Image 
-            style={styles.CardDescriptionIcon} 
-            source={require('../../../assets/images/icons/action-icon.png')}
-            resizeMode="contain"></Image>
-            <Text style={styles.CardDescriptionPoints}>{this.props.card.actionPoints}</Text>
-
+            <Image
+              style={styles.CardDescriptionIcon}
+              source={require('../../../assets/images/icons/attack-icon.png')}
+              resizeMode="contain"
+            />
+            <Text style={styles.CardDescriptionPoints}>
+              {this.props.card.attackPoints}
+            </Text>
+            <Image
+              style={styles.CardDescriptionIcon}
+              source={require('../../../assets/images/icons/defense-icon.png')}
+              resizeMode="contain"
+            />
+            <Text style={styles.CardDescriptionPoints}>
+              {this.props.card.defensePoints}
+            </Text>
+            <Image
+              style={styles.CardDescriptionIcon}
+              source={require('../../../assets/images/icons/action-icon.png')}
+              resizeMode="contain"
+            />
+            <Text style={styles.CardDescriptionPoints}>
+              {this.props.card.actionPoints}
+            </Text>
           </View>
         </ImageBackground>
       </TouchableOpacity>
