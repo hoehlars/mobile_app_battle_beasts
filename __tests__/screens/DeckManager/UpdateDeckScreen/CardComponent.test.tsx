@@ -26,7 +26,7 @@ describe('CardComponent', () => {
   const onPress = () => jest.fn;
   const onLongPress = () => jest.fn;
   describe('rendering', () => {
-    it('renders the touchable opacity', () => {
+    it('renders the touchable opacity', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -39,7 +39,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByType(TouchableOpacity)).not.toBeNull();
     });
 
-    it('renders the image', () => {
+    it('renders the image', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -52,7 +52,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByType(ImageBackground)).not.toBeNull();
     });
 
-    it('renders the icon of the type', () => {
+    it('renders the icon of the type', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -65,7 +65,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByProps({testID: 'icon'})).not.toBeNull();
     });
 
-    it('renders the card name', () => {
+    it('renders the card name', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -78,7 +78,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByProps({testID: 'cardName'})).not.toBeNull();
     });
 
-    it('renders the description of the card', () => {
+    it('renders the description of the card', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
