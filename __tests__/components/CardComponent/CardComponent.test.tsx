@@ -35,7 +35,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByType(TouchableOpacity)).not.toBeNull();
     });
 
-    it('renders the image', async() => {
+    it('renders the image', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -48,7 +48,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByType(ImageBackground)).not.toBeNull();
     });
 
-    it('renders the icon of the type',async () => {
+    it('renders the icon of the type', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -61,7 +61,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByProps({testID: 'icon'})).not.toBeNull();
     });
 
-    it('renders the card name', async() => {
+    it('renders the card name', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
@@ -74,7 +74,7 @@ describe('CardComponent', () => {
       expect(testInstance.findByProps({testID: 'cardName'})).not.toBeNull();
     });
 
-    it('renders the description of the card', async() => {
+    it('renders the description of the card', async () => {
       const testRenderer = renderer.create(
         <CardComponent
           testID="availableCard"
