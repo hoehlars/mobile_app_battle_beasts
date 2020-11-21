@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: theme.DARK_GRAY_COLOR,
   },
+  Button: {
+    height: '10%',
+    width: '45%',
+    margin: '5%',
+  }
 });
 
 export default styles;
