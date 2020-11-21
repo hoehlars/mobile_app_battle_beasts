@@ -261,9 +261,8 @@ class DeckManagerUpdateDeckScreen extends React.Component<
 
         {this.state.error === '' ? null : (
           <ErrorBox
-            text={this.state.error}
-            styleWrapper={styles.Error}>
-          </ErrorBox>
+          text={this.state.error}
+          styleWrapper={styles.Error}></ErrorBox>
         )}
 
         {this.state.updatedDeckSuccessfully ? (

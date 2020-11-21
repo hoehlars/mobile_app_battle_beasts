@@ -25,11 +25,6 @@ const styles = StyleSheet.create({
     flex: 0.5,
     alignItems: 'center',
   },
-  TextDeckError: {
-    color: theme.ERROR_COLOR,
-    fontFamily: 'Nunito-Bold',
-    fontSize: RFPercentage(2.5),
-  },
 });
 
 export default styles;

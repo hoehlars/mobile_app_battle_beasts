@@ -14,11 +14,9 @@ class ErrorBox extends React.Component<ErrorBoxProps, {}> {
 
   render() {
     return (
-      <View>
         <View style={this.props.styleWrapper}>
           <Text style={[styles.TextError]}>{this.props.text}</Text>
         </View>
-      </View>
     );
   }
 }

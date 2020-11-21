@@ -20,6 +20,7 @@ import {AsyncStorageService} from '../../../services/asyncStorage';
 import {DeckItemList} from '../../../models/deckItem';
 import DeckItem from '../../../components/DeckItem/DeckItem';
 import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckButton';
+import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -281,9 +282,9 @@ class DeckManagerScreen extends React.Component<
         />
 
         {this.state.error === '' ? null : (
-          <View testID="error" style={styles.DeckError}>
-            <Text style={styles.TextDeckError}>{this.state.error}</Text>
-          </View>
+          <ErrorBox
+          text={this.state.error}
+          styleWrapper={styles.DeckError}></ErrorBox>
         )}
       </>
     );
