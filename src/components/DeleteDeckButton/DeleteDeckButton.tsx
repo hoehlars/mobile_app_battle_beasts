@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {RowMap} from 'react-native-swipe-list-view';
-import {DeckItemList} from '../../../models/DeckItem';
-import styles from './styles.modules';
+import {DeckItemList} from '../../models/DeckItem';
+import styles from './styles.module'
 
 interface DeleteDeckButtonProps {
   rowMap: RowMap<DeckItemList>;
@@ -24,7 +24,7 @@ class DeleteDeckButton extends React.Component<DeleteDeckButtonProps, {}> {
             )
           }>
           <Image
-            source={require('../../../assets/images/icons/delete_deck_icon.png')}
+            source={require('../../assets/images/icons/delete_deck_icon.png')}
             style={[styles.DeleteIcon]}
             resizeMode="contain"
           />

@@ -19,7 +19,7 @@ import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
 import {DeckItemList} from '../../../models/deckItem';
 import DeckItem from '../../../components/DeckItem/DeckItem';
-import DeleteDeckButton from './DeleteDeckButton';
+import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckButton';
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
