@@ -11,8 +11,8 @@ import {
 import jwtDecode from 'jwt-decode';
 import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
-import LoginBox from './Login_RegisterBox/LoginBox';
-import RegisterBox from './Login_RegisterBox/RegisterBox';
+import LoginBox from '../../../components/LoginBox/LoginBox';
+import RegisterBox from '../../../components/RegisterBox/RegisterBox';
 import styles from './styles.module';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 

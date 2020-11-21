@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextInput, View} from 'react-native';
-import styles from './styles.module';
+import styles from '../Login_RegisterBox/styles.module';
 
 interface RegisterData {
   username: string;

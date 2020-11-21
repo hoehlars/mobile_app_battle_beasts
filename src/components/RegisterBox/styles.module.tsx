@@ -1,15 +1,11 @@
 import {StyleSheet} from 'react-native';
-import theme from '../../../../assets/styles/theme.style';
+import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
-  LoginForm: {
-    alignItems: 'stretch',
-    margin: '2%',
-  },
-  RegisterForm: {
-    alignItems: 'stretch',
-    margin: '2%',
-  },
+    RegisterForm: {
+        alignItems: 'stretch',
+        margin: '2%',
+    },
   TextInput: {
     borderWidth: 1,
     margin: '1%',
