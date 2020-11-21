@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Text, View} from 'react-native';
+import {StyleProp, Text, View, ViewStyle} from 'react-native';
 import styles from './ErrorBox.styles';
 
 interface ErrorBoxProps {
   text: string;
+  styleWrapper?: StyleProp<ViewStyle>
 }
 
 class ErrorBox extends React.Component<ErrorBoxProps, {}> {
@@ -14,7 +15,7 @@ class ErrorBox extends React.Component<ErrorBoxProps, {}> {
   render() {
     return (
       <View>
-        <View style={[styles.ErrorBox]}>
+        <View style={this.props.styleWrapper}>
           <Text style={[styles.TextError]}>{this.props.text}</Text>
         </View>
       </View>

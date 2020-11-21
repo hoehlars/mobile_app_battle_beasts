@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
     height: '10%',
     width: '45%',
     margin: '5%',
+  },
+  ErrorBox: {
+    flex: 0.5,
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    margin: '1%',
   }
 });
 
