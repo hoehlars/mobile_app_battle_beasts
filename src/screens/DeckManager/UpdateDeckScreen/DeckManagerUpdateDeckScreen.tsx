@@ -12,15 +12,13 @@ import {FlatList} from 'react-native-gesture-handler';
 import {CardService} from '../../../services/cardService';
 import {Card} from '../../../models/card';
 import {DeckService} from '../../../services/deckService';
-import CardComponent from './CardComponent';
+import CardComponent from '../../../components/CardComponent/CardComponent';
+import {CardFlatListData} from '../../../models/cardFlatListData';
+import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 
 interface NavigationParams {
   deck: Deck;
   token: string;
-}
-
-interface CardFlatListData extends Card {
-  id: string;
 }
 
 interface DeckManagerUpdateDeckScreenState {
@@ -133,8 +131,8 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     });
   }
 
-  private showCardInTheMiddle(pressedCard: CardFlatListData): void {
-    console.log(pressedCard);
+  private showCardInTheMiddle(_pressedCard: CardFlatListData): void {
+    // show card in the middle
   }
 
   private async addCardToDeck(pressedCard: CardFlatListData): Promise<void> {
@@ -199,6 +197,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         card={data.item}
         onPress={this.deleteCardOutOfDeck.bind(this)}
         onLongPress={this.showCardInTheMiddle.bind(this)}
+        styleWrapper={styles.CardListItem}
       />
     );
   }
@@ -212,6 +211,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         card={data.item}
         onPress={this.addCardToDeck.bind(this)}
         onLongPress={this.showCardInTheMiddle.bind(this)}
+        styleWrapper={styles.CardListItem}
       />
     );
   }
@@ -260,11 +260,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         </View>
 
         {this.state.error === '' ? null : (
-          <View style={styles.error}>
-            <Text testID="error" style={styles.TextError}>
-              {this.state.error}
-            </Text>
-          </View>
+          <ErrorBox text={this.state.error} styleWrapper={styles.Error} />
         )}
 
         {this.state.updatedDeckSuccessfully ? (

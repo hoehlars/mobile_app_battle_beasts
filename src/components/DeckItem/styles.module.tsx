@@ -3,16 +3,18 @@ import {RFPercentage} from 'react-native-responsive-fontsize';
 import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
-  Button: {
-    backgroundColor: theme.PRIMARY_COLOR,
-    justifyContent: 'center',
+  RowFront: {
     alignItems: 'center',
-    borderRadius: 10,
+    backgroundColor: theme.DARK_GRAY_COLOR,
+    borderBottomColor: theme.LIGHT_COLOR,
+    borderBottomWidth: 1,
+    justifyContent: 'center',
+    height: 80,
   },
-  ButtonText: {
-    color: theme.GRAY_COLOR,
-    fontSize: RFPercentage(3),
+  ListItem: {
+    color: theme.LIGHT_COLOR,
     fontFamily: 'Nunito-Bold',
+    fontSize: RFPercentage(4),
   },
 });
 

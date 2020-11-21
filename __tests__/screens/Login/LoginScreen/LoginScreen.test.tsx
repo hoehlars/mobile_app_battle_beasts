@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer, {act} from 'react-test-renderer';
 import LoginScreen from '../../../../src/screens/Login/LoginScreen/LoginScreen';
-import LoginBox from '../../../../src/screens/Login/LoginScreen/Login_RegisterBox/LoginBox';
-import RegisterBox from '../../../../src/screens/Login/LoginScreen/Login_RegisterBox/RegisterBox';
+import LoginBox from '../../../../src/components/LoginBox/LoginBox';
+import RegisterBox from '../../../../src/components/RegisterBox/RegisterBox';
 
 const navigation: any = {
   navigate: jest.fn(),

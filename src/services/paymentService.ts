@@ -1,12 +1,13 @@
 import {Card} from '../models/card';
 import {slimFetch, HttpResponse} from './apiService';
 import {Deck} from '../models/deck';
+import Environment from '../../environment';
 
 /**
  * PaymentService
  */
 export class PaymentService {
-  private static readonly REACT_API_BASE_URL: string = 'http://localhost:5000';
+  private static readonly REACT_API_BASE_URL: string = Environment.BASE_URL;
   /**
    * Delivers the the amount of cards to buy, initializes the payment and retrieves a redirect link to paypal
    * @param authorization {string} - Authorization token

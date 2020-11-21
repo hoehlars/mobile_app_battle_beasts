@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Text, TouchableHighlight, View} from 'react-native';
-import theme from '../../../assets/styles/theme.style';
-import {DeckItemList} from '../../../models/DeckItem';
-import styles from './styles.modules';
+import theme from '../../assets/styles/theme.style';
+import {DeckItemList} from '../../models/DeckItem';
+import styles from './styles.module';
 
 interface DeckItemProps {
   deckItem: DeckItemList;

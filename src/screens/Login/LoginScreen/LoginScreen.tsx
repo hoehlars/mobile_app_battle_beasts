@@ -11,9 +11,9 @@ import {
 import jwtDecode from 'jwt-decode';
 import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
-import LoginBox from './Login_RegisterBox/LoginBox';
-import RegisterBox from './Login_RegisterBox/RegisterBox';
-import styles from './LoginScreen.style';
+import LoginBox from '../../../components/LoginBox/LoginBox';
+import RegisterBox from '../../../components/RegisterBox/RegisterBox';
+import styles from './styles.module';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 
 interface RegisterData {
@@ -152,6 +152,7 @@ class HomeScreenLogin extends React.Component<
           {this.state.showLoginButton ? (
             <Button
               title="Show Login"
+              styleWrapper={styles.Button}
               onPress={this.dropDownTextInputsOfLogin.bind(this)}
             />
           ) : null}
@@ -166,6 +167,7 @@ class HomeScreenLogin extends React.Component<
           {this.state.showRegisterButton ? (
             <Button
               title="Show Register"
+              styleWrapper={styles.Button}
               onPress={this.dropDownTextInputsOfRegistering.bind(this)}
             />
           ) : null}
@@ -174,7 +176,10 @@ class HomeScreenLogin extends React.Component<
             <RegisterBox onSubmit={this.submitRegisterData.bind(this)} />
           ) : null}
           {this.state.registerError ? (
-            <ErrorBox text={this.state.registerError} />
+            <ErrorBox
+              text={this.state.registerError}
+              styleWrapper={styles.ErrorBox}
+            />
           ) : null}
         </View>
       </>

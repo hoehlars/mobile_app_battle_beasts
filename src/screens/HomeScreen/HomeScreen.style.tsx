@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   LogoutText: {
     fontFamily: 'Nunito-Bold',
-    color: theme.LIGHT_COLOR,
+    color: theme.GRAY_COLOR,
   },
   ImageBox: {
     flex: 4,
