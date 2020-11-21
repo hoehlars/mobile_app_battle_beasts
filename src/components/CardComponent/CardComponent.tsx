@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Card} from '../../../models/card';
-import styles from './styles.modules';
+import {Card} from '../../models/card';
+import styles from './styles.module'
 
 interface CardProps {
   testID: string;
@@ -51,19 +51,19 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
 
   private getIcon(): any {
     if (this.state.isCarnivore && this.state.isNotAnimal) {
-      return require('../../../assets/images/icons/carnivore-icon.png');
+      return require('../../assets/images/icons/carnivore-icon.png');
     }
     if (this.state.isHerbivore && this.state.isNotAnimal) {
-      return require('../../../assets/images/icons/herbivore-icon.png');
+      return require('../../assets/images/icons/herbivore-icon.png');
     }
     if (this.state.isFish && this.state.isNotAnimal) {
-      return require('../../../assets/images/icons/fish-icon.png');
+      return require('../../assets/images/icons/fish-icon.png');
     }
     if (this.props.card.isEquipment) {
-      return require('../../../assets/images/icons/equipment-icon.png');
+      return require('../../assets/images/icons/equipment-icon.png');
     }
     if (this.props.card.isSpell) {
-      return require('../../../assets/images/icons/spell-icon.png');
+      return require('../../assets/images/icons/spell-icon.png');
     }
     return undefined;
   }
@@ -120,11 +120,11 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
       <TouchableOpacity
         testID={this.props.testID}
         onPress={async () => this.props.onPress(this.props.card)}
-        style={styles.item}
+        style={styles.CardListItem}
         onLongPress={() => this.props.onLongPress(this.props.card)}>
         <ImageBackground
           source={{
-            uri: `http://localhost:5000/images/${this.props.card.cardId}_card.jpg`,
+            uri: `http://192.168.1.104:5000/images/${this.props.card.cardId}_card.jpg`,
           }}
           style={styles.ImageBackground}
           imageStyle={styles.Image}>
@@ -144,7 +144,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
           <View testID="cardDescription" style={styles.CardDescription}>
             <Image
               style={styles.CardDescriptionIcon}
-              source={require('../../../assets/images/icons/attack-icon.png')}
+              source={require('../../assets/images/icons/attack-icon.png')}
               resizeMode="contain"
             />
             <Text style={styles.CardDescriptionPoints}>
@@ -152,7 +152,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             </Text>
             <Image
               style={styles.CardDescriptionIcon}
-              source={require('../../../assets/images/icons/defense-icon.png')}
+              source={require('../../assets/images/icons/defense-icon.png')}
               resizeMode="contain"
             />
             <Text style={styles.CardDescriptionPoints}>
@@ -160,7 +160,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             </Text>
             <Image
               style={styles.CardDescriptionIcon}
-              source={require('../../../assets/images/icons/action-icon.png')}
+              source={require('../../assets/images/icons/action-icon.png')}
               resizeMode="contain"
             />
             <Text style={styles.CardDescriptionPoints}>
