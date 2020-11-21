@@ -124,7 +124,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
         onLongPress={() => this.props.onLongPress(this.props.card)}>
         <ImageBackground
           source={{
-            uri: `http://192.168.1.104:5000/images/${this.props.card.cardId}_card.jpg`,
+            uri: `http://localhost:5000/images/${this.props.card.cardId}_card.jpg`,
           }}
           style={styles.ImageBackground}
           imageStyle={styles.Image}>
@@ -137,7 +137,9 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             />
           </View>
           <View>
-            <Text testID="cardName" style={styles.CardName}>{this.props.card.name}</Text>
+            <Text testID="cardName" style={styles.CardName}>
+              {this.props.card.name}
+            </Text>
           </View>
           <View testID="cardDescription" style={styles.CardDescription}>
             <Image
