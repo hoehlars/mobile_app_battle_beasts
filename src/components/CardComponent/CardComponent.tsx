@@ -9,6 +9,7 @@ import {
 import {Card} from '../../models/card';
 import { CardFlatListData } from '../../models/cardFlatListData';
 import styles from './styles.module'
+import Environment from '../../../environment'
 
 interface CardProps {
   testID: string;
@@ -122,7 +123,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
         onLongPress={() => this.props.onLongPress(this.props.card)}>
         <ImageBackground
           source={{
-            uri: `http://192.168.1.104:5000/images/${this.props.card.cardId}_card.jpg`,
+            uri: `${Environment.BASE_URL}/images/${this.props.card.cardId}_card.jpg`,
           }}
           style={styles.ImageBackground}
           imageStyle={styles.Image}>

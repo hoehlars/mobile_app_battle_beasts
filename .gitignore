@@ -64,6 +64,3 @@ buck-out/
 
 # Coverage
 coverage/*
-
-# environment
-environment.js
