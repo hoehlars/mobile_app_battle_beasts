@@ -18,7 +18,7 @@ import {DeckService} from '../../../services/deckService';
 import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
 import {DeckItemList} from '../../../models/deckItem';
-import DeckItem from './DeckItem';
+import DeckItem from '../../../components/DeckItem/DeckItem';
 import DeleteDeckButton from './DeleteDeckButton';
 
 interface DeckManagerScreenState {

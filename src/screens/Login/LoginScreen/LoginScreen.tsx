@@ -13,7 +13,7 @@ import {User} from '../../../models/user';
 import {AsyncStorageService} from '../../../services/asyncStorage';
 import LoginBox from './Login_RegisterBox/LoginBox';
 import RegisterBox from './Login_RegisterBox/RegisterBox';
-import styles from './LoginScreen.style';
+import styles from './styles.module';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 
 interface RegisterData {

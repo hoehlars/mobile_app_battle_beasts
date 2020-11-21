@@ -12,14 +12,6 @@ const styles = StyleSheet.create({
     flex: 10,
     marginBottom: 0,
   },
-  RowFront: {
-    alignItems: 'center',
-    backgroundColor: theme.DARK_GRAY_COLOR,
-    borderBottomColor: theme.LIGHT_COLOR,
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    height: 80,
-  },
   RowBack: {
     alignItems: 'center',
     backgroundColor: theme.DARK_GRAY_COLOR,
@@ -41,11 +33,6 @@ const styles = StyleSheet.create({
   DeleteIcon: {
     width: 41,
     height: 50,
-  },
-  ListItem: {
-    color: theme.LIGHT_COLOR,
-    fontFamily: 'Nunito-Bold',
-    fontSize: RFPercentage(4),
   },
   FloatingAction: {
     flex: 1,
