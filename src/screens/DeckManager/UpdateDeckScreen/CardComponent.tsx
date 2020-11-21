@@ -130,15 +130,16 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
           imageStyle={styles.Image}>
           <View style={styles.IconView}>
             <Image
+              testID="icon"
               style={styles.IconImage}
               source={this.getIcon()}
               resizeMode="contain"
             />
           </View>
           <View>
-            <Text style={styles.CardName}>{this.props.card.name}</Text>
+            <Text testID="cardName" style={styles.CardName}>{this.props.card.name}</Text>
           </View>
-          <View style={styles.CardDescription}>
+          <View testID="cardDescription" style={styles.CardDescription}>
             <Image
               style={styles.CardDescriptionIcon}
               source={require('../../../assets/images/icons/attack-icon.png')}
