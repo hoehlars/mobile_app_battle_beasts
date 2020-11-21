@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {RowMap} from 'react-native-swipe-list-view';
 import {DeckItemList} from '../../models/DeckItem';
-import styles from './styles.module'
+import styles from './styles.module';
 
 interface DeleteDeckButtonProps {
   rowMap: RowMap<DeckItemList>;

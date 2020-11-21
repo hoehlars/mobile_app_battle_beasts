@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
     margin: '1%',
-  }
+  },
 });
 
 export default styles;

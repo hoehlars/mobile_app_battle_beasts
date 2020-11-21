@@ -176,9 +176,10 @@ class HomeScreenLogin extends React.Component<
             <RegisterBox onSubmit={this.submitRegisterData.bind(this)} />
           ) : null}
           {this.state.registerError ? (
-            <ErrorBox 
-            text={this.state.registerError} 
-            styleWrapper={styles.ErrorBox}/>
+            <ErrorBox
+              text={this.state.registerError}
+              styleWrapper={styles.ErrorBox}
+            />
           ) : null}
         </View>
       </>

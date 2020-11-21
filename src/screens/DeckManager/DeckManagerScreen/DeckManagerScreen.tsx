@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ListRenderItemInfo,
   NativeSyntheticEvent,
-  Text,
   TextInputSubmitEditingEventData,
   View,
 } from 'react-native';
@@ -282,9 +281,7 @@ class DeckManagerScreen extends React.Component<
         />
 
         {this.state.error === '' ? null : (
-          <ErrorBox
-          text={this.state.error}
-          styleWrapper={styles.DeckError}></ErrorBox>
+          <ErrorBox text={this.state.error} styleWrapper={styles.DeckError} />
         )}
       </>
     );

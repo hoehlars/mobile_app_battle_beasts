@@ -4,7 +4,7 @@ import styles from './ErrorBox.styles';
 
 interface ErrorBoxProps {
   text: string;
-  styleWrapper?: StyleProp<ViewStyle>
+  styleWrapper?: StyleProp<ViewStyle>;
 }
 
 class ErrorBox extends React.Component<ErrorBoxProps, {}> {
@@ -14,9 +14,9 @@ class ErrorBox extends React.Component<ErrorBoxProps, {}> {
 
   render() {
     return (
-        <View style={this.props.styleWrapper}>
-          <Text style={[styles.TextError]}>{this.props.text}</Text>
-        </View>
+      <View style={this.props.styleWrapper}>
+        <Text style={[styles.TextError]}>{this.props.text}</Text>
+      </View>
     );
   }
 }

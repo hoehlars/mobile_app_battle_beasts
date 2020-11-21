@@ -5,7 +5,7 @@ import styles from './Button.styles';
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  styleWrapper?: StyleProp<ViewStyle>
+  styleWrapper?: StyleProp<ViewStyle>;
 }
 
 class Button extends React.Component<ButtonProps, {}> {

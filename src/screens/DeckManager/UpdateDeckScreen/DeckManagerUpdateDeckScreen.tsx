@@ -131,8 +131,8 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     });
   }
 
-  private showCardInTheMiddle(pressedCard: CardFlatListData): void {
-    console.log(pressedCard);
+  private showCardInTheMiddle(_pressedCard: CardFlatListData): void {
+    // show card in the middle
   }
 
   private async addCardToDeck(pressedCard: CardFlatListData): Promise<void> {
@@ -260,9 +260,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         </View>
 
         {this.state.error === '' ? null : (
-          <ErrorBox
-          text={this.state.error}
-          styleWrapper={styles.Error}></ErrorBox>
+          <ErrorBox text={this.state.error} styleWrapper={styles.Error} />
         )}
 
         {this.state.updatedDeckSuccessfully ? (

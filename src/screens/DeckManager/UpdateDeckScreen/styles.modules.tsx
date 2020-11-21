@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginVertical: '4%',
     marginHorizontal: '10%',
     borderRadius: 10,
-  }
+  },
 });
 
 export default styles;
