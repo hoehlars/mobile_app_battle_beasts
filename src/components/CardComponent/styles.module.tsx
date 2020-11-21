@@ -1,15 +1,15 @@
 import {StyleSheet} from 'react-native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
-import theme from '../../assets/styles/theme.style'
+import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
-CardListItem: {
-        backgroundColor: theme.LIGHT_COLOR,
-        padding: '4%',
-        marginVertical: '4%',
-        marginHorizontal: '10%',
-        borderRadius: 10,
-      },
+  CardListItem: {
+    backgroundColor: theme.LIGHT_COLOR,
+    padding: '4%',
+    marginVertical: '4%',
+    marginHorizontal: '10%',
+    borderRadius: 10,
+  },
   ImageBackground: {
     width: '100%',
     height: 100,

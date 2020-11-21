@@ -6,10 +6,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Card} from '../../models/card';
-import { CardFlatListData } from '../../models/cardFlatListData';
-import styles from './styles.module'
-import Environment from '../../../environment'
+import {CardFlatListData} from '../../models/cardFlatListData';
+import styles from './styles.module';
+import Environment from '../../../environment';
 
 interface CardProps {
   testID: string;

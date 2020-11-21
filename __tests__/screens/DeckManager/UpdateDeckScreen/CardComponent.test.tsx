@@ -3,8 +3,7 @@ import {ImageBackground, TouchableOpacity} from 'react-native';
 import renderer from 'react-test-renderer';
 
 import CardComponent from '../../../../src/components/CardComponent/CardComponent';
-import { CardFlatListData } from '../../../../src/models/cardFlatListData';
-
+import {CardFlatListData} from '../../../../src/models/cardFlatListData';
 
 const card: CardFlatListData = {
   cardId: 0,

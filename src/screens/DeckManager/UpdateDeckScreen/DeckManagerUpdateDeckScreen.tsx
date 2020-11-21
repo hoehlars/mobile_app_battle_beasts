@@ -13,14 +13,12 @@ import {CardService} from '../../../services/cardService';
 import {Card} from '../../../models/card';
 import {DeckService} from '../../../services/deckService';
 import CardComponent from '../../../components/CardComponent/CardComponent';
-import { CardFlatListData } from '../../../models/cardFlatListData';
+import {CardFlatListData} from '../../../models/cardFlatListData';
 
 interface NavigationParams {
   deck: Deck;
   token: string;
 }
-
-
 
 interface DeckManagerUpdateDeckScreenState {
   deck: Deck;

@@ -1,7 +1,7 @@
 import {Card} from '../models/card';
 import {slimFetch, HttpResponse} from './apiService';
 import {Deck} from '../models/deck';
-import Environment from '../../environment'
+import Environment from '../../environment';
 
 /**
  * PaymentService

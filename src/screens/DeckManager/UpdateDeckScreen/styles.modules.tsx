@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     color: theme.SUCCESS_COLOR,
     fontFamily: 'Nunito-Bold',
     fontSize: RFPercentage(2.5),
-  }
+  },
 });
 
 export default styles;

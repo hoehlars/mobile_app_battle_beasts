@@ -1,5 +1,5 @@
-import { Card } from "./card";
+import {Card} from './card';
 
 export interface CardFlatListData extends Card {
-    id: string;
+  id: string;
 }
