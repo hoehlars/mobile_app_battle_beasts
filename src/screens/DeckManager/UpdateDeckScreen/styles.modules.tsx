@@ -42,14 +42,9 @@ const styles = StyleSheet.create({
   YourDeck: {
     flex: 1,
   },
-  error: {
+  Error: {
     flex: 0.5,
     alignItems: 'center',
-  },
-  TextError: {
-    color: theme.ERROR_COLOR,
-    fontFamily: 'Nunito-Bold',
-    fontSize: RFPercentage(2.5),
   },
   UpdateSuccess: {
     flex: 0.5,

@@ -14,6 +14,7 @@ import {Card} from '../../../models/card';
 import {DeckService} from '../../../services/deckService';
 import CardComponent from '../../../components/CardComponent/CardComponent';
 import {CardFlatListData} from '../../../models/cardFlatListData';
+import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 
 interface NavigationParams {
   deck: Deck;
@@ -259,11 +260,10 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         </View>
 
         {this.state.error === '' ? null : (
-          <View style={styles.error}>
-            <Text testID="error" style={styles.TextError}>
-              {this.state.error}
-            </Text>
-          </View>
+          <ErrorBox
+            text={this.state.error}
+            styleWrapper={styles.Error}>
+          </ErrorBox>
         )}
 
         {this.state.updatedDeckSuccessfully ? (
