@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import {Card} from '../../models/card';
+import { CardFlatListData } from '../../models/cardFlatListData';
 import styles from './styles.module'
 
 interface CardProps {
@@ -14,9 +15,6 @@ interface CardProps {
   card: CardFlatListData;
   onPress: (data: CardFlatListData) => void;
   onLongPress: (data: CardFlatListData) => void;
-}
-interface CardFlatListData extends Card {
-  id: string;
 }
 
 interface CardComponentState {
