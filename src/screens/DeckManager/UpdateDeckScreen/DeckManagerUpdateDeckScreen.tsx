@@ -196,6 +196,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         card={data.item}
         onPress={this.deleteCardOutOfDeck.bind(this)}
         onLongPress={this.showCardInTheMiddle.bind(this)}
+        styleWrapper={styles.CardListItem}
       />
     );
   }
@@ -209,6 +210,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
         card={data.item}
         onPress={this.addCardToDeck.bind(this)}
         onLongPress={this.showCardInTheMiddle.bind(this)}
+        styleWrapper={styles.CardListItem}
       />
     );
   }

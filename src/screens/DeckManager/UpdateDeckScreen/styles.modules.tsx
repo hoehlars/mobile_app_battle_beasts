@@ -60,6 +60,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     fontSize: RFPercentage(2.5),
   },
+  CardListItem: {
+    backgroundColor: theme.LIGHT_COLOR,
+    padding: '4%',
+    marginVertical: '4%',
+    marginHorizontal: '10%',
+    borderRadius: 10,
+  }
 });
 
 export default styles;

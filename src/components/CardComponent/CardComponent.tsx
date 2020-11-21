@@ -2,9 +2,11 @@ import * as React from 'react';
 import {
   Image,
   ImageBackground,
+  StyleProp,
   Text,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import {CardFlatListData} from '../../models/cardFlatListData';
 import styles from './styles.module';
@@ -15,6 +17,7 @@ interface CardProps {
   card: CardFlatListData;
   onPress: (data: CardFlatListData) => void;
   onLongPress: (data: CardFlatListData) => void;
+  styleWrapper?: StyleProp<ViewStyle>;
 }
 
 interface CardComponentState {
@@ -118,7 +121,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
       <TouchableOpacity
         testID={this.props.testID}
         onPress={async () => this.props.onPress(this.props.card)}
-        style={styles.CardListItem}
+        style={this.props.styleWrapper}
         onLongPress={() => this.props.onLongPress(this.props.card)}>
         <ImageBackground
           source={{
