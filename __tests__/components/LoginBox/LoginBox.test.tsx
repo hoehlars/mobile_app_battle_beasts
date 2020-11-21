@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput} from 'react-native';
 import renderer from 'react-test-renderer';
-import LoginBox from '../../../../../src/components/LoginBox/LoginBox';
+import LoginBox from '../../../src/components/LoginBox/LoginBox';
 
 describe('LoginBox', () => {
   describe('rendering', () => {

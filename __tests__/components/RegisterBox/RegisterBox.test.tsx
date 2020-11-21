@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput} from 'react-native';
 import renderer from 'react-test-renderer';
-import RegisterBox from '../../../../../src/components/RegisterBox/RegisterBox';
+import RegisterBox from '../../../src/components/RegisterBox/RegisterBox';
 
 describe('RegisterBox', () => {
   describe('rendering', () => {
