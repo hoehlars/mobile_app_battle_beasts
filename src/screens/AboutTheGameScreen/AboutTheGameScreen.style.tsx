@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from './../../assets/styles/theme.style';
+import {RFPercentage} from 'react-native-responsive-fontsize';
 
 const styles = StyleSheet.create({
   Background: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   HeaderText: {
     marginTop: '5%',
     color: theme.PRIMARY_COLOR,
-    fontSize: 25,
+    fontSize: RFPercentage(5),
     fontFamily: 'Nunito-Bold',
     flex: 1,
     backgroundColor: 'white',
@@ -25,14 +26,44 @@ const styles = StyleSheet.create({
   },
   AboutTextBox: {
     width: '95%',
+    height: 'auto',
     backgroundColor: theme.GRAY_COLOR,
     borderRadius: 20,
+    borderColor: 'black',
+    borderWidth: 2,
+    marginTop: '5%',
+    padding: '5%',
   },
   AboutText: {
+    flex: 1,
     fontFamily: 'Nunito-Regular',
-    margin: '5%',
     color: 'white',
     textAlign: 'justify',
+    fontSize: RFPercentage(2),
+  },
+  PlayerImage: {
+    aspectRatio: 0.65,
+    width: '40%',
+    resizeMode: 'contain',
+    marginRight: '5%',
+  },
+  AnimalImage: {
+    aspectRatio: 0.65,
+    width: '40%',
+    resizeMode: 'contain',
+    marginLeft: '5%',
+  },
+  EquipmentImage: {
+    aspectRatio: 0.65,
+    width: '40%',
+    resizeMode: 'contain',
+    marginRight: '5%',
+  },
+  IconImage: {
+    aspectRatio: 0.5,
+    width: '10%',
+    resizeMode: 'contain',
+    marginRight: '5%',
   },
 });
 
