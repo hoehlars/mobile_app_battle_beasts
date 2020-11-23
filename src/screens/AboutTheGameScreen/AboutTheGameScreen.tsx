@@ -3,15 +3,12 @@ import {Image, Text, View, Dimensions} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import styles from './AboutTheGameScreen.style';
+import Slideshow from 'react-native-image-slideshow';
 
 class AboutTheGameScreen extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {
     super(props);
   }
-
-  height = () => {
-    return Dimensions.get('window').height;
-  };
 
   render() {
     return (
@@ -189,10 +186,8 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
                   <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    Game rounds
+                    Game rounds{'\n\n'}
                   </Text>
-                </Text>
-                <Text style={styles.AboutText}>
                   At the beginning of a round, your action points are filled up
                   again and you get one new card. You start with the cast phase
                   and you are able to put cards on the board.{'\n\n'}Animal and
@@ -208,26 +203,40 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
                   next phase: the attack phase.{'\n\n'}In the attack phase, you
                   have the possibility to attack either your opponent or his
                   animals, but some important rules must be paid attention to.
-                  Click on the arrow buttons below the image to see all 5 rules
-                  with detailed explanation.
-                </Text>
-                <Text>
-                  If you have finished all your attacks or no attack is possible
-                  anymore, you can finish your round by pressing the "End turn"
-                  button to start your opponent’s turn.{'\n\n'}
+                  {'\n\n'}Here you can see the{' '}
+                  <Text style={{fontWeight: 'bold'}}>
+                    5 most important rules
+                  </Text>
+                  :{'\n\n'}1. Only animals in the attack mode can attack other
+                  animals.{'\n\n'}2. Animals can only attack once every round
+                  and will be greyed out after an attack. If an animal is
+                  defeated, it disappears from the board.{'\n\n'}3. The attack
+                  value of your animal needs to be higher than the attack or
+                  defense value of the targeted animal. Cards which attack or
+                  defense value is higher than your attack value will be greyed
+                  out and you won't be able to attack them.{'\n\n'}4. If an
+                  animal attacks another animal that is also in the attack mode,
+                  the difference between your animal and the opponent’s animal
+                  attack points will be subtracted from his health points.
+                  {'\n\n'}5. You can only attack your opponent directly when he
+                  has no animals on the board or when all his animals on the
+                  board are in attack mode.{'\n\n'}If you have finished all your
+                  attacks or no attack is possible anymore, you can finish your
+                  round by pressing the "End turn" button to start your
+                  opponent’s turn.{'\n\n'}
                   <Text style={{fontWeight: 'bold'}}>
                     Differences in the first round:
                   </Text>
-                  {'\n\n'}
-                  In the first round, both players get five cards on their hand
-                  to start. The player who starts can put cards on the board as
-                  usual but is not able to attack because the opponent hasn’t
-                  had the opportunity to build up a defense. As soon as the
-                  first turn is over, the opponent can put cards on the table
-                  and attack as usual.
+                  {'\n\n'}In the first round, both players get five cards on
+                  their hand to start. The player who starts can put cards on
+                  the board as usual but is not able to attack because the
+                  opponent hasn’t had the opportunity to build up a defense. As
+                  soon as the first turn is over, the opponent can put cards on
+                  the table and attack as usual.{'\n\n'}
                 </Text>
               </View>
-              <View style={[styles.AboutTextBox, {marginBottom: '70%'}]}>
+              {/* --- END --- */}
+              <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
                   <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
                     End

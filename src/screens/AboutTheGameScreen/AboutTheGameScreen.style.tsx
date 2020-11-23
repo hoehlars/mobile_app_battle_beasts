@@ -17,11 +17,9 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(5),
     fontFamily: 'Nunito-Bold',
     flex: 1,
-    backgroundColor: 'white',
   },
   AboutBox: {
     flex: 7,
-    backgroundColor: 'green',
     alignItems: 'center',
   },
   AboutTextBox: {
