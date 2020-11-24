@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {Image, Text, View, Dimensions} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import styles from './AboutTheGameScreen.style';
-import Slideshow from 'react-native-image-slideshow';
 
 class AboutTheGameScreen extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {

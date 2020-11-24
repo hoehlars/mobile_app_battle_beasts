@@ -12,14 +12,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   HeaderText: {
-    marginTop: '5%',
+    marginTop: '2.5%',
+    marginBottom: '2.5%',
     color: theme.PRIMARY_COLOR,
     fontSize: RFPercentage(5),
     fontFamily: 'Nunito-Bold',
     flex: 1,
   },
   AboutBox: {
-    flex: 7,
+    flex: 8,
     alignItems: 'center',
   },
   AboutTextBox: {
