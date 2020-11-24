@@ -176,23 +176,67 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
                   animals, but some important rules must be paid attention to.
                   {'\n\n'}Here you can see the{' '}
                   <Text style={styles.bold}>5 most important rules</Text>:
-                  {'\n\n'}1. Only animals in the attack mode can attack other
-                  animals.{'\n\n'}2. Animals can only attack once every round
-                  and will be greyed out after an attack. If an animal is
-                  defeated, it disappears from the board.{'\n\n'}3. The attack
-                  value of your animal needs to be higher than the attack or
-                  defense value of the targeted animal. Cards which attack or
-                  defense value is higher than your attack value will be greyed
-                  out and you won't be able to attack them.{'\n\n'}4. If an
-                  animal attacks another animal that is also in the attack mode,
-                  the difference between your animal and the opponent’s animal
-                  attack points will be subtracted from his health points.
-                  {'\n\n'}5. You can only attack your opponent directly when he
-                  has no animals on the board or when all his animals on the
-                  board are in attack mode.{'\n\n'}If you have finished all your
-                  attacks or no attack is possible anymore, you can finish your
-                  round by pressing the "End turn" button to start your
-                  opponent’s turn.{'\n\n'}
+                  {'\n\n'}
+                </Text>
+                <View style={styles.GameroundImageCenter}>
+                  <Image
+                    style={styles.GameroundImage1}
+                    source={require('../../assets/images/about/gameround-1.png')}
+                  />
+                </View>
+                <Text style={styles.AboutText}>
+                  1. Only animals in the attack mode can attack other animals.
+                  {'\n\n'}
+                </Text>
+                <View style={styles.GameroundImageCenter}>
+                  <Image
+                    style={styles.GameroundImage2}
+                    source={require('../../assets/images/about/gameround-2.png')}
+                  />
+                </View>
+                <Text style={styles.AboutText}>
+                  2. Animals can only attack once every round and will be greyed
+                  out after an attack. If an animal is defeated, it disappears
+                  from the board.{'\n\n'}
+                </Text>
+                <View style={styles.GameroundImageCenter}>
+                  <Image
+                    style={styles.GameroundImage3}
+                    source={require('../../assets/images/about/gameround-3.png')}
+                  />
+                </View>
+                <Text style={styles.AboutText}>
+                  3. The attack value of your animal needs to be higher than the
+                  attack or defense value of the targeted animal. Cards which
+                  attack or defense value is higher than your attack value will
+                  be greyed out and you won't be able to attack them.{'\n\n'}
+                </Text>
+                <View style={styles.GameroundImageCenter}>
+                  <Image
+                    style={styles.GameroundImage4}
+                    source={require('../../assets/images/about/gameround-4.png')}
+                  />
+                </View>
+                <Text style={styles.AboutText}>
+                  4. If an animal attacks another animal that is also in the
+                  attack mode, the difference between your animal and the
+                  opponent’s animal attack points will be subtracted from his
+                  health points.
+                  {'\n\n'}
+                </Text>
+                <View style={styles.GameroundImageCenter}>
+                  <Image
+                    style={styles.GameroundImage5}
+                    source={require('../../assets/images/about/gameround-5.png')}
+                  />
+                </View>
+                <Text style={styles.AboutText}>
+                  5. You can only attack your opponent directly when he has no
+                  animals on the board or when all his animals on the board are
+                  in attack mode.{'\n\n'}If you have finished all your attacks
+                  or no attack is possible anymore, you can finish your round by
+                  pressing the "End turn" button to start your opponent’s turn.
+                  {'\n\n'}
                   <Text style={styles.bold}>
                     Differences in the first round:
                   </Text>

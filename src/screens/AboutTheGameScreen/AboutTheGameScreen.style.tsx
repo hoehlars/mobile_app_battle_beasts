@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   HeaderText: {
-    marginTop: '5%',
+    marginTop: '2.5%',
+    marginBottom: '2.5%',
     color: theme.PRIMARY_COLOR,
     fontSize: RFPercentage(5),
     fontFamily: 'Nunito-Bold',
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
   },
   AboutBox: {
-    flex: 7,
+    flex: 8,
     alignItems: 'center',
   },
   AboutTextBox: {
@@ -73,6 +74,31 @@ const styles = StyleSheet.create({
     width: '10%',
     resizeMode: 'contain',
     marginRight: '5%',
+  },
+  GameroundImage1: {
+    resizeMode: 'contain',
+    maxWidth: '100%',
+    height: 300,
+  },
+  GameroundImage2: {
+    resizeMode: 'contain',
+    maxWidth: '100%',
+    height: 200,
+  },
+  GameroundImage3: {
+    resizeMode: 'contain',
+    maxWidth: '100%',
+    height: 300,
+  },
+  GameroundImage4: {
+    resizeMode: 'contain',
+    maxWidth: '100%',
+    height: 200,
+  },
+  GameroundImage5: {
+    resizeMode: 'contain',
+    maxWidth: '100%',
+    height: 150,
   },
   ViewPlayerImage: {
     flexDirection: 'row',
