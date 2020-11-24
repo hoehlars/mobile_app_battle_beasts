@@ -26,3 +26,15 @@ jest.useFakeTimers();
 // async storage
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
+// react native oriention locker
+jest.mock('react-native-orientation-locker', () => {
+	return {
+		addEventListener: jest.fn(),
+		removeEventListener: jest.fn(),
+		lockToPortrait: jest.fn(),
+		lockToLandscapeLeft: jest.fn(),
+		lockToLandscapeRight: jest.fn(),
+		unlockAllOrientations: jest.fn(),
+	};
+});
+
