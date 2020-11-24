@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './UserRow.styles';
 
 interface UserRowProps {
