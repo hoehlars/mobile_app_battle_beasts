@@ -5,6 +5,7 @@ import {User} from '../../models/user';
 import UserRow from '../../components/UserRow';
 import styles from './LeaderboardScreen.style';
 import Orientation from 'react-native-orientation-locker';
+import Header from '../../components/Header/Header';
 
 interface UserSkillRankAndUsername {
   rank: number;
@@ -87,9 +88,9 @@ class LeaderboardScreen extends React.Component<
     return (
       <>
         <View style={styles.Background}>
-          <View style={styles.HeaderTextBox}>
-            <Text style={styles.HeaderText}>Leaderboard</Text>
-          </View>
+          <Header 
+          title="Leaderboard"
+          style={styles.HeaderTextBox}/>
           <View style={styles.RankBox}>
             <View style={styles.Ranks}>
               <Text style={styles.LeaderboardText}>Top ten players</Text>
