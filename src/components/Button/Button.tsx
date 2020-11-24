@@ -6,6 +6,7 @@ interface ButtonProps {
   title: string;
   onPress: () => void;
   styleWrapper?: StyleProp<ViewStyle>;
+  testID?: string
 }
 
 class Button extends React.Component<ButtonProps, {}> {
@@ -13,7 +14,8 @@ class Button extends React.Component<ButtonProps, {}> {
     return (
       <TouchableOpacity
         style={[styles.Button, this.props.styleWrapper]}
-        onPress={() => this.props.onPress()}>
+        onPress={() => this.props.onPress()}
+        testID={this.props.testID}>
         <Text style={styles.ButtonText}>{this.props.title}</Text>
       </TouchableOpacity>
     );
