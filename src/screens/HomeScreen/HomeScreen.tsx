@@ -9,6 +9,8 @@ import {
 import {AsyncStorageService} from '../../services/asyncStorage';
 import styles from './HomeScreen.style';
 import Orientation from 'react-native-orientation-locker';
+import Header from '../../components/Header/Header';
+import Button from '../../components/Button/Button';
 
 interface HomeScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -44,22 +46,21 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
       <>
         <View style={styles.Background}>
           <View style={styles.HeaderBox}>
-            <View style={styles.HeaderTextBox}>
-              <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
-              <TouchableOpacity
-                testID="logoutButton"
-                style={styles.LogoutButton}
-                onPress={() => this.logout()}>
-                <Text style={styles.LogoutText}>Logout</Text>
-              </TouchableOpacity>
-            </View>
+            <Header 
+            title="Welcome to Battle Beasts!"
+            style={styles.Header} />
+
+            <Button
+            title="Logout"
+            styleWrapper={styles.LogoutButton}
+            onPress={this.logout.bind(this)} />
+          </View>
             <View style={styles.ImageBox}>
               <Image
                 style={styles.HeaderImage}
                 source={require('../../assets/images/logos/battlebeasts-logo-white.png')}
               />
             </View>
-          </View>
           <View style={styles.ButtonBox}>
             <TouchableOpacity
               style={styles.Button}
