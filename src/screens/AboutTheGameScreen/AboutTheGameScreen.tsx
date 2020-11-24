@@ -1,11 +1,16 @@
 import * as React from 'react';
 import {Image, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import Orientation from 'react-native-orientation-locker';
 import styles from './AboutTheGameScreen.style';
 
 class AboutTheGameScreen extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {
     super(props);
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
   }
 
   render() {

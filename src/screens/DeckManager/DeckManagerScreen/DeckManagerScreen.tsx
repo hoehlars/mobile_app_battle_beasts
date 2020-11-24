@@ -20,6 +20,7 @@ import {DeckItemList} from '../../../models/deckItem';
 import DeckItem from '../../../components/DeckItem/DeckItem';
 import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckButton';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
+import Orientation from 'react-native-orientation-locker';
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -104,6 +105,7 @@ class DeckManagerScreen extends React.Component<
   }
 
   async componentDidMount() {
+    Orientation.lockToPortrait();
     await this.readUserFromStorage();
     await this.getDecks();
   }

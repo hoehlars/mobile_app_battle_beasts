@@ -8,6 +8,7 @@ import {
 } from 'react-navigation';
 import {AsyncStorageService} from '../../services/asyncStorage';
 import styles from './HomeScreen.style';
+import Orientation from 'react-native-orientation-locker';
 
 interface HomeScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -24,6 +25,10 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
         event.preventDefault();
       }
     });
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
   }
 
   private async logout() {

@@ -15,6 +15,7 @@ import LoginBox from '../../../components/LoginBox/LoginBox';
 import RegisterBox from '../../../components/RegisterBox/RegisterBox';
 import styles from './styles.module';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
+import Orientation from 'react-native-orientation-locker';
 
 interface RegisterData {
   username: string;
@@ -59,6 +60,7 @@ class HomeScreenLogin extends React.Component<
   }
 
   async componentDidMount() {
+    Orientation.lockToPortrait();
     const user: User | null = await AsyncStorageService.readUser();
     if (user) {
       this.props.navigation.navigate('TabNavigator');
