@@ -23,7 +23,7 @@ describe('LoginScreen', () => {
         <LoginScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(testInstance.findByProps({title: 'Show Login'})).not.toBeNull();
+      expect(testInstance.findByProps({title: 'Login'})).not.toBeNull();
     });
 
     it('renders the register button ', () => {
@@ -31,7 +31,7 @@ describe('LoginScreen', () => {
         <LoginScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(testInstance.findByProps({title: 'Show Register'})).not.toBeNull();
+      expect(testInstance.findByProps({title: 'Register'})).not.toBeNull();
     });
   });
 
@@ -40,7 +40,7 @@ describe('LoginScreen', () => {
       <LoginScreen navigation={navigation} />,
     );
     const testInstance = testRenderer.root;
-    const loginButton = testInstance.findByProps({title: 'Show Login'});
+    const loginButton = testInstance.findByProps({title: 'Login'});
     expect(loginButton).not.toBeNull();
     await act(async () => {
       loginButton.props.onPress();
@@ -48,9 +48,7 @@ describe('LoginScreen', () => {
     expect(testInstance.findByType(LoginBox)).not.toBeNull();
 
     // register button should close itself
-    expect(testInstance.findAllByProps({title: 'Show Register'}).length).toBe(
-      0,
-    );
+    expect(testInstance.findAllByProps({title: 'Register'}).length).toBe(0);
   });
 
   it('renders the register box when clicking on the show register button ', async () => {
@@ -58,7 +56,7 @@ describe('LoginScreen', () => {
       <LoginScreen navigation={navigation} />,
     );
     const testInstance = testRenderer.root;
-    const registerButton = testInstance.findByProps({title: 'Show Register'});
+    const registerButton = testInstance.findByProps({title: 'Register'});
     expect(registerButton).not.toBeNull();
     await act(async () => {
       registerButton.props.onPress();
@@ -66,6 +64,6 @@ describe('LoginScreen', () => {
     expect(testInstance.findByType(RegisterBox)).not.toBeNull();
 
     // register button should close itself
-    expect(testInstance.findAllByProps({title: 'Show Login'}).length).toBe(0);
+    expect(testInstance.findAllByProps({title: 'Login'}).length).toBe(0);
   });
 });

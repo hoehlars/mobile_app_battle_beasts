@@ -151,7 +151,7 @@ class HomeScreenLogin extends React.Component<
         <View style={styles.Forms}>
           {this.state.showLoginButton ? (
             <Button
-              title="Show Login"
+              title="Login"
               styleWrapper={styles.Button}
               onPress={this.dropDownTextInputsOfLogin.bind(this)}
             />
@@ -166,7 +166,7 @@ class HomeScreenLogin extends React.Component<
 
           {this.state.showRegisterButton ? (
             <Button
-              title="Show Register"
+              title="Register"
               styleWrapper={styles.Button}
               onPress={this.dropDownTextInputsOfRegistering.bind(this)}
             />
