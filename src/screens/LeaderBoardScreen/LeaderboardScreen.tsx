@@ -3,9 +3,7 @@ import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {UserService} from '../../services/userService';
 import {User} from '../../models/user';
 import UserRow from '../../components/UserRow';
-import {round} from 'react-native-reanimated';
 import styles from './LeaderboardScreen.style';
-import {ScrollView} from 'react-native-gesture-handler';
 
 interface UserSkillRankAndUsername {
   rank: number;
