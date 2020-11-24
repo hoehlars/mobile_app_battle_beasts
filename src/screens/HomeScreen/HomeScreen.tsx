@@ -1,20 +1,53 @@
 import * as React from 'react';
 import {Image, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-//import styles from '../../routes/TabNavigation.styles';
+import {TouchableOpacity} from 'react-native';
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
+import {AsyncStorageService} from '../../services/asyncStorage';
 import styles from './HomeScreen.style';
 
-class HomeScreen extends React.Component<{}, {}> {
-  constructor(props: Readonly<{}>) {
+interface HomeScreenProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+class HomeScreen extends React.Component<HomeScreenProps, {}> {
+  constructor(props: Readonly<HomeScreenProps>) {
     super(props);
+
+    this.props.navigation.addListener('beforeRemove', (event) => {
+      // prevent user from going back to login
+      // only allow user going  back to login via the logout
+      if (event.data.action.type !== 'NAVIGATE') {
+        event.preventDefault();
+      }
+    });
+  }
+
+  private async logout() {
+    const isUserDeleted = await AsyncStorageService.deleteUser();
+
+    if (isUserDeleted) {
+      this.props.navigation.navigate('LoginScreen');
+    }
   }
 
   render(): JSX.Element {
     return (
       <>
         <View style={styles.Background}>
-          <View style={styles.HeaderTextBox}>
-            <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
+          <View style={styles.HeaderBox}>
+            <View style={styles.HeaderTextBox}>
+              <Text style={styles.HeaderText}>Welcome to Battle Beasts!</Text>
+              <TouchableOpacity
+                testID="logoutButton"
+                style={styles.LogoutButton}
+                onPress={() => this.logout()}>
+                <Text style={styles.LogoutText}>Logout</Text>
+              </TouchableOpacity>
+            </View>
             <View style={styles.ImageBox}>
               <Image
                 style={styles.HeaderImage}
