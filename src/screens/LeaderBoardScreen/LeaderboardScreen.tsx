@@ -50,24 +50,25 @@ class LeaderboardScreen extends React.Component<
     });
     this.roundUserSkill();
   }
-
+  /*
   async getUserAround(): Promise<void> {
     const userAroundRes = await UserService.getUsersAroundCurrUsersRank();
-    //const userAround = await userAroundRes.json();
+    const userAround = await userAroundRes.json();
 
     this.setState({
       userAroundYourRank: userAround,
     });
     this.roundUserSkill();
-  }
+  }*/
 
   private roundUserSkill() {
     this.state.userTopTen.forEach((value) => {
       value.skill = Math.round(value.skill);
     });
+    /*
     this.state.userAroundYourRank.forEach((value) => {
       value.skill = Math.round(value.skill);
-    });
+    });*/
   }
 
   private renderUserRow(
@@ -99,7 +100,7 @@ class LeaderboardScreen extends React.Component<
               />
             </View>
             <View style={styles.Ranks}>
-              <Text style={styles.LeaderboardText}>Top ten players</Text>
+              <Text style={styles.LeaderboardText}>Players around you</Text>
               <FlatList
                 data={this.state.userTopTen}
                 renderItem={(data) => this.renderUserRow(data)}
