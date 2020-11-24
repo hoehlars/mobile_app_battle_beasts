@@ -41,6 +41,10 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
     }
   }
 
+  playGame() {
+
+  }
+
   render(): JSX.Element {
     return (
       <>
@@ -53,7 +57,8 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
             <Button
             title="Logout"
             styleWrapper={styles.LogoutButton}
-            onPress={this.logout.bind(this)} />
+            onPress={this.logout.bind(this)}
+            testID="logoutButton" />
           </View>
             <View style={styles.ImageBox}>
               <Image
@@ -62,21 +67,22 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
               />
             </View>
           <View style={styles.ButtonBox}>
-            <TouchableOpacity
-              style={styles.Button}
-              onPress={() => this.playGame}>
-              <Text style={styles.ButtonText}>PLAY RANKED!</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.Button}
-              onPress={() => this.playGame}>
-              <Text style={styles.ButtonText}>PLAY UNRANKED!</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.Button}
-              onPress={() => this.playGame}>
-              <Text style={styles.ButtonText}>PLAY AGAINST A BOT!</Text>
-            </TouchableOpacity>
+
+            <Button
+            title="PLAY RANKED!"
+            styleWrapper={styles.Button}
+            onPress={this.playGame.bind(this)} />
+            
+            <Button
+            title="PLAY UNRANKED!"
+            styleWrapper={styles.Button}
+            onPress={this.playGame.bind(this)} />
+
+            <Button
+            title="PLAY AGAINST A BOT!"
+            styleWrapper={styles.Button}
+            onPress={this.playGame.bind(this)} />
+
           </View>
         </View>
       </>

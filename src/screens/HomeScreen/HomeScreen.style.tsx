@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     color: theme.GRAY_COLOR,
   },
   ImageBox: {
-    flex: 4,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -41,23 +41,17 @@ const styles = StyleSheet.create({
     height: 135,
   },
   ButtonBox: {
-    flex: 2,
+    flex: 4,
     alignItems: 'center',
   },
   Button: {
     backgroundColor: theme.PRIMARY_COLOR,
-    minHeight: '20%',
+    minHeight: '10%',
     minWidth: '80%',
-    flexShrink: 0,
     marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-  },
-  ButtonText: {
-    color: theme.GRAY_COLOR,
-    fontSize: 23,
-    fontFamily: 'Nunito-Bold',
   },
 });
 
