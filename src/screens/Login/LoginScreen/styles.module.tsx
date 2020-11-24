@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     margin: '1%',
   },
+  HeaderBox: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: theme.DARK_GRAY_COLOR
+  }
 });
 
 export default styles;
