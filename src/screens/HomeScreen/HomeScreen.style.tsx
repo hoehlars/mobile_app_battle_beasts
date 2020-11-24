@@ -11,12 +11,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: theme.DARK_GRAY_COLOR,
-    marginLeft: '3%'
+    marginLeft: '3%',
   },
   Header: {
     flex: 1,
     alignItems: 'center',
-    
   },
   LogoutButton: {
     backgroundColor: theme.PRIMARY_COLOR,

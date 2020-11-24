@@ -241,9 +241,7 @@ class DeckManagerScreen extends React.Component<
   render(): JSX.Element {
     return (
       <>
-        <Header 
-        title="Your decks"
-        style={styles.Header} />
+        <Header title="Your decks" style={styles.Header} />
         <View testID="lineBelowHeader" style={styles.Line} />
 
         <View style={styles.SwipeableList}>

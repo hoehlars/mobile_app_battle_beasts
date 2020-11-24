@@ -88,9 +88,7 @@ class LeaderboardScreen extends React.Component<
     return (
       <>
         <View style={styles.Background}>
-          <Header 
-          title="Leaderboard"
-          style={styles.HeaderTextBox}/>
+          <Header title="Leaderboard" style={styles.HeaderTextBox} />
           <View style={styles.RankBox}>
             <View style={styles.Ranks}>
               <Text style={styles.LeaderboardText}>Top ten players</Text>

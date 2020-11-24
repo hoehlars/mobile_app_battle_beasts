@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {Image, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native';
+import {Image, View} from 'react-native';
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -41,48 +40,46 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
     }
   }
 
-  playGame() {
-
-  }
+  playGame() {}
 
   render(): JSX.Element {
     return (
       <>
         <View style={styles.Background}>
           <View style={styles.HeaderBox}>
-            <Header 
-            title="Welcome to Battle Beasts!"
-            style={styles.Header} />
+            <Header title="Welcome to Battle Beasts!" style={styles.Header} />
 
             <Button
-            title="Logout"
-            styleWrapper={styles.LogoutButton}
-            onPress={this.logout.bind(this)}
-            testID="logoutButton" />
+              title="Logout"
+              styleWrapper={styles.LogoutButton}
+              onPress={this.logout.bind(this)}
+              testID="logoutButton"
+            />
           </View>
-            <View style={styles.ImageBox}>
-              <Image
-                style={styles.HeaderImage}
-                source={require('../../assets/images/logos/battlebeasts-logo-white.png')}
-              />
-            </View>
+          <View style={styles.ImageBox}>
+            <Image
+              style={styles.HeaderImage}
+              source={require('../../assets/images/logos/battlebeasts-logo-white.png')}
+            />
+          </View>
           <View style={styles.ButtonBox}>
+            <Button
+              title="PLAY RANKED!"
+              styleWrapper={styles.Button}
+              onPress={this.playGame.bind(this)}
+            />
 
             <Button
-            title="PLAY RANKED!"
-            styleWrapper={styles.Button}
-            onPress={this.playGame.bind(this)} />
-            
-            <Button
-            title="PLAY UNRANKED!"
-            styleWrapper={styles.Button}
-            onPress={this.playGame.bind(this)} />
+              title="PLAY UNRANKED!"
+              styleWrapper={styles.Button}
+              onPress={this.playGame.bind(this)}
+            />
 
             <Button
-            title="PLAY AGAINST A BOT!"
-            styleWrapper={styles.Button}
-            onPress={this.playGame.bind(this)} />
-
+              title="PLAY AGAINST A BOT!"
+              styleWrapper={styles.Button}
+              onPress={this.playGame.bind(this)}
+            />
           </View>
         </View>
       </>

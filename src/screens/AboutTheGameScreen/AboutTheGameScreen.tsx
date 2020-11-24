@@ -18,10 +18,7 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
     return (
       <>
         <View style={styles.Background}>
-          <Header 
-          title="About the game"
-          style={styles.HeaderTextBox}
-          />
+          <Header title="About the game" style={styles.HeaderTextBox} />
           <View style={styles.AboutBox}>
             <ScrollView>
               {/* --- BASICS --- */}

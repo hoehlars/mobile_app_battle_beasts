@@ -24,7 +24,7 @@ describe('HomeScreen', () => {
       );
       const testInstance = testRenderer.root;
       expect(testInstance.findByType(Header)).not.toBeNull();
-    })
+    });
 
     it('renders the play ranked button', () => {
       const testRenderer = renderer.create(
@@ -32,22 +32,26 @@ describe('HomeScreen', () => {
       );
       const testInstance = testRenderer.root;
       expect(testInstance.findByProps({title: 'PLAY RANKED!'})).not.toBeNull();
-    })
+    });
 
     it('renders the play unranked button', () => {
       const testRenderer = renderer.create(
         <HomeScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(testInstance.findByProps({title: 'PLAY UNRANKED!'})).not.toBeNull();
-    })
+      expect(
+        testInstance.findByProps({title: 'PLAY UNRANKED!'}),
+      ).not.toBeNull();
+    });
 
     it('renders the play against a bot button', () => {
       const testRenderer = renderer.create(
         <HomeScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(testInstance.findByProps({title: 'PLAY AGAINST A BOT!'})).not.toBeNull();
-    })
+      expect(
+        testInstance.findByProps({title: 'PLAY AGAINST A BOT!'}),
+      ).not.toBeNull();
+    });
   });
 });

@@ -149,9 +149,7 @@ class HomeScreenLogin extends React.Component<
   render(): JSX.Element {
     return (
       <>
-        <Header 
-        title="BattleBeasts"
-        style={styles.HeaderBox} />
+        <Header title="BattleBeasts" style={styles.HeaderBox} />
         <View style={styles.Forms}>
           {this.state.showLoginButton ? (
             <Button

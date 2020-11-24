@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: 'center',
     paddingTop: '10%',
-    backgroundColor: theme.DARK_GRAY_COLOR
-  }
+    backgroundColor: theme.DARK_GRAY_COLOR,
+  },
 });
 
 export default styles;

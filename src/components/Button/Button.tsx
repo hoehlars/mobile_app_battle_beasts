@@ -6,7 +6,7 @@ interface ButtonProps {
   title: string;
   onPress: () => void;
   styleWrapper?: StyleProp<ViewStyle>;
-  testID?: string
+  testID?: string;
 }
 
 class Button extends React.Component<ButtonProps, {}> {

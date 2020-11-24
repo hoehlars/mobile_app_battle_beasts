@@ -4,7 +4,7 @@ import styles from './Header.styles';
 
 interface HeaderProps {
   title: string;
-  style: StyleProp<ViewStyle>
+  style: StyleProp<ViewStyle>;
 }
 
 class Header extends React.Component<HeaderProps, {}> {
@@ -14,9 +14,9 @@ class Header extends React.Component<HeaderProps, {}> {
 
   render() {
     return (
-        <View testID="header" style={this.props.style}>
-          <Text style={styles.HeaderText}>{this.props.title}</Text>
-        </View>
+      <View testID="header" style={this.props.style}>
+        <Text style={styles.HeaderText}>{this.props.title}</Text>
+      </View>
     );
   }
 }

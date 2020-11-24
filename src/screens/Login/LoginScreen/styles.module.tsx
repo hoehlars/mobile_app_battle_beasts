@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   HeaderBox: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: theme.DARK_GRAY_COLOR
-  }
+    backgroundColor: theme.DARK_GRAY_COLOR,
+  },
 });
 
 export default styles;
