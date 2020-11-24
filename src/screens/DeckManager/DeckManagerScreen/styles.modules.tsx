@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
     flex: 0.5,
     alignItems: 'center',
   },
+  Header: {
+    flex: 2,
+    alignItems: 'center',
+    paddingTop: '10%',
+    backgroundColor: theme.DARK_GRAY_COLOR,
+  },
 });
 
 export default styles;

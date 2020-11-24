@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Image, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
+import Header from '../../components/Header/Header';
 import styles from './AboutTheGameScreen.style';
 
 class AboutTheGameScreen extends React.Component<{}, {}> {
@@ -17,9 +18,7 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
     return (
       <>
         <View style={styles.Background}>
-          <View style={styles.HeaderTextBox}>
-            <Text style={styles.HeaderText}>About the game</Text>
-          </View>
+          <Header title="About the game" style={styles.HeaderTextBox} />
           <View style={styles.AboutBox}>
             <ScrollView>
               {/* --- BASICS --- */}

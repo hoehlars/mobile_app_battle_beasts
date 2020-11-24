@@ -1,17 +1,15 @@
 import {StyleSheet} from 'react-native';
+import {RFPercentage} from 'react-native-responsive-fontsize';
 import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   HeaderText: {
-    color: theme.LIGHT_COLOR,
-    fontSize: 36,
+    marginTop: '2.5%',
+    marginBottom: '2.5%',
+    color: theme.PRIMARY_COLOR,
+    fontSize: RFPercentage(5),
     fontFamily: 'Nunito-Bold',
-  },
-  Background: {
-    backgroundColor: theme.DARK_GRAY_COLOR,
-    height: 150,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
   },
 });
 

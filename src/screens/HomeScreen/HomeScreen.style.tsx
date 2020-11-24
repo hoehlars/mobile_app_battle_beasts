@@ -7,35 +7,30 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   HeaderBox: {
+    flex: 1.2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: theme.DARK_GRAY_COLOR,
+    marginLeft: '3%',
+  },
+  Header: {
     flex: 1,
     alignItems: 'center',
-  },
-  HeaderTextBox: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  HeaderText: {
-    marginTop: '5%',
-    color: theme.LIGHT_COLOR,
-    fontSize: 25,
-    fontFamily: 'Nunito-Bold',
-    flex: 1,
   },
   LogoutButton: {
     backgroundColor: theme.PRIMARY_COLOR,
     justifyContent: 'center',
-    marginTop: '5%',
     alignItems: 'center',
     borderRadius: 10,
-    flex: 0.2,
-    marginRight: '2%',
+    flex: 0.3,
+    marginRight: '5%',
   },
   LogoutText: {
     fontFamily: 'Nunito-Bold',
     color: theme.GRAY_COLOR,
   },
   ImageBox: {
-    flex: 4,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -45,23 +40,17 @@ const styles = StyleSheet.create({
     height: 135,
   },
   ButtonBox: {
-    flex: 2,
+    flex: 4,
     alignItems: 'center',
   },
   Button: {
     backgroundColor: theme.PRIMARY_COLOR,
-    minHeight: '20%',
+    minHeight: '10%',
     minWidth: '80%',
-    flexShrink: 0,
     marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-  },
-  ButtonText: {
-    color: theme.GRAY_COLOR,
-    fontSize: 23,
-    fontFamily: 'Nunito-Bold',
   },
 });
 

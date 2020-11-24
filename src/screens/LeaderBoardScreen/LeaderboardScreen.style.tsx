@@ -11,14 +11,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  HeaderText: {
-    marginTop: '2.5%',
-    marginBottom: '2.5%',
-    color: theme.PRIMARY_COLOR,
-    fontSize: RFPercentage(5),
-    fontFamily: 'Nunito-Bold',
-    flex: 1,
-  },
   LeaderboardText: {
     marginBottom: '2%',
     color: theme.PRIMARY_COLOR,
