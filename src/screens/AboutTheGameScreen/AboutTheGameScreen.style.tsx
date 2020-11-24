@@ -3,6 +3,9 @@ import theme from './../../assets/styles/theme.style';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 
 const styles = StyleSheet.create({
+  bold: {
+    fontWeight: 'bold',
+  },
   Background: {
     backgroundColor: theme.DARK_GRAY_COLOR,
     flex: 1,
@@ -17,6 +20,14 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(5),
     fontFamily: 'Nunito-Bold',
     flex: 1,
+  },
+  TitleText: {
+    fontWeight: 'bold',
+    fontSize: RFPercentage(3),
+    flex: 1,
+    fontFamily: 'Nunito-Regular',
+    color: 'white',
+    textAlign: 'justify',
   },
   AboutBox: {
     flex: 7,
@@ -62,6 +73,25 @@ const styles = StyleSheet.create({
     width: '10%',
     resizeMode: 'contain',
     marginRight: '5%',
+  },
+  ViewPlayerImage: {
+    flexDirection: 'row',
+    marginBottom: '5%',
+    marginTop: '5%',
+  },
+  ViewAnimalImage: {
+    flexDirection: 'row',
+    marginTop: '5%',
+    marginBottom: '5%',
+  },
+  ViewIconImage: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ViewEquipmentImage: {
+    flexDirection: 'row',
+    marginTop: '5%',
+    marginBottom: '5%',
   },
 });
 

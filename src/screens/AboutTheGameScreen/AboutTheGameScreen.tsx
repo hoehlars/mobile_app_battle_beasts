@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {Image, Text, View, Dimensions} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {RFPercentage} from 'react-native-responsive-fontsize';
 import styles from './AboutTheGameScreen.style';
-import Slideshow from 'react-native-image-slideshow';
 
 class AboutTheGameScreen extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {
@@ -22,41 +20,31 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               {/* --- BASICS --- */}
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
-                  <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    Basics
-                  </Text>
+                  <Text style={styles.TitleText}>Basics</Text>
                   {'\n\n'}
                   Battle Beasts is {this.height} a turn-based card game where
                   two players with a certain amount of{' '}
-                  <Text style={{fontWeight: 'bold'}}>health</Text> and{' '}
-                  <Text style={{fontWeight: 'bold'}}>action points</Text> battle
-                  each other until one party has no more{' '}
-                  <Text style={{fontWeight: 'bold'}}>health points</Text> left.
-                  The card game itself consists of{' '}
-                  <Text style={{fontWeight: 'bold'}}>animal cards</Text> which
-                  fight each other or attack the opponent directly and{' '}
-                  <Text style={{fontWeight: 'bold'}}>equipment cards</Text>{' '}
-                  which improve animals permanently. Every card costs a certain
-                  amount of{' '}
-                  <Text style={{fontWeight: 'bold'}}>action points</Text> so
-                  that you have a limitation of tactical moves for any turn you
-                  make. {'\n\n'}
+                  <Text style={styles.bold}>health</Text> and{' '}
+                  <Text style={styles.bold}>action points</Text> battle each
+                  other until one party has no more{' '}
+                  <Text style={styles.bold}>health points</Text> left. The card
+                  game itself consists of{' '}
+                  <Text style={styles.bold}>animal cards</Text> which fight each
+                  other or attack the opponent directly and{' '}
+                  <Text style={styles.bold}>equipment cards</Text> which improve
+                  animals permanently. Every card costs a certain amount of{' '}
+                  <Text style={styles.bold}>action points</Text> so that you
+                  have a limitation of tactical moves for any turn you make.{' '}
+                  {'\n\n'}
                   We will now explain the points, cards, and stats in detail.
                 </Text>
               </View>
               {/* --- PLAYER ---  */}
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
-                  <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    Player
-                  </Text>
+                  <Text style={styles.TitleText}>Player</Text>
                 </Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginBottom: '5%',
-                    marginTop: '5%',
-                  }}>
+                <View style={styles.ViewPlayerImage}>
                   <Image
                     style={styles.PlayerImage}
                     source={require('../../assets/images/about/player.png')}
@@ -65,18 +53,17 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
                     During the game, you will see this icon on the left side of
                     your screen. It is a default picture with your name in it
                     and shows both of your player stats: the
-                    <Text style={{fontWeight: 'bold'}}>health</Text> and the
-                    <Text style={{fontWeight: 'bold'}}>action points</Text>.
+                    <Text style={styles.bold}>health</Text> and the
+                    <Text style={styles.bold}>action points</Text>.
                   </Text>
                 </View>
                 <Text style={styles.AboutText}>
-                  The <Text style={{fontWeight: 'bold'}}>health points</Text>{' '}
-                  show your health in general, they will be decreased by your
-                  opponent’s attacks and as soon as they reach zero you lose the
-                  game.{'\n\n'}The{' '}
-                  <Text style={{fontWeight: 'bold'}}>action points</Text> show
-                  how many cards you still can play. Every time you put a card
-                  on the board the action points from the card will be
+                  The <Text style={styles.bold}>health points</Text> show your
+                  health in general, they will be decreased by your opponent’s
+                  attacks and as soon as they reach zero you lose the game.
+                  {'\n\n'}The <Text style={styles.bold}>action points</Text>{' '}
+                  show how many cards you still can play. Every time you put a
+                  card on the board the action points from the card will be
                   subtracted from your action points. As soon as they reach zero
                   it is not possible to put another card on the table. Your
                   action points will be filled up by the beginning of every
@@ -86,16 +73,9 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               {/* --- ANIMAL --- */}
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
-                  <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    Animal cards
-                  </Text>
+                  <Text style={styles.TitleText}>Animal cards</Text>
                 </Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginTop: '5%',
-                    marginBottom: '5%',
-                  }}>
+                <View style={styles.ViewAnimalImage}>
                   <Text style={styles.AboutText}>
                     The name of the card is written on top and underneath, you
                     will find a picture of the animal and a short description of
@@ -113,33 +93,33 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
                   The most important information are the three stats that are
                   written on the bottom right.
                 </Text>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={styles.ViewIconImage}>
                   <Image
                     style={styles.IconImage}
                     source={require('../../assets/images/about/attack-icon.png')}
                   />
                   <Text style={styles.AboutText}>
-                    The <Text style={{fontWeight: 'bold'}}>attack</Text> value:
-                    Shows how strong the card is in attack mode.
+                    The <Text style={styles.bold}>attack</Text> value: Shows how
+                    strong the card is in attack mode.
                   </Text>
                 </View>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={styles.ViewIconImage}>
                   <Image
                     style={styles.IconImage}
                     source={require('../../assets/images/about/defense-icon.png')}
                   />
                   <Text style={styles.AboutText}>
-                    The <Text style={{fontWeight: 'bold'}}>defense</Text> value:
-                    Shows how strong the card is in defense mode.
+                    The <Text style={styles.bold}>defense</Text> value: Shows
+                    how strong the card is in defense mode.
                   </Text>
                 </View>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={styles.ViewIconImage}>
                   <Image
                     style={styles.IconImage}
                     source={require('../../assets/images/about/action-icon.png')}
                   />
                   <Text style={styles.AboutText}>
-                    The <Text style={{fontWeight: 'bold'}}>action points </Text>
+                    The <Text style={styles.bold}>action points </Text>
                     value: Shows how much the card costs when you put in on the
                     board (the value that will be subtracted from your action
                     points).
@@ -149,16 +129,9 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               {/* --- EQUIPMENT --- */}
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
-                  <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    Equipment cards
-                  </Text>
+                  <Text style={styles.TitleText}>Equipment cards</Text>
                 </Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginTop: '5%',
-                    marginBottom: '5%',
-                  }}>
+                <View style={styles.ViewEquipmentImage}>
                   <Image
                     style={styles.EquipmentImage}
                     source={require('../../assets/images/about/equipment.png')}
@@ -185,9 +158,7 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               {/* --- GAME ROUNDS --- */}
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
-                  <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    Game rounds{'\n\n'}
-                  </Text>
+                  <Text style={styles.TitleText}>Game rounds{'\n\n'}</Text>
                   At the beginning of a round, your action points are filled up
                   again and you get one new card. You start with the cast phase
                   and you are able to put cards on the board.{'\n\n'}Animal and
@@ -204,10 +175,8 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
                   have the possibility to attack either your opponent or his
                   animals, but some important rules must be paid attention to.
                   {'\n\n'}Here you can see the{' '}
-                  <Text style={{fontWeight: 'bold'}}>
-                    5 most important rules
-                  </Text>
-                  :{'\n\n'}1. Only animals in the attack mode can attack other
+                  <Text style={styles.bold}>5 most important rules</Text>:
+                  {'\n\n'}1. Only animals in the attack mode can attack other
                   animals.{'\n\n'}2. Animals can only attack once every round
                   and will be greyed out after an attack. If an animal is
                   defeated, it disappears from the board.{'\n\n'}3. The attack
@@ -224,7 +193,7 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
                   attacks or no attack is possible anymore, you can finish your
                   round by pressing the "End turn" button to start your
                   opponent’s turn.{'\n\n'}
-                  <Text style={{fontWeight: 'bold'}}>
+                  <Text style={styles.bold}>
                     Differences in the first round:
                   </Text>
                   {'\n\n'}In the first round, both players get five cards on
@@ -238,9 +207,7 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               {/* --- END --- */}
               <View style={styles.AboutTextBox}>
                 <Text style={styles.AboutText}>
-                  <Text style={{fontWeight: 'bold', fontSize: RFPercentage(3)}}>
-                    End
-                  </Text>
+                  <Text style={styles.TitleText}>End</Text>
                   {'\n\n'}
                   As soon as a player's health reaches zero, the game is over
                   and the winner is declared. Both players will receive a card
