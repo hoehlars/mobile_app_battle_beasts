@@ -4,6 +4,7 @@ import {UserService} from '../../services/userService';
 import {User} from '../../models/user';
 import UserRow from '../../components/UserRow';
 import styles from './LeaderboardScreen.style';
+import Orientation from 'react-native-orientation-locker';
 
 interface UserSkillRankAndUsername {
   rank: number;
@@ -35,6 +36,7 @@ class LeaderboardScreen extends React.Component<
   }
 
   async componentDidMount() {
+    Orientation.lockToPortrait();
     await this.getUsersTopTen();
     await this.getUserAround();
   }

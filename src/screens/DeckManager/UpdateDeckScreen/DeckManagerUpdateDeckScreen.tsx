@@ -15,6 +15,7 @@ import {DeckService} from '../../../services/deckService';
 import CardComponent from '../../../components/CardComponent/CardComponent';
 import {CardFlatListData} from '../../../models/cardFlatListData';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
+import Orientation from 'react-native-orientation-locker';
 
 interface NavigationParams {
   deck: Deck;
@@ -93,6 +94,7 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   }
 
   async componentDidMount() {
+    Orientation.lockToPortrait();
     await this.getAvailableCards();
     await this.getCardsOwned();
   }
