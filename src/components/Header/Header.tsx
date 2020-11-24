@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Text, View} from 'react-native';
+import {StyleProp, Text, View, ViewStyle} from 'react-native';
 import styles from './Header.styles';
 
 interface HeaderProps {
   title: string;
+  style: StyleProp<ViewStyle>
 }
 
 class Header extends React.Component<HeaderProps, {}> {
@@ -13,11 +14,9 @@ class Header extends React.Component<HeaderProps, {}> {
 
   render() {
     return (
-      <View>
-        <View testID="header" style={[styles.Background]}>
-          <Text style={[styles.HeaderText]}>{this.props.title}</Text>
+        <View testID="header" style={this.props.style}>
+          <Text style={styles.HeaderText}>{this.props.title}</Text>
         </View>
-      </View>
     );
   }
 }
