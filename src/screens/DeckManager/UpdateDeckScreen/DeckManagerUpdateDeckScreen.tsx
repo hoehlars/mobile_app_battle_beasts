@@ -76,8 +76,8 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   private async getCardsOwned() {
     // get cards owned
     const allCards = this.props.route.params!.deck.cards;
-    
-    const promisesCardsArr: Promise<Card>[] = []
+
+    const promisesCardsArr: Promise<Card>[] = [];
 
     // create promises for all the cards
     for (const cardNumber of allCards) {
@@ -85,19 +85,19 @@ class DeckManagerUpdateDeckScreen extends React.Component<
     }
 
     // resolve all promises
-    const cardsResJson: Card[] = await Promise.all(promisesCardsArr)
+    const cardsResJson: Card[] = await Promise.all(promisesCardsArr);
 
     // add id for frontend
     let count: number = 0;
     const allCardsInDeck: CardFlatListData[] = [];
-    cardsResJson.forEach(card => {
+    cardsResJson.forEach((card) => {
       const cardFlatListData: CardFlatListData = {
         id: count.toString(),
         ...card,
       };
       allCardsInDeck.push(cardFlatListData);
       count++;
-    })
+    });
 
     this.setState({
       cardsInDeck: allCardsInDeck,
