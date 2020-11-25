@@ -76,18 +76,29 @@ class DeckManagerUpdateDeckScreen extends React.Component<
   private async getCardsOwned() {
     // get cards owned
     const allCards = this.props.route.params!.deck.cards;
-    const allCardsInDeck: CardFlatListData[] = [];
-    let count: number = 0;
+    
+    const promisesCardsArr: Promise<Card>[] = []
 
+    // create promises for all the cards
     for (const cardNumber of allCards) {
-      const cardRes: Card = await CardService.getCard(cardNumber);
+      promisesCardsArr.push(CardService.getCard(cardNumber));
+    }
+
+    // resolve all promises
+    const cardsResJson: Card[] = await Promise.all(promisesCardsArr)
+
+    // add id for frontend
+    let count: number = 0;
+    const allCardsInDeck: CardFlatListData[] = [];
+    cardsResJson.forEach(card => {
       const cardFlatListData: CardFlatListData = {
         id: count.toString(),
-        ...cardRes,
+        ...card,
       };
       allCardsInDeck.push(cardFlatListData);
       count++;
-    }
+    })
+
     this.setState({
       cardsInDeck: allCardsInDeck,
     });
