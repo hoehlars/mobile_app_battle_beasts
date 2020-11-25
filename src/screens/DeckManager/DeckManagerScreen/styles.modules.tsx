@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   FloatingAction: {
     flex: 1,
     backgroundColor: theme.DARK_GRAY_COLOR,
+    marginBottom: '10%s'
   },
   TextInput: {
     height: '8%',
@@ -36,9 +37,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   TextDeckSpace: {
-    color: theme.DARK_GRAY_COLOR,
+    color: theme.PRIMARY_COLOR,
     fontFamily: 'Nunito-Bold',
     fontSize: RFPercentage(2.5),
+  },
+  BuyButton: {
+    backgroundColor: theme.PRIMARY_COLOR,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    flex: 0.,
+    marginRight: '5%',
+    marginBottom: '4%'
+  },
+  ButtonFloatingActionBox: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: theme.DARK_GRAY_COLOR
   }
 });
 

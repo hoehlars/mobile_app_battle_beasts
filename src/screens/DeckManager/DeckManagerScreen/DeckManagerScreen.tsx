@@ -22,6 +22,7 @@ import DeckItem from '../../../components/DeckItem/DeckItem';
 import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckButton';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 import Orientation from 'react-native-orientation-locker';
+import Button from '../../../components/Button/Button';
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -121,6 +122,14 @@ class DeckManagerScreen extends React.Component<
       amountOfDeckspaceOwned: amountOfDeckspaceJson.owned
     })
     console.log(amountOfDeckspaceJson)
+  }
+
+  private buyDeckSpace() {
+    // TO DO: buy deck space implementation
+  }
+
+  private buyCards() {
+    // TO DO: buy cards implementation
   }
 
   private async deleteDeckItem(rowMap: RowMap<DeckItemList>, rowKey: string) {
@@ -277,23 +286,36 @@ class DeckManagerScreen extends React.Component<
             onSubmitEditing={(e) => this.addDeckItem(e)}
             placeholder="Gib deinem neuen Deck einen Namen."
           />
-        ) : null}
-        <FloatingAction
-          ref={(ref) => {
-            this.floatingAction = ref!;
-          }}
-          position="right"
-          showBackground={false}
-          color="#36393E"
-          iconWidth={25}
-          iconHeight={25}
-          buttonSize={56}
-          onPressMain={() => {
-            this.setState({
-              showTextInput: !this.state.showTextInput,
-            });
-          }}
-        />
+        ) : (
+          <View style={styles.ButtonFloatingActionBox}>
+            <Button
+              styleWrapper={styles.BuyButton}
+              title="Buy Deckspace"
+              onPress={this.buyDeckSpace.bind(this)} />
+
+              <Button
+                styleWrapper={styles.BuyButton}
+                title="Buy cards"
+                onPress={this.buyCards.bind(this)} />
+          </View>
+        )}
+          <FloatingAction
+            ref={(ref) => {
+              this.floatingAction = ref!;
+            }}
+            position="right"
+            showBackground={false}
+            color="#36393E"
+            iconWidth={25}
+            iconHeight={25}
+            buttonSize={56}
+            onPressMain={() => {
+              this.setState({
+                showTextInput: !this.state.showTextInput,
+              });
+            }}
+          />
+
 
         {this.state.error === '' ? <View style={styles.DeckSpace}>
           <Text 
