@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   ListRenderItemInfo,
   NativeSyntheticEvent,
+  Text,
   TextInputSubmitEditingEventData,
   View,
 } from 'react-native';
@@ -27,6 +28,7 @@ interface DeckManagerScreenState {
   showTextInput: boolean;
   textInput: string;
   error: string;
+  amountOfDeckspaceOwned: number;
   user?: User;
 }
 
@@ -69,6 +71,7 @@ class DeckManagerScreen extends React.Component<
       showTextInput: false,
       textInput: '',
       decks: [],
+      amountOfDeckspaceOwned: 0,
       error: '',
     };
   }
@@ -108,6 +111,16 @@ class DeckManagerScreen extends React.Component<
     Orientation.lockToPortrait();
     await this.readUserFromStorage();
     await this.getDecks();
+    await this.getAmountOfDeckspace();
+  }
+
+  private async getAmountOfDeckspace(): Promise<void> {
+    const amountOfDeckspaceRes = await DeckService.getDeckSpaces(this.state.user!.token) 
+    const amountOfDeckspaceJson: number = await amountOfDeckspaceRes.json();
+    this.setState({
+      amountOfDeckspaceOwned: amountOfDeckspaceJson.owned
+    })
+    console.log(amountOfDeckspaceJson)
   }
 
   private async deleteDeckItem(rowMap: RowMap<DeckItemList>, rowKey: string) {
@@ -282,8 +295,15 @@ class DeckManagerScreen extends React.Component<
           }}
         />
 
-        {this.state.error === '' ? null : (
-          <ErrorBox text={this.state.error} styleWrapper={styles.DeckError} />
+        {this.state.error === '' ? <View style={styles.DeckSpace}>
+          <Text 
+          style={styles.TextDeckSpace}>
+            Deckspace left: {this.state.decks.length + "/" + this.state.amountOfDeckspaceOwned}
+          </Text>
+        </View> : (
+          <ErrorBox 
+          text={this.state.error} 
+          styleWrapper={styles.DeckError} />
         )}
       </>
     );

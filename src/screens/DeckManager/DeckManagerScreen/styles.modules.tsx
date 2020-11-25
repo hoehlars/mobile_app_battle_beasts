@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 import theme from '../../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
@@ -30,6 +31,15 @@ const styles = StyleSheet.create({
     paddingTop: '10%',
     backgroundColor: theme.DARK_GRAY_COLOR,
   },
+  DeckSpace: {
+    flex: 0.5,
+    alignItems: 'center',
+  },
+  TextDeckSpace: {
+    color: theme.DARK_GRAY_COLOR,
+    fontFamily: 'Nunito-Bold',
+    fontSize: RFPercentage(2.5),
+  }
 });
 
 export default styles;
