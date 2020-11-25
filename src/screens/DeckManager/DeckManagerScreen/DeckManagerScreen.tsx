@@ -289,11 +289,13 @@ class DeckManagerScreen extends React.Component<
         ) : (
           <View style={styles.ButtonFloatingActionBox}>
             <Button
+              testID="buyDeckspaceButton"
               styleWrapper={styles.BuyButton}
               title="Buy Deckspace"
               onPress={this.buyDeckSpace.bind(this)} />
 
               <Button
+              testID="buyCardsButton"
                 styleWrapper={styles.BuyButton}
                 title="Buy cards"
                 onPress={this.buyCards.bind(this)} />
