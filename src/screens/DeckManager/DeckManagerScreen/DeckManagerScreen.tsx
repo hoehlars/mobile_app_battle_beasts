@@ -297,6 +297,7 @@ class DeckManagerScreen extends React.Component<
 
         {this.state.error === '' ? <View style={styles.DeckSpace}>
           <Text 
+          testID="deckspaceAvailable"
           style={styles.TextDeckSpace}>
             Deckspace left: {this.state.decks.length + "/" + this.state.amountOfDeckspaceOwned}
           </Text>

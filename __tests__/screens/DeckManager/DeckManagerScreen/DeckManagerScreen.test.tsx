@@ -68,6 +68,14 @@ describe('DeckManagerScreen', () => {
       const testInstance = testRenderer.root;
       expect(testInstance.findByType(FloatingAction)).not.toBeNull();
     });
+
+    it('renders the deck space available', () => {
+      const testRenderer = renderer.create(
+        <DeckManagerScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(testInstance.findByProps({testID: 'deckspaceAvailable'})).not.toBeNull();
+    })
   });
 
   describe('logic', () => {
