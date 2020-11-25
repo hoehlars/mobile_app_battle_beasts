@@ -63,11 +63,10 @@ class HomeScreenLogin extends React.Component<
   async componentDidMount() {
     Orientation.lockToPortrait();
     const user: User | null = await AsyncStorageService.readUser();
-    
 
     if (user) {
-      const isTokenStillValid = this.isTokenValid(user.token)
-      if(isTokenStillValid) {
+      const isTokenStillValid = this.isTokenValid(user.token);
+      if (isTokenStillValid) {
         this.props.navigation.navigate('TabNavigator');
       } else {
         await AsyncStorageService.deleteUser();
@@ -80,7 +79,7 @@ class HomeScreenLogin extends React.Component<
     return expirationTime * this.TOKEN_TIMEOUT > new Date().getTime();
   }
 
-  private getExpFromToken(token: string): number  {
+  private getExpFromToken(token: string): number {
     const parsed: {exp: number; username: string; email: string} = jwtDecode(
       token,
     ) as {exp: number; username: string; email: string};
