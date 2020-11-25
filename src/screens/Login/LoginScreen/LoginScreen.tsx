@@ -46,6 +46,7 @@ class HomeScreenLogin extends React.Component<
   HomeScreenLoginProps,
   HomeScreenLoginState
 > {
+  private readonly TOKEN_TIMEOUT: number = 1000;
   constructor(props: Readonly<HomeScreenLoginProps>) {
     super(props);
 
@@ -62,9 +63,28 @@ class HomeScreenLogin extends React.Component<
   async componentDidMount() {
     Orientation.lockToPortrait();
     const user: User | null = await AsyncStorageService.readUser();
+    
+
     if (user) {
-      this.props.navigation.navigate('TabNavigator');
+      const isTokenStillValid = this.isTokenValid(user.token)
+      if(isTokenStillValid) {
+        this.props.navigation.navigate('TabNavigator');
+      } else {
+        await AsyncStorageService.deleteUser();
+      }
     }
+  }
+
+  private isTokenValid(token: string): boolean {
+    const expirationTime = this.getExpFromToken(token);
+    return expirationTime * this.TOKEN_TIMEOUT > new Date().getTime();
+  }
+
+  private getExpFromToken(token: string): number  {
+    const parsed: {exp: number; username: string; email: string} = jwtDecode(
+      token,
+    ) as {exp: number; username: string; email: string};
+    return parsed.exp;
   }
 
   private async submitLoginData(loginData: LoginData) {
