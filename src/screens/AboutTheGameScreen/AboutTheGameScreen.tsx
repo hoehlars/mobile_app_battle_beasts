@@ -42,7 +42,6 @@ class AboutTheGameScreen extends React.Component<{}, {}> {
               <View style={styles.AboutTextBox}>
                 <GameRoundsCard />
               </View>
-              {/* --- END --- */}
               <View style={styles.AboutTextBox}>
                 <EndCard />
               </View>
