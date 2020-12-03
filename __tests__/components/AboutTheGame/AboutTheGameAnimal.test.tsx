@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AboutTheGameAnimal from '../../../src/components/AboutTheGame/AboutTheGameAnimal';
 
-describe('AboutTheGameEnd', () => {
+describe('AboutTheGameAnimal', () => {
   describe('rendering', () => {
     it('renders the title', () => {
       const testRenderer = renderer.create(<AboutTheGameAnimal />);
