@@ -18,6 +18,8 @@ interface LeaderboardState {
   userTopTen: UserSkillRankAndUsername[];
   userAroundYourRank: UserSkillRankAndUsername[];
   error: string;
+  loggedInUsername: string;
+  loggedInUserToken: string;
 }
 
 interface LeaderboardProps {
@@ -34,13 +36,24 @@ class LeaderboardScreen extends React.Component<
       userTopTen: [],
       userAroundYourRank: [],
       error: '',
+      loggedInUsername: '',
+      loggedInUserToken: '',
     };
   }
 
   async componentDidMount() {
     Orientation.lockToPortrait();
+    await this.getLoggedInUser();
     await this.getUsersTopTen();
     await this.getUserAround();
+  }
+
+  async getLoggedInUser(): Promise<void> {
+    const loggedInUser = await AsyncStorageService.readUser();
+    this.setState({
+      loggedInUsername: loggedInUser?.username,
+      loggedInUserToken: loggedInUser?.token,
+    });
   }
 
   async getUsersTopTen(): Promise<void> {
@@ -54,9 +67,8 @@ class LeaderboardScreen extends React.Component<
   }
 
   async getUserAround(): Promise<void> {
-    const userToken = await AsyncStorageService.readUser();
     const userAroundRes = await UserService.getUsersAroundCurrUsersRank(
-      userToken?.token,
+      this.state.loggedInUserToken,
     );
     const userAround = await userAroundRes.json();
 
@@ -83,6 +95,7 @@ class LeaderboardScreen extends React.Component<
         rank={data.item.rank}
         username={data.item.username}
         skill={data.item.skill}
+        loggedInUsername={this.state.loggedInUsername}
       />
     );
   }
