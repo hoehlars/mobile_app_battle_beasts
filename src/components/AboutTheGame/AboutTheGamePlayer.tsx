@@ -12,7 +12,9 @@ class AboutTheGamePlayer extends React.Component<{}, {}> {
     return (
       <>
         <Text style={sharedStyles.AboutText}>
-          <Text style={sharedStyles.TitleText}>Player</Text>
+          <Text testID="title" style={sharedStyles.TitleText}>
+            Player
+          </Text>
         </Text>
         <View style={styles.ViewPlayerImage}>
           <Image
@@ -27,7 +29,7 @@ class AboutTheGamePlayer extends React.Component<{}, {}> {
             <Text style={sharedStyles.bold}>action points</Text>.
           </Text>
         </View>
-        <Text style={sharedStyles.AboutText}>
+        <Text testID="description" style={sharedStyles.AboutText}>
           The <Text style={sharedStyles.bold}>health points</Text> show your
           health in general, they will be decreased by your opponent’s attacks
           and as soon as they reach zero you lose the game.

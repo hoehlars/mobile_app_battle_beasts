@@ -12,10 +12,13 @@ class AboutTheGameEquipment extends React.Component<{}, {}> {
     return (
       <>
         <Text style={sharedStyles.AboutText}>
-          <Text style={sharedStyles.TitleText}>Equipment cards</Text>
+          <Text testID="title" style={sharedStyles.TitleText}>
+            Equipment cards
+          </Text>
         </Text>
         <View style={styles.ViewEquipmentImage}>
           <Image
+            testID="equipmentImage"
             style={styles.EquipmentImage}
             source={require('../../assets/images/about/equipment.png')}
           />
@@ -25,7 +28,7 @@ class AboutTheGameEquipment extends React.Component<{}, {}> {
             states for which type of animal it can be used.
           </Text>
         </View>
-        <Text style={sharedStyles.AboutText}>
+        <Text testID="description" style={sharedStyles.AboutText}>
           The equipment card can be recognized on the top left of the card, it
           is marked with a plus and it is written on the bottom left.{'\n\n'}The
           equipment card has the same three stats on the bottom right of the
