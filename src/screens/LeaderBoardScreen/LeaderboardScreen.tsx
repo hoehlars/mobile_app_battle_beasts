@@ -2,6 +2,7 @@ import * as React from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {UserService} from '../../services/userService';
 import {User} from '../../models/user';
+import {AsyncStorageService} from '../../services/asyncStorage';
 import UserRow from '../../components/UserRow';
 import styles from './LeaderboardScreen.style';
 import Orientation from 'react-native-orientation-locker';
@@ -51,25 +52,27 @@ class LeaderboardScreen extends React.Component<
     });
     this.roundUserSkill();
   }
-  /*
+
   async getUserAround(): Promise<void> {
-    const userAroundRes = await UserService.getUsersAroundCurrUsersRank();
+    const userToken = await AsyncStorageService.readUser();
+    const userAroundRes = await UserService.getUsersAroundCurrUsersRank(
+      userToken?.token,
+    );
     const userAround = await userAroundRes.json();
 
     this.setState({
       userAroundYourRank: userAround,
     });
     this.roundUserSkill();
-  }*/
+  }
 
   private roundUserSkill() {
     this.state.userTopTen.forEach((value) => {
       value.skill = Math.round(value.skill);
     });
-    /*
     this.state.userAroundYourRank.forEach((value) => {
       value.skill = Math.round(value.skill);
-    });*/
+    });
   }
 
   private renderUserRow(
@@ -101,7 +104,7 @@ class LeaderboardScreen extends React.Component<
             <View style={styles.Ranks}>
               <Text style={styles.LeaderboardText}>Players around you</Text>
               <FlatList
-                data={this.state.userTopTen}
+                data={this.state.userAroundYourRank}
                 renderItem={(data) => this.renderUserRow(data)}
                 keyExtractor={(data) => data.rank}
               />
