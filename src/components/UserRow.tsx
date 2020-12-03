@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Text, View} from 'react-native';
-import {AsyncStorageService} from '../services/asyncStorage';
 import styles from './UserRow.styles';
 
 interface UserRowProps {
   rank: number;
   username: string;
   skill: string;
+  loggedInUsername: string;
 }
 
 interface UserRowState {
@@ -17,18 +17,15 @@ class UserRow extends React.Component<UserRowProps, UserRowState> {
   constructor(props: Readonly<UserRowProps>) {
     super(props);
     this.state = {
-      loggedInPlayer: false,
+      loggedInPlayer: this.checkLoggedInUser(),
     };
-    this.checkLoggedInUser();
   }
 
-  async checkLoggedInUser() {
-    const loggedInUser = await AsyncStorageService.readUser();
-    if (this.props.username === loggedInUser?.username) {
-      this.setState({
-        loggedInPlayer: true,
-      });
+  private checkLoggedInUser(): boolean {
+    if (this.props.username === this.props.loggedInUsername) {
+      return true;
     }
+    return false;
   }
 
   render(): JSX.Element {
