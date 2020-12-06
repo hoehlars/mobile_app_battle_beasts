@@ -10,8 +10,10 @@ class AboutTheGameBasics extends React.Component<{}, {}> {
   render() {
     return (
       <>
-        <Text style={sharedStyles.AboutText}>
-          <Text style={sharedStyles.TitleText}>Basics</Text>
+        <Text testID="description" style={sharedStyles.AboutText}>
+          <Text testID="title" style={sharedStyles.TitleText}>
+            Basics
+          </Text>
           {'\n\n'}
           Battle Beasts is a turn-based card game where two players with a
           certain amount of <Text style={sharedStyles.bold}>

@@ -11,8 +11,10 @@ class AboutTheGameGameRounds extends React.Component<{}, {}> {
   render() {
     return (
       <>
-        <Text style={sharedStyles.AboutText}>
-          <Text style={sharedStyles.TitleText}>Game rounds{'\n\n'}</Text>
+        <Text testID="description" style={sharedStyles.AboutText}>
+          <Text testID="title" style={sharedStyles.TitleText}>
+            Game rounds{'\n\n'}
+          </Text>
           At the beginning of a round, your action points are filled up again
           and you get one new card. You start with the cast phase and you are
           able to put cards on the board.{'\n\n'}Animal and equipment cards can
@@ -32,6 +34,7 @@ class AboutTheGameGameRounds extends React.Component<{}, {}> {
         </Text>
         <View>
           <Image
+            testID="gameroundImage1"
             style={styles.GameroundImage1}
             source={require('../../assets/images/about/gameround-1.png')}
           />
@@ -42,6 +45,7 @@ class AboutTheGameGameRounds extends React.Component<{}, {}> {
         </Text>
         <View>
           <Image
+            testID="gameroundImage2"
             style={styles.GameroundImage2}
             source={require('../../assets/images/about/gameround-2.png')}
           />
@@ -53,6 +57,7 @@ class AboutTheGameGameRounds extends React.Component<{}, {}> {
         </Text>
         <View>
           <Image
+            testID="gameroundImage3"
             style={styles.GameroundImage3}
             source={require('../../assets/images/about/gameround-3.png')}
           />
@@ -65,6 +70,7 @@ class AboutTheGameGameRounds extends React.Component<{}, {}> {
         </Text>
         <View>
           <Image
+            testID="gameroundImage4"
             style={styles.GameroundImage4}
             source={require('../../assets/images/about/gameround-4.png')}
           />
@@ -77,6 +83,7 @@ class AboutTheGameGameRounds extends React.Component<{}, {}> {
         </Text>
         <View>
           <Image
+            testID="gameroundImage5"
             style={styles.GameroundImage5}
             source={require('../../assets/images/about/gameround-5.png')}
           />

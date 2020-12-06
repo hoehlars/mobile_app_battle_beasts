@@ -10,8 +10,10 @@ class AboutTheGameEnd extends React.Component<{}, {}> {
   render() {
     return (
       <>
-        <Text style={sharedStyles.AboutText}>
-          <Text style={sharedStyles.TitleText}>End</Text>
+        <Text testID="description" style={sharedStyles.AboutText}>
+          <Text testID="title" style={sharedStyles.TitleText}>
+            End
+          </Text>
           {'\n\n'}
           As soon as a player's health reaches zero, the game is over and the
           winner is declared. Both players will receive a card as a reward.

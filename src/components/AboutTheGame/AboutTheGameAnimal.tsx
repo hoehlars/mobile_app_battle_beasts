@@ -12,7 +12,9 @@ class AboutTheGameAnimal extends React.Component<{}, {}> {
     return (
       <>
         <Text style={sharedStyles.AboutText}>
-          <Text style={sharedStyles.TitleText}>Animal cards</Text>
+          <Text testID="title" style={sharedStyles.TitleText}>
+            Animal cards
+          </Text>
         </Text>
         <View style={styles.ViewAnimalImage}>
           <Text style={sharedStyles.AboutText}>
@@ -23,6 +25,7 @@ class AboutTheGameAnimal extends React.Component<{}, {}> {
             of the card has no influence on the gameplay.
           </Text>
           <Image
+            testID="animalImage"
             style={styles.AnimalImage}
             source={require('../../assets/images/about/animal.png')}
           />
@@ -33,6 +36,7 @@ class AboutTheGameAnimal extends React.Component<{}, {}> {
         </Text>
         <View style={styles.ViewIconImage}>
           <Image
+            testID="iconImageAttack"
             style={styles.IconImage}
             source={require('../../assets/images/about/attack-icon.png')}
           />
@@ -43,6 +47,7 @@ class AboutTheGameAnimal extends React.Component<{}, {}> {
         </View>
         <View style={styles.ViewIconImage}>
           <Image
+            testID="iconImageDefense"
             style={styles.IconImage}
             source={require('../../assets/images/about/defense-icon.png')}
           />
@@ -53,6 +58,7 @@ class AboutTheGameAnimal extends React.Component<{}, {}> {
         </View>
         <View style={styles.ViewIconImage}>
           <Image
+            testID="iconImageAction"
             style={styles.IconImage}
             source={require('../../assets/images/about/action-icon.png')}
           />
