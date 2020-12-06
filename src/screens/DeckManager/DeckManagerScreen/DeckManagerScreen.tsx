@@ -23,7 +23,7 @@ import DeckItem from '../../../components/DeckItem/DeckItem';
 import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckButton';
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 import Orientation from 'react-native-orientation-locker';
-import Button from '../../../components/Button/Button';
+import SmallButton from '../../../components/SmallButton/SmallButton';
 import RNIap, {
   PurchaseError,
   purchaseErrorListener,
@@ -368,13 +368,13 @@ class DeckManagerScreen extends React.Component<
           />
         ) : (
           <View style={styles.ButtonFloatingActionBox}>
-            <Button
+            <SmallButton
               testID="buyDeckspaceButton"
               styleWrapper={styles.BuyButton}
               title="Buy Deckspace"
               onPress={this.buyDeckSpace.bind(this)} />
 
-              <Button
+              <SmallButton
               testID="buyCardsButton"
                 styleWrapper={styles.BuyButton}
                 title="Buy cards"
