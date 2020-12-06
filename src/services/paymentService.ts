@@ -105,4 +105,36 @@ export class PaymentService {
       body: JSON.stringify({payerId, paymentId, amount: count}),
     });
   }
+
+  static async executePaymentAndGetBoughtDeckspacesMobile(
+    authorization: string,
+    count: number,
+  ): Promise<HttpResponse<Deck[]>> {
+    return slimFetch(`${this.REACT_API_BASE_URL}/api/decks/buy/execute/mobile`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${authorization}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({amount: count}),
+    });
+  }
+
+  static async executePaymentAndGetBoughtCardsMobile(
+    authorization: string,
+    count: number,
+  ): Promise<HttpResponse<Card[]>> {
+    return slimFetch(`${this.REACT_API_BASE_URL}/api/cards/buy/execute/mobile`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${authorization}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({amount: count}),
+    });
+  }
 }
+
+
