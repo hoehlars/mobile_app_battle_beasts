@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   ListRenderItemInfo,
   NativeSyntheticEvent,
+  Platform,
   Text,
   TextInputSubmitEditingEventData,
   View,
@@ -23,6 +24,13 @@ import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckBut
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 import Orientation from 'react-native-orientation-locker';
 import Button from '../../../components/Button/Button';
+import RNIap, {
+  PurchaseError,
+  purchaseErrorListener,
+} from 'react-native-iap';
+import { PaymentService } from '../../../services/paymentService';
+
+
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -41,6 +49,13 @@ class DeckManagerScreen extends React.Component<
   DeckManagerScreenProps,
   DeckManagerScreenState
 > {
+  private readonly ITEM_SKUS: string[] | undefined = Platform.select({
+    android: [
+     'android.test.purchased'
+    ]
+  });
+  private readonly DECKSPACE_ITEM: string = 'android.test.purchased'
+  private readonly CARD_ITEM: string = 'android.test.purchased'
   private floatingAction: FloatingAction | undefined;
   private readonly STANDARD_DECK: number[] = [
     0,
@@ -113,7 +128,81 @@ class DeckManagerScreen extends React.Component<
     await this.readUserFromStorage();
     await this.getDecks();
     await this.getAmountOfDeckspace();
+    await this.getProducts();
   }
+
+  async componentWillUnmount() {
+    await RNIap.endConnection();
+  }
+
+  private async getProducts() {
+    try {
+      await RNIap.initConnection();
+      await RNIap.getProducts(this.ITEM_SKUS!)
+    } catch(err) {
+      this.setState({
+        error: 'Error while loading products.'
+      })
+    }
+  }
+
+  private async buyDeckSpace()  {
+    // clear error
+    this.setState({
+      error: ''
+    })
+
+    // buy
+    try {
+        await RNIap.requestPurchase(this.DECKSPACE_ITEM, false);
+         // payment was successful
+        // unlock deckspace
+        const deckspaceRes = await PaymentService.executePaymentAndGetBoughtDeckspacesMobile(this.state.user!.token, 1);
+        const deckSpaceResJson = await deckspaceRes.json();
+        console.log('deckSpaceResJson', deckSpaceResJson)
+        this.setState({
+          amountOfDeckspaceOwned: this.state.amountOfDeckspaceOwned+1
+        })
+
+    } catch (err) {
+        console.log('error', err)
+        this.setState({
+          error: 'Payment was cancelled.'
+        })
+    }
+  }
+
+  private async buyCards()  {
+    // clear error
+    this.setState({
+      error: ''
+    })
+
+    // buy
+    try {
+        await RNIap.requestPurchase(this.CARD_ITEM, false);
+        
+        // payment was successful
+        // unlock card 
+        const cardsRes = await PaymentService.executePaymentAndGetBoughtCardsMobile(this.state.user!.token, 1);
+        const cardsResJson = await cardsRes.json();
+
+        console.log('cardResJson',cardsResJson)
+
+    } catch (err) {
+      console.log(err);
+        this.setState({
+          error: 'Payment is cancelled.'
+        })
+    }
+  }
+
+  purchaseErrorSubscription = purchaseErrorListener((error: PurchaseError) => {
+    this.setState({
+      error: 'Something went wrong during the payment.'
+    })
+  })
+
 
   private async getAmountOfDeckspace(): Promise<void> {
     const amountOfDeckspaceRes = await DeckService.getDeckSpaces(this.state.user!.token) 
@@ -121,15 +210,6 @@ class DeckManagerScreen extends React.Component<
     this.setState({
       amountOfDeckspaceOwned: amountOfDeckspaceJson.owned
     })
-    console.log(amountOfDeckspaceJson)
-  }
-
-  private buyDeckSpace() {
-    // TO DO: buy deck space implementation
-  }
-
-  private buyCards() {
-    // TO DO: buy cards implementation
   }
 
   private async deleteDeckItem(rowMap: RowMap<DeckItemList>, rowKey: string) {
