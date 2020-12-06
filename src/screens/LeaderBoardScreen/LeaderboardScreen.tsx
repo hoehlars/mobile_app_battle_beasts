@@ -51,8 +51,8 @@ class LeaderboardScreen extends React.Component<
   async getLoggedInUser(): Promise<void> {
     const loggedInUser = await AsyncStorageService.readUser();
     this.setState({
-      loggedInUsername: loggedInUser?.username,
-      loggedInUserToken: loggedInUser?.token,
+      loggedInUsername: loggedInUser!.username,
+      loggedInUserToken: loggedInUser!.token,
     });
   }
 
@@ -80,10 +80,10 @@ class LeaderboardScreen extends React.Component<
 
   private roundUserSkill() {
     this.state.userTopTen.forEach((value) => {
-      value.skill = Math.round(value.skill);
+      value.skill = Math.round(Number.parseInt(value.skill)).toString();
     });
     this.state.userAroundYourRank.forEach((value) => {
-      value.skill = Math.round(value.skill);
+      value.skill = Math.round(Number.parseInt(value.skill)).toString();
     });
   }
 
@@ -107,19 +107,25 @@ class LeaderboardScreen extends React.Component<
           <Header title="Leaderboard" style={styles.HeaderTextBox} />
           <View style={styles.RankBox}>
             <View style={styles.Ranks}>
-              <Text style={styles.LeaderboardText}>Top ten players</Text>
+              <Text 
+              style={styles.LeaderboardText}
+              testID="topTenTitle">Top ten players</Text>
               <FlatList
+                testID="topTenList"
                 data={this.state.userTopTen}
                 renderItem={(data) => this.renderUserRow(data)}
-                keyExtractor={(data) => data.rank}
+                keyExtractor={(data) => data.rank.toString()}
               />
             </View>
             <View style={styles.Ranks}>
-              <Text style={styles.LeaderboardText}>Players around you</Text>
+              <Text 
+              style={styles.LeaderboardText}
+              testID="aroundYourRankTitle">Players around you</Text>
               <FlatList
+                testID="aroundYourRankList"
                 data={this.state.userAroundYourRank}
                 renderItem={(data) => this.renderUserRow(data)}
-                keyExtractor={(data) => data.rank}
+                keyExtractor={(data) => data.rank.toString()}
               />
             </View>
           </View>
