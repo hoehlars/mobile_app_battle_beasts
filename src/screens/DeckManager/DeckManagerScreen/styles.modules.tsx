@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { RFPercentage } from 'react-native-responsive-fontsize';
+import {RFPercentage} from 'react-native-responsive-fontsize';
 import theme from '../../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   FloatingAction: {
     flex: 1,
     backgroundColor: theme.DARK_GRAY_COLOR,
-    marginBottom: '10%s'
+    marginBottom: '10%s',
   },
   TextInput: {
     height: '8%',
@@ -46,15 +46,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    flex: 0.,
+    flex: 0,
     marginRight: '5%',
-    marginBottom: '4%'
+    marginBottom: '4%',
   },
   ButtonFloatingActionBox: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: theme.DARK_GRAY_COLOR
-  }
+    backgroundColor: theme.DARK_GRAY_COLOR,
+  },
 });
 
 export default styles;

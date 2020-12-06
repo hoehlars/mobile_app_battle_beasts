@@ -24,13 +24,9 @@ import DeleteDeckButton from '../../../components/DeleteDeckButton/DeleteDeckBut
 import ErrorBox from '../../../components/ErrorBox/ErrorBox';
 import Orientation from 'react-native-orientation-locker';
 import SmallButton from '../../../components/SmallButton/SmallButton';
-import RNIap, {
-  PurchaseError,
-  purchaseErrorListener,
-} from 'react-native-iap';
-import { PaymentService } from '../../../services/paymentService';
-
-
+import RNIap, {PurchaseError, purchaseErrorListener} from 'react-native-iap';
+import {PaymentService} from '../../../services/paymentService';
+import Environment from '../../../../environment';
 
 interface DeckManagerScreenState {
   decks: DeckItemList[];
@@ -50,12 +46,10 @@ class DeckManagerScreen extends React.Component<
   DeckManagerScreenState
 > {
   private readonly ITEM_SKUS: string[] | undefined = Platform.select({
-    android: [
-     'android.test.purchased'
-    ]
+    android: ['android.test.purchased'],
   });
-  private readonly DECKSPACE_ITEM: string = 'android.test.purchased'
-  private readonly CARD_ITEM: string = 'android.test.purchased'
+  private readonly DECKSPACE_ITEM: string = Environment.DECK_PRODUCT;
+  private readonly CARD_ITEM: string = Environment.CARD_PRODUCT;
   private floatingAction: FloatingAction | undefined;
   private readonly STANDARD_DECK: number[] = [
     0,
@@ -138,78 +132,83 @@ class DeckManagerScreen extends React.Component<
   private async getProducts() {
     try {
       await RNIap.initConnection();
-      await RNIap.getProducts(this.ITEM_SKUS!)
-    } catch(err) {
-      this.setState({
-        error: 'Error while loading products.'
-      })
-    }
-  }
-
-  private async buyDeckSpace()  {
-    // clear error
-    this.setState({
-      error: ''
-    })
-
-    // buy
-    try {
-        await RNIap.requestPurchase(this.DECKSPACE_ITEM, false);
-         // payment was successful
-        // unlock deckspace
-        const deckspaceRes = await PaymentService.executePaymentAndGetBoughtDeckspacesMobile(this.state.user!.token, 1);
-        const deckSpaceResJson = await deckspaceRes.json();
-        console.log('deckSpaceResJson', deckSpaceResJson)
-        this.setState({
-          amountOfDeckspaceOwned: this.state.amountOfDeckspaceOwned+1
-        })
-
+      await RNIap.getProducts(this.ITEM_SKUS!);
     } catch (err) {
-        console.log('error', err)
-        this.setState({
-          error: 'Payment was cancelled.'
-        })
+      this.setState({
+        error: 'Error while loading products.',
+      });
     }
   }
 
-  private async buyCards()  {
+  private async buyDeckSpace() {
     // clear error
     this.setState({
-      error: ''
-    })
+      error: '',
+    });
 
     // buy
     try {
-        await RNIap.requestPurchase(this.CARD_ITEM, false);
-        
-        // payment was successful
-        // unlock card 
-        const cardsRes = await PaymentService.executePaymentAndGetBoughtCardsMobile(this.state.user!.token, 1);
-        const cardsResJson = await cardsRes.json();
+      await RNIap.requestPurchase(this.DECKSPACE_ITEM, false);
+      // payment was successful
+      // unlock deckspace
+      const deckspaceRes = await PaymentService.executePaymentAndGetBoughtDeckspacesMobile(
+        this.state.user!.token,
+        1,
+      );
+      const deckSpaceResJson = await deckspaceRes.json();
+      console.log('deckSpaceResJson', deckSpaceResJson);
+      this.setState({
+        amountOfDeckspaceOwned: this.state.amountOfDeckspaceOwned + 1,
+      });
+    } catch (err) {
+      console.log('error', err);
+      this.setState({
+        error: 'Payment was cancelled.',
+      });
+    }
+  }
 
-        console.log('cardResJson',cardsResJson)
+  private async buyCards() {
+    // clear error
+    this.setState({
+      error: '',
+    });
 
+    // buy
+    try {
+      await RNIap.requestPurchase(this.CARD_ITEM, false);
+
+      // payment was successful
+      // unlock card
+      const cardsRes = await PaymentService.executePaymentAndGetBoughtCardsMobile(
+        this.state.user!.token,
+        1,
+      );
+      const cardsResJson = await cardsRes.json();
+
+      console.log('cardResJson', cardsResJson);
     } catch (err) {
       console.log(err);
-        this.setState({
-          error: 'Payment is cancelled.'
-        })
+      this.setState({
+        error: 'Payment is cancelled.',
+      });
     }
   }
 
-  purchaseErrorSubscription = purchaseErrorListener((error: PurchaseError) => {
+  purchaseErrorSubscription = purchaseErrorListener((_error: PurchaseError) => {
     this.setState({
-      error: 'Something went wrong during the payment.'
-    })
-  })
-
+      error: 'Something went wrong during the payment.',
+    });
+  });
 
   private async getAmountOfDeckspace(): Promise<void> {
-    const amountOfDeckspaceRes = await DeckService.getDeckSpaces(this.state.user!.token) 
+    const amountOfDeckspaceRes = await DeckService.getDeckSpaces(
+      this.state.user!.token,
+    );
     const amountOfDeckspaceJson: number = await amountOfDeckspaceRes.json();
     this.setState({
-      amountOfDeckspaceOwned: amountOfDeckspaceJson.owned
-    })
+      amountOfDeckspaceOwned: amountOfDeckspaceJson.owned,
+    });
   }
 
   private async deleteDeckItem(rowMap: RowMap<DeckItemList>, rowKey: string) {
@@ -372,43 +371,45 @@ class DeckManagerScreen extends React.Component<
               testID="buyDeckspaceButton"
               styleWrapper={styles.BuyButton}
               title="Buy Deckspace"
-              onPress={this.buyDeckSpace.bind(this)} />
+              onPress={this.buyDeckSpace.bind(this)}
+            />
 
-              <SmallButton
+            <SmallButton
               testID="buyCardsButton"
-                styleWrapper={styles.BuyButton}
-                title="Buy cards"
-                onPress={this.buyCards.bind(this)} />
+              styleWrapper={styles.BuyButton}
+              title="Buy cards"
+              onPress={this.buyCards.bind(this)}
+            />
           </View>
         )}
-          <FloatingAction
-            ref={(ref) => {
-              this.floatingAction = ref!;
-            }}
-            position="right"
-            showBackground={false}
-            color="#36393E"
-            iconWidth={25}
-            iconHeight={25}
-            buttonSize={56}
-            onPressMain={() => {
-              this.setState({
-                showTextInput: !this.state.showTextInput,
-              });
-            }}
-          />
+        <FloatingAction
+          ref={(ref) => {
+            this.floatingAction = ref!;
+          }}
+          position="right"
+          showBackground={false}
+          color="#36393E"
+          iconWidth={25}
+          iconHeight={25}
+          buttonSize={56}
+          onPressMain={() => {
+            this.setState({
+              showTextInput: !this.state.showTextInput,
+            });
+          }}
+        />
 
-
-        {this.state.error === '' ? <View style={styles.DeckSpace}>
-          <Text 
-          testID="deckspaceAvailable"
-          style={styles.TextDeckSpace}>
-            Deckspace left: {this.state.decks.length + "/" + this.state.amountOfDeckspaceOwned}
-          </Text>
-        </View> : (
-          <ErrorBox 
-          text={this.state.error} 
-          styleWrapper={styles.DeckError} />
+        {this.state.error === '' ? (
+          <View style={styles.DeckSpace}>
+            <Text testID="deckspaceAvailable" style={styles.TextDeckSpace}>
+              Deckspace left:{' '}
+              {this.state.decks.length +
+                '/' +
+                this.state.amountOfDeckspaceOwned}
+            </Text>
+          </View>
+        ) : (
+          <ErrorBox text={this.state.error} styleWrapper={styles.DeckError} />
         )}
       </>
     );
