@@ -80,10 +80,10 @@ class LeaderboardScreen extends React.Component<
 
   private roundUserSkill() {
     this.state.userTopTen.forEach((value) => {
-      value.skill = Math.round(Number.parseInt(value.skill)).toString();
+      value.skill = Math.round(Number.parseInt(value.skill, 10)).toString();
     });
     this.state.userAroundYourRank.forEach((value) => {
-      value.skill = Math.round(Number.parseInt(value.skill)).toString();
+      value.skill = Math.round(Number.parseInt(value.skill, 10)).toString();
     });
   }
 
@@ -107,9 +107,9 @@ class LeaderboardScreen extends React.Component<
           <Header title="Leaderboard" style={styles.HeaderTextBox} />
           <View style={styles.RankBox}>
             <View style={styles.Ranks}>
-              <Text 
-              style={styles.LeaderboardText}
-              testID="topTenTitle">Top ten players</Text>
+              <Text style={styles.LeaderboardText} testID="topTenTitle">
+                Top ten players
+              </Text>
               <FlatList
                 testID="topTenList"
                 data={this.state.userTopTen}
@@ -118,9 +118,9 @@ class LeaderboardScreen extends React.Component<
               />
             </View>
             <View style={styles.Ranks}>
-              <Text 
-              style={styles.LeaderboardText}
-              testID="aroundYourRankTitle">Players around you</Text>
+              <Text style={styles.LeaderboardText} testID="aroundYourRankTitle">
+                Players around you
+              </Text>
               <FlatList
                 testID="aroundYourRankList"
                 data={this.state.userAroundYourRank}
