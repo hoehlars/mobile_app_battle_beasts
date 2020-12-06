@@ -2,6 +2,7 @@
   package="com.mobile_app_battle_beasts">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
       android:usesCleartextTraffic="true"
