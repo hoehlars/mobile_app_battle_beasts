@@ -68,6 +68,36 @@ describe('DeckManagerScreen', () => {
       const testInstance = testRenderer.root;
       expect(testInstance.findByType(FloatingAction)).not.toBeNull();
     });
+
+    it('renders the deck space available', () => {
+      const testRenderer = renderer.create(
+        <DeckManagerScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(
+        testInstance.findByProps({testID: 'deckspaceAvailable'}),
+      ).not.toBeNull();
+    });
+
+    it('renders the buy cards button', () => {
+      const testRenderer = renderer.create(
+        <DeckManagerScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(
+        testInstance.findByProps({testID: 'buyCardsButton'}),
+      ).not.toBeNull();
+    });
+
+    it('renders the buy deckspace button', () => {
+      const testRenderer = renderer.create(
+        <DeckManagerScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(
+        testInstance.findByProps({testID: 'buyDeckspaceButton'}),
+      ).not.toBeNull();
+    });
   });
 
   describe('logic', () => {

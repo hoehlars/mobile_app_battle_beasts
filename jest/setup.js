@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler/jestSetup';
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
+import { endConnection } from 'react-native-iap';
 
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
@@ -35,6 +36,29 @@ jest.mock('react-native-orientation-locker', () => {
 		lockToLandscapeLeft: jest.fn(),
 		lockToLandscapeRight: jest.fn(),
 		unlockAllOrientations: jest.fn(),
+	};
+});
+
+
+jest.mock('react-native-orientation-locker', () => {
+	return {
+		addEventListener: jest.fn(),
+		removeEventListener: jest.fn(),
+		lockToPortrait: jest.fn(),
+		lockToLandscapeLeft: jest.fn(),
+		lockToLandscapeRight: jest.fn(),
+		unlockAllOrientations: jest.fn(),
+	};
+});
+
+// react native in app purchase 
+jest.mock('react-native-iap', () => {
+	return {
+		initConnection: jest.fn(),
+		endConnection: jest.fn(),
+		requestPurchase: jest.fn(),
+		getProducts: jest.fn(),
+		purchaseErrorListener: jest.fn()
 	};
 });
 
