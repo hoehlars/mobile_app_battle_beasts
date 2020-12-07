@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: 'black',
-    backgroundColor: theme.GRAY_COLOR,
   },
   ItemBox: {
     width: '30%',
@@ -42,6 +41,12 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'justify',
     fontSize: RFPercentage(2),
+  },
+  Background: {
+    backgroundColor: theme.GRAY_COLOR,
+  },
+  HighlightedBackground: {
+    backgroundColor: theme.PRIMARY_COLOR,
   },
 });
 

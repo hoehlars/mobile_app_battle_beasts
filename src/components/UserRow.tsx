@@ -6,12 +6,37 @@ interface UserRowProps {
   rank: number;
   username: string;
   skill: string;
+  loggedInUsername: string;
 }
 
-class UserRow extends React.Component<UserRowProps, {}> {
+interface UserRowState {
+  loggedInPlayer: boolean;
+}
+
+class UserRow extends React.Component<UserRowProps, UserRowState> {
+  constructor(props: Readonly<UserRowProps>) {
+    super(props);
+    this.state = {
+      loggedInPlayer: this.checkLoggedInUser(),
+    };
+  }
+
+  private checkLoggedInUser(): boolean {
+    if (this.props.username === this.props.loggedInUsername) {
+      return true;
+    }
+    return false;
+  }
+
   render(): JSX.Element {
     return (
-      <View style={styles.UserRow}>
+      <View
+        style={[
+          styles.UserRow,
+          this.state.loggedInPlayer
+            ? styles.HighlightedBackground
+            : styles.Background,
+        ]}>
         <View style={styles.ItemBoxRank}>
           <Text style={styles.ItemsText}>{this.props.rank.toString()}</Text>
         </View>

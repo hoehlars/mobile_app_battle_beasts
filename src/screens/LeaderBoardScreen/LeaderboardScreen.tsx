@@ -2,6 +2,7 @@ import * as React from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {UserService} from '../../services/userService';
 import {User} from '../../models/user';
+import {AsyncStorageService} from '../../services/asyncStorage';
 import UserRow from '../../components/UserRow';
 import styles from './LeaderboardScreen.style';
 import Orientation from 'react-native-orientation-locker';
@@ -17,6 +18,8 @@ interface LeaderboardState {
   userTopTen: UserSkillRankAndUsername[];
   userAroundYourRank: UserSkillRankAndUsername[];
   error: string;
+  loggedInUsername: string;
+  loggedInUserToken: string;
 }
 
 interface LeaderboardProps {
@@ -33,13 +36,24 @@ class LeaderboardScreen extends React.Component<
       userTopTen: [],
       userAroundYourRank: [],
       error: '',
+      loggedInUsername: '',
+      loggedInUserToken: '',
     };
   }
 
   async componentDidMount() {
     Orientation.lockToPortrait();
+    await this.getLoggedInUser();
     await this.getUsersTopTen();
     await this.getUserAround();
+  }
+
+  async getLoggedInUser(): Promise<void> {
+    const loggedInUser = await AsyncStorageService.readUser();
+    this.setState({
+      loggedInUsername: loggedInUser!.username,
+      loggedInUserToken: loggedInUser!.token,
+    });
   }
 
   async getUsersTopTen(): Promise<void> {
@@ -51,25 +65,26 @@ class LeaderboardScreen extends React.Component<
     });
     this.roundUserSkill();
   }
-  /*
+
   async getUserAround(): Promise<void> {
-    const userAroundRes = await UserService.getUsersAroundCurrUsersRank();
+    const userAroundRes = await UserService.getUsersAroundCurrUsersRank(
+      this.state.loggedInUserToken,
+    );
     const userAround = await userAroundRes.json();
 
     this.setState({
       userAroundYourRank: userAround,
     });
     this.roundUserSkill();
-  }*/
+  }
 
   private roundUserSkill() {
     this.state.userTopTen.forEach((value) => {
-      value.skill = Math.round(value.skill);
+      value.skill = Math.round(Number.parseInt(value.skill, 10)).toString();
     });
-    /*
     this.state.userAroundYourRank.forEach((value) => {
-      value.skill = Math.round(value.skill);
-    });*/
+      value.skill = Math.round(Number.parseInt(value.skill, 10)).toString();
+    });
   }
 
   private renderUserRow(
@@ -80,6 +95,7 @@ class LeaderboardScreen extends React.Component<
         rank={data.item.rank}
         username={data.item.username}
         skill={data.item.skill}
+        loggedInUsername={this.state.loggedInUsername}
       />
     );
   }
@@ -91,19 +107,25 @@ class LeaderboardScreen extends React.Component<
           <Header title="Leaderboard" style={styles.HeaderTextBox} />
           <View style={styles.RankBox}>
             <View style={styles.Ranks}>
-              <Text style={styles.LeaderboardText}>Top ten players</Text>
+              <Text style={styles.LeaderboardText} testID="topTenTitle">
+                Top ten players
+              </Text>
               <FlatList
+                testID="topTenList"
                 data={this.state.userTopTen}
                 renderItem={(data) => this.renderUserRow(data)}
-                keyExtractor={(data) => data.rank}
+                keyExtractor={(data) => data.rank.toString()}
               />
             </View>
             <View style={styles.Ranks}>
-              <Text style={styles.LeaderboardText}>Players around you</Text>
+              <Text style={styles.LeaderboardText} testID="aroundYourRankTitle">
+                Players around you
+              </Text>
               <FlatList
-                data={this.state.userTopTen}
+                testID="aroundYourRankList"
+                data={this.state.userAroundYourRank}
                 renderItem={(data) => this.renderUserRow(data)}
-                keyExtractor={(data) => data.rank}
+                keyExtractor={(data) => data.rank.toString()}
               />
             </View>
           </View>
