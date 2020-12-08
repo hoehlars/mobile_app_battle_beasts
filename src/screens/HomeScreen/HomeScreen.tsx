@@ -40,7 +40,17 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
     }
   }
 
-  playGame() {}
+  playRanked() {
+    this.props.navigation.navigate('', {gameMode: 'ranked'});
+  }
+
+  playUnranked() {
+    this.props.navigation.navigate('', {gameMode: 'unranked'});
+  }
+
+  playAgainstBot() {
+    this.props.navigation.navigate('', {gameMode: 'ai'});
+  }
 
   render(): JSX.Element {
     return (
@@ -66,19 +76,19 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
             <Button
               title="PLAY RANKED!"
               styleWrapper={styles.Button}
-              onPress={this.playGame.bind(this)}
+              onPress={this.playRanked.bind(this)}
             />
 
             <Button
               title="PLAY UNRANKED!"
               styleWrapper={styles.Button}
-              onPress={this.playGame.bind(this)}
+              onPress={this.playUnranked.bind(this)}
             />
 
             <Button
               title="PLAY AGAINST A BOT!"
               styleWrapper={styles.Button}
-              onPress={this.playGame.bind(this)}
+              onPress={this.playAgainstBot.bind(this)}
             />
           </View>
         </View>
