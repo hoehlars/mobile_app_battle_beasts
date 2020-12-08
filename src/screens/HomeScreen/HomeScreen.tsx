@@ -41,15 +41,15 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
   }
 
   playRanked() {
-    this.props.navigation.navigate('', {gameMode: 'ranked'});
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ranked'});
   }
 
   playUnranked() {
-    this.props.navigation.navigate('', {gameMode: 'unranked'});
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'unranked'});
   }
 
   playAgainstBot() {
-    this.props.navigation.navigate('', {gameMode: 'ai'});
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ai'});
   }
 
   render(): JSX.Element {
