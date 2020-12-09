@@ -49,7 +49,7 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
   }
 
   playAgainstBot() {
-    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ai'});
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ai-easy'});
   }
 
   render(): JSX.Element {
