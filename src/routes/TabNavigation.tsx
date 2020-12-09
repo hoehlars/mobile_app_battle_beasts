@@ -7,6 +7,7 @@ import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
 import DeckManagerNavigator from '../screens/DeckManager/DeckManagerNavigator';
+import HomeScreenNavigator from '../screens/HomeScreen/HomeScreenNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ class TabNavigation extends React.Component<{}, {}> {
         }}>
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={HomeScreenNavigator}
           options={{
             tabBarIcon: () => {
               return (

@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import * as React from 'react';
 import {ListRenderItemInfo, View} from 'react-native';
 import styles from './ChooseDeckScreen.style';
