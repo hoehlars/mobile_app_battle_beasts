@@ -30,7 +30,7 @@ class LeaderboardScreen extends React.Component<
   LeaderboardProps,
   LeaderboardState
 > {
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<LeaderboardProps>) {
     super(props);
     this.state = {
       userTopTen: [],
