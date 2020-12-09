@@ -83,6 +83,7 @@ class ChooseDeckScreen extends React.Component<ChooseDeckProps, ChooseDeckState>
     this.props.navigation.navigate('Play', {
       deck: updatedDeck,
       token: this.state.user!.token,
+      gameMode: this.props.route.params.gameMode,
     });
   }
 
