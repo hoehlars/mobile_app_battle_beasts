@@ -1,5 +1,4 @@
 import * as React from 'react';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import AboutTheGameScreen from '../screens/AboutTheGameScreen/AboutTheGameScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';

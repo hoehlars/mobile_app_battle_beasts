@@ -3,33 +3,40 @@ import {ListRenderItemInfo, View} from 'react-native';
 import styles from './ChooseDeckScreen.style';
 import Orientation from 'react-native-orientation-locker';
 import Header from '../../components/Header/Header';
-import { SwipeListView } from 'react-native-swipe-list-view';
+import {SwipeListView} from 'react-native-swipe-list-view';
 import {DeckService} from '../../services/deckService';
-import { User } from '../../models/user';
-import { DeckItemList } from '../../models/deckItem';
+import {User} from '../../models/user';
+import {DeckItemList} from '../../models/deckItem';
 import {Deck} from '../../models/deck';
-import { AsyncStorageService } from '../../services/asyncStorage';
+import {AsyncStorageService} from '../../services/asyncStorage';
 import ChooseDeckItem from '../../components/ChooseDeckItem/ChooseDeckItem';
-import { NavigationParams, NavigationScreenProp, NavigationState } from 'react-navigation';
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
 
 interface ChooseDeckState {
-    user?: User;
-    decks: DeckItemList[];
-    error: String;
+  user?: User;
+  decks: DeckItemList[];
+  error: String;
 }
 
 interface ChooseDeckProps {
-    navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-class ChooseDeckScreen extends React.Component<ChooseDeckProps, ChooseDeckState> {
+class ChooseDeckScreen extends React.Component<
+  ChooseDeckProps,
+  ChooseDeckState
+> {
   constructor(props: Readonly<ChooseDeckProps>) {
     super(props);
 
     this.state = {
-        decks: [],
-        error: '',
-      };
+      decks: [],
+      error: '',
+    };
   }
 
   async componentDidMount() {
@@ -69,9 +76,7 @@ class ChooseDeckScreen extends React.Component<ChooseDeckProps, ChooseDeckState>
     }
   }
 
-  private async play(
-    deckChosen: DeckItemList,
-  ): Promise<void> {
+  private async play(deckChosen: DeckItemList): Promise<void> {
     // first update decks, because user might have changed them
     await this.getDecks();
 
@@ -88,12 +93,7 @@ class ChooseDeckScreen extends React.Component<ChooseDeckProps, ChooseDeckState>
   }
 
   private renderDeckItem(data: ListRenderItemInfo<DeckItemList>): JSX.Element {
-    return (
-      <ChooseDeckItem
-        deckItem={data.item}
-        play={this.play.bind(this)}
-      />
-    );
+    return <ChooseDeckItem deckItem={data.item} play={this.play.bind(this)} />;
   }
 
   render(): JSX.Element {
@@ -102,11 +102,11 @@ class ChooseDeckScreen extends React.Component<ChooseDeckProps, ChooseDeckState>
         <Header title="Choose your Deck!" style={styles.Header} />
         <View testID="lineBelowHeader" style={styles.Line} />
         <View style={styles.SwipeableList}>
-        <SwipeListView
+          <SwipeListView
             data={this.state.decks}
             renderItem={(data) => this.renderDeckItem(data)}
           />
-          </View>
+        </View>
       </>
     );
   }

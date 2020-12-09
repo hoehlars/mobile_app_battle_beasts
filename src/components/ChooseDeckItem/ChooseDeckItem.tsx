@@ -1,8 +1,7 @@
-/*eslint-disable*/
 import * as React from 'react';
 import {Text, TouchableHighlight, View} from 'react-native';
 import theme from '../../assets/styles/theme.style';
-import { DeckItemList } from '../../models/deckItem';
+import {DeckItemList} from '../../models/deckItem';
 import styles from './ChooseDeckItem.style';
 
 interface DeckItemProps {
@@ -15,11 +14,7 @@ class ChooseDeckItem extends React.Component<DeckItemProps, {}> {
     return (
       <TouchableHighlight
         testID="deckItem"
-        onPress={() =>
-            this.props.play(
-              this.props.deckItem,
-            )
-          }
+        onPress={() => this.props.play(this.props.deckItem)}
         style={styles.RowFront}
         underlayColor={theme.PRIMARY_COLOR}>
         <View>
