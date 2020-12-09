@@ -2,9 +2,9 @@ import * as React from 'react';
 import Orientation from 'react-native-orientation-locker';
 import {User} from '../../models/user';
 import {GameUpdate} from '../../models/gameUpdate';
-import {io, Socket} from 'socket.io-client';
 import Environment from '../../../environment';
 import {Text} from 'react-native';
+import io, { Socket } from 'socket.io-client'
 
 interface PlayProps {
   user: User;
@@ -34,7 +34,7 @@ class Play extends React.Component<PlayProps, PlayState> {
     };
   }
 
-  private clients: {queue?: Socket; game?: Socket} = {};
+  private clients: {queue?: typeof Socket; game?: typeof Socket} = {};
 
   async componentDidMount() {
     Orientation.lockToPortrait();
@@ -107,12 +107,6 @@ class Play extends React.Component<PlayProps, PlayState> {
   }
 
   private joinGameRoom(gameRoomId: string): void {
-    // connect to game server
-    console.log('-------------');
-    console.log(this.props.route.params.token);
-    console.log(gameRoomId);
-    console.log(this.props.route.params.gameMode);
-    console.log(this.props.route.params.deck._id);
     const connection = io(`${Environment.BASE_URL}/game`, {
       query: {
         token: this.props.route.params.token,
@@ -120,9 +114,20 @@ class Play extends React.Component<PlayProps, PlayState> {
         mode: this.props.route.params.gameMode,
         deck: this.props.route.params.deck._id,
       },
+      transports: ['websocket'],
+      reconnection: true,
+      reconnectionDelay: 500,
+      jsonp: false,
+      reconnectionAttempts: Infinity,
     });
-    console.log(connection.io);
+
+    connection.on('connect', () => {
+      console.log('hello')
+    });
+
+    
     connection.on('opponentInfo', (opponent: string) => {
+      console.log('hello')
       this.setState(() => ({
         inGame: true,
         opponent,
