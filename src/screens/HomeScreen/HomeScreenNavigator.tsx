@@ -1,17 +1,14 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './HomeScreen';
-import TabNavigation from '../../routes/TabNavigation';
-import LeaderboardScreen from '../LeaderBoardScreen/LeaderboardScreen';
 import Play from '../Play/Play';
+import ChooseDeckScreen from '../ChooseDeckScreen/ChooseDeckScreen';
 
 const Stack = createStackNavigator();
 
 class LoginNavigator extends React.Component<{}, {}> {
   render(): JSX.Element {
     return (
-      <NavigationContainer>
         <Stack.Navigator initialRouteName="HomeScreen" headerMode="none">
           <Stack.Screen
             name="HomeScreen"
@@ -28,14 +25,13 @@ class LoginNavigator extends React.Component<{}, {}> {
             }}
           />
           <Stack.Screen
-            name="Leaderboard"
-            component={LeaderboardScreen}
+            name="ChooseDeck"
+            component={ChooseDeckScreen}
             options={{
               animationEnabled: false,
             }}
           />
         </Stack.Navigator>
-      </NavigationContainer>
     );
   }
 }
