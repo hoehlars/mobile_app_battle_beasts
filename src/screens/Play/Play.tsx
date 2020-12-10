@@ -121,13 +121,9 @@ class Play extends React.Component<PlayProps, PlayState> {
       reconnectionAttempts: Infinity,
     });
 
-    connection.on('connect', () => {
-      console.log('hello')
-    });
-
-    
+ 
     connection.on('opponentInfo', (opponent: string) => {
-      console.log('hello')
+      console.log('It fckin works!')
       this.setState(() => ({
         inGame: true,
         opponent,
@@ -176,13 +172,6 @@ class Play extends React.Component<PlayProps, PlayState> {
     );
 
     this.clients.game = connection;
-    console.log(
-      this.state.inGame +
-        '--' +
-        this.state.opponent +
-        '--' +
-        this.state.gameState,
-    );
   }
 
   render(): JSX.Element {
