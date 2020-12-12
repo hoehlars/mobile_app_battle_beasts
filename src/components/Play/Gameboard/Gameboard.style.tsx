@@ -3,26 +3,26 @@ import theme from '../../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   Background: {
-      flex: 1,
-      backgroundColor: theme.GRAY_COLOR,
-      flexDirection: 'row',
+    flex: 1,
+    backgroundColor: theme.GRAY_COLOR,
+    flexDirection: 'row',
   },
   PlayerAvatar: {
     flex: 1,
     backgroundColor: 'red',
   },
-  Opponentfield:{
+  Opponentfield: {
     flex: 1,
     backgroundColor: 'green',
   },
-  Playerfield:{
+  Playerfield: {
     flex: 1,
     backgroundColor: 'yellow',
   },
   Gameboard: {
     flex: 5,
     backgroundColor: 'pink',
-  }
+  },
 });
 
 export default styles;
