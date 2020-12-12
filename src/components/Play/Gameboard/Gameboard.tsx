@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import * as React from 'react';
 import {StyleProp, Text, View, ViewStyle} from 'react-native';
 import Orientation from 'react-native-orientation-locker';
