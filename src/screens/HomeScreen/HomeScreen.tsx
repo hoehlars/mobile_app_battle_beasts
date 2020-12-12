@@ -69,7 +69,7 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
           <View style={styles.ImageBox}>
             <Image
               style={styles.HeaderImage}
-              source={require('../../assets/images/logos/battlebeasts-logo-white.png')}
+              source={require('../../assets/images/logos/player-avatar-white.png')}
             />
           </View>
           <View style={styles.ButtonBox}>

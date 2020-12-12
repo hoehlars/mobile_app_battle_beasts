@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   HeaderImage: {
     marginTop: '10%',
     width: 177,
-    height: 135,
+    height: 177,
   },
   ButtonBox: {
     flex: 4,
