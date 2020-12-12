@@ -3,12 +3,21 @@ import Orientation from 'react-native-orientation-locker';
 import {User} from '../../models/user';
 import {GameUpdate} from '../../models/gameUpdate';
 import Environment from '../../../environment';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import io, { Socket } from 'socket.io-client'
+import Gameboard from '../../components/Play/Gameboard/Gameboard';
+import Hand from '../../components/Hand/Hand';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import styles from './Play.style'
 
 interface PlayProps {
   user: User;
+  //navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
+
+/*interface NavigationParams {
+  gameMode: string;
+}*/
 
 interface PlayState {
   inGame: boolean;
@@ -37,7 +46,7 @@ class Play extends React.Component<PlayProps, PlayState> {
   private clients: {queue?: typeof Socket; game?: typeof Socket} = {};
 
   async componentDidMount() {
-    Orientation.lockToPortrait();
+    Orientation.lockToLandscape();
     if (this.props.route.params.gameMode.startsWith('ai')) {
       this.joinGameRoom(
         `${this.props.route.params.username}/${new Date().getTime()}`,
@@ -123,7 +132,6 @@ class Play extends React.Component<PlayProps, PlayState> {
 
  
     connection.on('opponentInfo', (opponent: string) => {
-      console.log('It fckin works!')
       this.setState(() => ({
         inGame: true,
         opponent,
@@ -178,7 +186,44 @@ class Play extends React.Component<PlayProps, PlayState> {
     if (!this.state.inGame || !this.state.opponent || !this.state.gameState) {
       return <Text>searching Game...</Text>;
     }
-    return <Text>fuck ya</Text>;
+    return (
+      <View style={styles.PlayScreen}>
+
+        <View style={styles.Gameboard}>
+          <Gameboard />
+        </View>
+
+        <View style={styles.Hand}>
+        <Hand
+          gameState={this.state.gameState}
+          cards={this.state.gameState.handCards}
+          boardCards={this.state.gameState.boardCards[this.props.route.params.username]}
+          hoverCard={(hoveredCardPlayId): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('hoveredHandCard', hoveredCardPlayId);
+            }
+          }}
+          canPlace={
+            this.state.gameState.playerTurn === this.props.route.params.username && this.state.gameState.round.phase === 'cast'
+          }
+          placeCard={(cardPlayId: number, mode: 'attack' | 'defense'): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('placeCard', cardPlayId, mode);
+            }
+          }}
+          placeSpell={(cardPlayId: number): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('placeSpell', cardPlayId);
+            }
+          }}
+          enableTargetMode={(cardPlayId): void => this.setState({ targetMode: cardPlayId })}
+          targetMode={this.state.targetMode}
+          actionPoints={this.state.gameState.actionPoints[this.props.route.params.username]}
+          />
+        </View>
+      </View>
+        
+    )
   }
 }
 
