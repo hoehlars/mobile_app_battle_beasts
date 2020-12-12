@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 import {View} from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 import styles from './SearchingBox.style';
@@ -17,7 +17,7 @@ class SearchingBox extends React.Component<{}, {}> {
     return (
       <View style={styles.Background}>
         <View style={styles.SearchingBox}>
-            <Text style={styles.SearchingBoxText}>Searching opponent...</Text>
+          <Text style={styles.SearchingBoxText}>Searching opponent...</Text>
         </View>
       </View>
     );
