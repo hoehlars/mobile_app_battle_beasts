@@ -146,14 +146,15 @@ class Play extends React.Component<PlayProps, PlayState> {
     });
 
     connection.on('gameUpdate', (gameUpdate: GameUpdate) => {
-      this.setState(() => ({
-        gameState: gameUpdate,
-        activityCurrentAttackerUniquePlayId: 0,
-        activityCurrentTargetUniquePlayId: 0,
-      }), () => this.addStatsFromEquipmentCards());
-
-      
+      this.setState(
+        () => ({
+          gameState: gameUpdate,
+          activityCurrentAttackerUniquePlayId: 0,
+          activityCurrentTargetUniquePlayId: 0,
+        }),
+        () => this.addStatsFromEquipmentCards())
     });
+
 
     connection.on('opponentHoveredHandCard', (cardPlayId: number) => {
       this.setState(() => ({
@@ -194,29 +195,30 @@ class Play extends React.Component<PlayProps, PlayState> {
   private addStatsFromEquipmentCards() {
     const updatedBoardCards = this.state.gameState!.boardCards;
 
-        // add equipment card stats to player cards
-        updatedBoardCards[this.props.route.params.username].forEach((card: Card) => {
-          if(card.equipmentCard) {
-            card.attackPoints += card.equipmentCard.attackPoints;
-            card.defensePoints += card.equipmentCard.defensePoints;
-          }
-        })
+    // add equipment card stats to player cards
+    updatedBoardCards[this.props.route.params.username].forEach(
+      (card: Card) => {
+        if (card.equipmentCard) {
+          card.attackPoints += card.equipmentCard.attackPoints;
+          card.defensePoints += card.equipmentCard.defensePoints;
+        }
+      },
+    );
 
+    // add equipment card stats to opponent cards
+    updatedBoardCards[this.state.opponent!].forEach((card: Card) => {
+      if (card.equipmentCard) {
+        card.attackPoints += card.equipmentCard.attackPoints;
+        card.defensePoints += card.equipmentCard.defensePoints;
+      }
+    });
 
-        // add equipment card stats to opponent cards
-        updatedBoardCards[this.state.opponent!].forEach((card: Card) => {
-          if(card.equipmentCard) {
-            card.attackPoints += card.equipmentCard.attackPoints;
-            card.defensePoints += card.equipmentCard.defensePoints;
-          }
-        }) 
+    const gameStateNew: GameUpdate = this.state.gameState!;
+    gameStateNew.boardCards = updatedBoardCards;
 
-        const gameStateNew: GameUpdate = this.state.gameState!;
-        gameStateNew.boardCards = updatedBoardCards;
-
-        this.setState({
-          gameState: gameStateNew
-        })
+    this.setState({
+      gameState: gameStateNew,
+    });
   }
 
   private cardToCardListData(cards: Card[]): CardFlatListData[] {

@@ -184,7 +184,8 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             <Text
               style={[
                 styles.CardDescriptionPoints,
-                this.state.descriptionSmall, this.props.attackPointsStyle
+                this.state.descriptionSmall,
+                this.props.attackPointsStyle,
               ]}>
               {this.props.card.attackPoints}
             </Text>
@@ -196,7 +197,8 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             <Text
               style={[
                 styles.CardDescriptionPoints,
-                this.state.descriptionSmall, this.props.defensePointsStyle
+                this.state.descriptionSmall,
+                this.props.defensePointsStyle,
               ]}>
               {this.props.card.defensePoints}
             </Text>

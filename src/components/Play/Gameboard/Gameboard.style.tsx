@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.ERROR_COLOR,
   },
   CardDescriptionPointsRedStyle: {
-    color: theme.ERROR_COLOR
-  }
+    color: theme.ERROR_COLOR,
+  },
 });
 
 export default styles;

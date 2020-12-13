@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {ImageBackground, ListRenderItemInfo, Text, TextStyle, View} from 'react-native';
+import {
+  ImageBackground,
+  ListRenderItemInfo,
+  Text,
+  TextStyle,
+  View,
+} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
 import {Card} from '../../../models/card';
@@ -61,7 +67,6 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     } else {
       // do nothing
     }
-
   }
 
   private onPressCardOnPlayerBoard(card: CardFlatListData) {
@@ -161,15 +166,21 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     }
 
     // equipment card placed by player
-    let attackPointsStyle: TextStyle | undefined
-    let defensePointsStyle: TextStyle | undefined
+    let attackPointsStyle: TextStyle | undefined;
+    let defensePointsStyle: TextStyle | undefined;
 
     // show placed equipmentcards
     if (data.item.equipmentCard) {
-        attackPointsStyle = data.item.equipmentCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle: undefined;
-        defensePointsStyle = data.item.equipmentCard.defensePoints> 0 ? styles.CardDescriptionPointsRedStyle: undefined;
+      attackPointsStyle =
+        data.item.equipmentCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.equipmentCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
     }
-  
+
     return (
       <CardComponent
         attackPointsStyle={attackPointsStyle}
@@ -302,18 +313,24 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     }
 
     // equipment cards placed by opponent
-    let attackPointsStyle: TextStyle | undefined
-    let defensePointsStyle: TextStyle | undefined
+    let attackPointsStyle: TextStyle | undefined;
+    let defensePointsStyle: TextStyle | undefined;
 
-    if(data.item.equipmentCard) {
-      attackPointsStyle = data.item.equipmentCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle: undefined;
-      defensePointsStyle = data.item.equipmentCard.defensePoints> 0 ? styles.CardDescriptionPointsRedStyle: undefined;
+    if (data.item.equipmentCard) {
+      attackPointsStyle =
+        data.item.equipmentCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.equipmentCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
     }
 
     return (
       <CardComponent
-      attackPointsStyle={attackPointsStyle}
-      defensePointsStyle={defensePointsStyle}
+        attackPointsStyle={attackPointsStyle}
+        defensePointsStyle={defensePointsStyle}
         mode={data.item.mode}
         testID="cardInDeck"
         card={data.item}
@@ -344,29 +361,29 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
           />
         </View>
         <View style={styles.Gameboard}>
-        <ImageBackground source={background} style={styles.GameboardImage}>
-          <FlatList
-            horizontal={true}
-            data={this.props.opponentCards}
-            renderItem={(item) => this.renderCardsOnOpponentBoard(item)}
-            keyExtractor={(item) => item.id}
-            style={styles.Opponentfield}
-          />
-          <View style={styles.Turn}>
-            <Text style={styles.TextTurn}>
-              Turn:{' '}
-              {this.props.turn === this.props.playerName
-                ? 'You'
-                : this.props.turn}
-            </Text>
-          </View>
-          <FlatList
-            horizontal={true}
-            data={this.props.playerCards}
-            renderItem={(item) => this.renderCardsOnPlayerBoard(item)}
-            keyExtractor={(item) => item.id}
-            style={styles.Playerfield}
-          />
+          <ImageBackground source={background} style={styles.GameboardImage}>
+            <FlatList
+              horizontal={true}
+              data={this.props.opponentCards}
+              renderItem={(item) => this.renderCardsOnOpponentBoard(item)}
+              keyExtractor={(item) => item.id}
+              style={styles.Opponentfield}
+            />
+            <View style={styles.Turn}>
+              <Text style={styles.TextTurn}>
+                Turn:{' '}
+                {this.props.turn === this.props.playerName
+                  ? 'You'
+                  : this.props.turn}
+              </Text>
+            </View>
+            <FlatList
+              horizontal={true}
+              data={this.props.playerCards}
+              renderItem={(item) => this.renderCardsOnPlayerBoard(item)}
+              keyExtractor={(item) => item.id}
+              style={styles.Playerfield}
+            />
           </ImageBackground>
         </View>
       </View>
