@@ -19,12 +19,12 @@ class TabNavigation extends React.Component<{}, {}> {
     const routeName = route.state
       ? route.state.routes[route.state.index].name
       : '';
-  
+
     if (routeName === 'Play') {
       return false;
     }
     return true;
-  }
+  };
 
   render(): JSX.Element {
     return (
@@ -37,12 +37,11 @@ class TabNavigation extends React.Component<{}, {}> {
         tabBarOptions={{
           showLabel: false,
           activeBackgroundColor: theme.PRIMARY_COLOR,
-        }}
-        >
+        }}>
         <Tab.Screen
           name="Home"
           component={HomeScreenNavigator}
-          options={({ route }) => ({
+          options={({route}) => ({
             tabBarVisible: this.getTabBarVisibility(route),
             tabBarIcon: () => {
               return (
@@ -105,7 +104,5 @@ class TabNavigation extends React.Component<{}, {}> {
     );
   }
 }
-
-
 
 export default TabNavigation;

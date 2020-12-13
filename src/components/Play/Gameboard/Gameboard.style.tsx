@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
   },
   PlayedPlayerCardsOffense: {
-      flex: 1,
-      backgroundColor: theme.LIGHT_COLOR,
-      padding: '4%',
-      marginVertical: '1%',
-      marginHorizontal: 5,
-      borderRadius: 10,
-      width: 150,
-      height: '90%'
+    flex: 1,
+    backgroundColor: theme.LIGHT_COLOR,
+    padding: '4%',
+    marginVertical: '1%',
+    marginHorizontal: 5,
+    borderRadius: 10,
+    width: 150,
+    height: '90%',
   },
   PlayedPlayerCardsDefense: {
     flex: 1,
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 10,
     width: 150,
-    height: '100%'
-}
+    height: '100%',
+  },
 });
 
 export default styles;

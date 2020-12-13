@@ -3,14 +3,14 @@ import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   PlayScreen: {
-      flex: 1
+    flex: 1,
   },
   Gameboard: {
-      flex: 10
+    flex: 10,
   },
   Hand: {
-      flex: 3
-  }
+    flex: 3,
+  },
 });
 
 export default styles;

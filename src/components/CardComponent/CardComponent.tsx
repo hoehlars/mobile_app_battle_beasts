@@ -30,9 +30,9 @@ interface CardComponentState {
   isNotAnimal: boolean;
   isHerbivore: boolean;
   isFish: boolean;
-  descriptionSmall?: TextStyle
-  iconImageSmall?: ImageStyle
-  rotate90Degrees?: ImageStyle
+  descriptionSmall?: TextStyle;
+  iconImageSmall?: ImageStyle;
+  rotate90Degrees?: ImageStyle;
 }
 
 class CardComponent extends React.Component<CardProps, CardComponentState> {
@@ -58,20 +58,20 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     await this.checkForFish(this.props.card.type, this.state.isNotAnimal);
 
     // set style for small card component
-    if(this.props.descriptionSmall)  {
+    if (this.props.descriptionSmall) {
       this.setState({
         descriptionSmall: styles.CardDescriptionPointsSmall,
-        iconImageSmall: styles.CardDescriptionIconSmall
-      })
+        iconImageSmall: styles.CardDescriptionIconSmall,
+      });
     }
-    console.log(this.props.mode)
+    console.log(this.props.mode);
 
     // set style for defense card
-    if(this.props.mode === 'defense') {
-      console.log('defense')
+    if (this.props.mode === 'defense') {
+      console.log('defense');
       this.setState({
-        rotate90Degrees: styles.Rotate90Degrees
-      })
+        rotate90Degrees: styles.Rotate90Degrees,
+      });
     }
   }
 
@@ -173,7 +173,11 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
               source={require('../../assets/images/icons/attack-icon.png')}
               resizeMode="contain"
             />
-            <Text style={[styles.CardDescriptionPoints, this.state.descriptionSmall]}>
+            <Text
+              style={[
+                styles.CardDescriptionPoints,
+                this.state.descriptionSmall,
+              ]}>
               {this.props.card.attackPoints}
             </Text>
             <Image
@@ -181,7 +185,11 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
               source={require('../../assets/images/icons/defense-icon.png')}
               resizeMode="contain"
             />
-            <Text style={[styles.CardDescriptionPoints, this.state.descriptionSmall]}>
+            <Text
+              style={[
+                styles.CardDescriptionPoints,
+                this.state.descriptionSmall,
+              ]}>
               {this.props.card.defensePoints}
             </Text>
             <Image
@@ -189,7 +197,11 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
               source={require('../../assets/images/icons/action-icon.png')}
               resizeMode="contain"
             />
-            <Text style={[styles.CardDescriptionPoints, this.state.descriptionSmall]}>
+            <Text
+              style={[
+                styles.CardDescriptionPoints,
+                this.state.descriptionSmall,
+              ]}>
               {this.props.card.actionPoints}
             </Text>
           </View>

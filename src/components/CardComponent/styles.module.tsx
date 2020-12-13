@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   Rotate90Degrees: {
-    transform: [{ rotate: '270deg' }]
+    transform: [{rotate: '270deg'}],
   },
   Image: {
     borderRadius: 10,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     borderBottomRightRadius: 10,
-    borderTopLeftRadius: 10
+    borderTopLeftRadius: 10,
   },
   IconImage: {
     width: 20,
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     flex: 1,
     flexDirection: 'row',
-    
   },
   CardDescriptionPoints: {
     fontFamily: 'Nunito-Bold',
@@ -65,8 +64,8 @@ const styles = StyleSheet.create({
   CardDescriptionIconSmall: {
     height: '90%',
     width: '10%',
-    marginLeft: '8%'
-  }
+    marginLeft: '8%',
+  },
 });
 
 export default styles;

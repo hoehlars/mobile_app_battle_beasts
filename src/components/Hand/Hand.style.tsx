@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { RFPercentage } from 'react-native-responsive-fontsize';
+import {RFPercentage} from 'react-native-responsive-fontsize';
 import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.DARK_GRAY_COLOR,
   },
   HandList: {
-    marginLeft: '2%'
+    marginLeft: '2%',
   },
   HandCard: {
     flex: 1,
@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
     height: '95%',
   },
   SilencedCard: {
-    backgroundColor: theme.ERROR_COLOR
+    backgroundColor: theme.ERROR_COLOR,
   },
   SelectMode: {
     flexDirection: 'column',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
   },
   SelectButton: {
     flex: 1,
     borderRadius: 10,
-  }
+  },
 });
 
 export default styles;
