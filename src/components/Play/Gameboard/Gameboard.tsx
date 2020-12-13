@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import * as React from 'react';
 import {ListRenderItemInfo, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
@@ -76,6 +77,19 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     }
   }
 
+  private canAttack(): boolean {
+    return this.props.phase === 'attack' && 
+    this.state.selectedAttackCard !== undefined && 
+    !this.props.opponentCards.some(card => card.mode === 'defense');
+  }
+
+  private onAttack() {
+    if(this.props.phase === 'attack' && this.state.selectedAttackCard !== undefined){
+      this.props.attackPlayer(this.state.selectedAttackCard);
+      this.setState(state => ({ selectedAttackCard: undefined, numAttacked: state.numAttacked + 1 }));
+    }
+  }
+
   private renderCardsOnPlayerBoard(
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
@@ -103,7 +117,7 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     return (
       <View style={styles.Background}>
         <View style={styles.PlayerAvatarBox}>
-          <PlayerAvatar username={this.props.opponent} health={this.props.opponentHealthPoints} actionPoints={this.props.opponentActionPoints} isOpponent={true}/>
+          <PlayerAvatar username={this.props.opponent} health={this.props.opponentHealthPoints} actionPoints={this.props.opponentActionPoints} isOpponent={true} canAttack={this.canAttack()} onAttack={this.onAttack}/>
           <PlayerAvatar username={this.props.playerName} health={this.props.playerHealthPoints} actionPoints={this.props.playerActionPoints} isOpponent={false}/>
         </View>
         <View style={styles.Gameboard}>

@@ -9,21 +9,23 @@ interface PlayerAvatarProps {
     actionPoints: number;
     canAttack?: boolean;
     isOpponent: boolean;
-}
-
-interface PlayerAvatarState {
-
+    onAttack?: () => void;
 }
 
 class PlayerAvatar extends React.Component<PlayerAvatarProps, {}> {
   constructor(props: Readonly<PlayerAvatarProps>) {
     super(props);
+  }
 
+  private onAttack() {
+      if(this.props.canAttack && this.props.onAttack){
+        this.props.onAttack();
+      }
   }
 
   render() {
     return (
-        <TouchableOpacity style={styles.TouchableArea}>
+        <TouchableOpacity style={styles.TouchableArea} onPress={this.onAttack}>
         <View style={styles.Background}>
             <View style={styles.PlayerImageBox}>
             <Image
