@@ -9,6 +9,8 @@ import Gameboard from '../../components/Play/Gameboard/Gameboard';
 import Hand from '../../components/Hand/Hand';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import styles from './Play.style'
+import { CardFlatListData } from '../../models/cardFlatListData';
+import { Card } from '../../models/card';
 
 interface PlayProps {
   user: User;
@@ -95,7 +97,7 @@ class Play extends React.Component<PlayProps, PlayState> {
 
   private searchOpponent(): void {
     // connect to matchmaking server
-    const queue = io(`${Environment.BASE_URL}/matchmaking`, {
+    const queue = (this.props.route.params.socketClient || io)(`${Environment.BASE_URL}/matchmaking`, {
       query: {token: this.props.route.params.token},
     });
 
@@ -182,21 +184,83 @@ class Play extends React.Component<PlayProps, PlayState> {
     this.clients.game = connection;
   }
 
+  private cardToCardListData(cards: Card[]): CardFlatListData[] {
+    const cardFlatListData: CardFlatListData[] = []
+    for(let i = 0; i < cards.length; i++) {
+      cardFlatListData.push({
+        ...cards[i],
+        id: i.toString()
+      })
+    }
+    return cardFlatListData;
+  }
+
   render(): JSX.Element {
     if (!this.state.inGame || !this.state.opponent || !this.state.gameState) {
       return <Text>searching Game...</Text>;
     }
+
+    const nextPhaseButton = (numAttacked: number): React.ReactNode => {
+      if (!this.state.gameState) {
+        return null;
+      }
+    }
+
     return (
       <View style={styles.PlayScreen}>
 
         <View style={styles.Gameboard}>
-          <Gameboard />
+        <Gameboard
+          playerName={this.props.route.params.username}
+          playerCards={this.cardToCardListData(this.state.gameState.boardCards[this.props.route.params.username])}
+          playerHealthPoints={this.state.gameState.healthPoints[this.props.route.params.username]}
+          playerActionPoints={this.state.gameState.actionPoints[this.props.route.params.username]}
+          opponent={this.state.opponent!}
+          opponentCards={this.cardToCardListData(this.state.gameState.boardCards[this.state.opponent!])}
+          opponentHealthPoints={this.state.gameState.healthPoints[this.state.opponent!]}
+          opponentActionPoints={this.state.gameState.actionPoints[this.state.opponent!]}
+          turn={this.state.gameState.playerTurn}
+          nextTurnButton={nextPhaseButton}
+          phase={this.state.gameState.round.phase}
+          attackCard={(ownCardPlayId: number, opponentCardPlayId: number): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('attackCard', ownCardPlayId, opponentCardPlayId);
+            }
+          }}
+          attackPlayer={(ownCardPlayId: number): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('attackPlayer', ownCardPlayId);
+            }
+          }}
+          activityAttackTarget={(attackerUniquePlayId: number, targetUniquePlayId: number): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('activityAttackTarget', attackerUniquePlayId, targetUniquePlayId);
+            }
+          }}
+          activityCurrentAttackerUniquePlayId={this.state.activityCurrentAttackerUniquePlayId}
+          activityCurrentTargetUniquePlayId={this.state.activityCurrentTargetUniquePlayId}
+          targetCard={
+            this.state.targetMode !== null
+              ? this.state.gameState.handCards.find(handCard => handCard.uniquePlayId === this.state.targetMode) || null
+              : null
+          }
+          setTarget={(cardPlayId): void => {
+            if (this.clients.game) {
+              this.clients.game.emit('placeEquipmentOrSpell', this.state.targetMode, cardPlayId);
+            }
+
+            this.setState({
+              targetMode: null,
+            });
+          }}
+          gameState={this.state.gameState} 
+        />
         </View>
 
         <View style={styles.Hand}>
         <Hand
           gameState={this.state.gameState}
-          cards={this.state.gameState.handCards}
+          cards={this.cardToCardListData(this.state.gameState.handCards)}
           boardCards={this.state.gameState.boardCards[this.props.route.params.username]}
           hoverCard={(hoveredCardPlayId): void => {
             if (this.clients.game) {
