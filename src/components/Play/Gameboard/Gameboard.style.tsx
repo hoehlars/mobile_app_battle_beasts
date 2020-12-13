@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.GRAY_COLOR,
     flexDirection: 'row',
   },
-  PlayerAvatar: {
+  PlayerAvatarBox: {
     flex: 1,
     backgroundColor: 'red',
   },

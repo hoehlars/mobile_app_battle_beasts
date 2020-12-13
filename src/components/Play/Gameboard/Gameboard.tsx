@@ -7,6 +7,7 @@ import {CardFlatListData} from '../../../models/cardFlatListData';
 import {GameUpdate} from '../../../models/gameUpdate';
 import CardComponent from '../../CardComponent/CardComponent';
 import Hand from '../../Hand/Hand';
+import PlayerAvatar from '../PlayerAvatar/PlayerAvatar';
 import styles from './Gameboard.style';
 
 interface GameState {
@@ -101,7 +102,10 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
   render() {
     return (
       <View style={styles.Background}>
-        <View style={styles.PlayerAvatar} />
+        <View style={styles.PlayerAvatarBox}>
+          <PlayerAvatar username={this.props.opponent} health={this.props.opponentHealthPoints} actionPoints={this.props.opponentActionPoints} isOpponent={true}/>
+          <PlayerAvatar username={this.props.playerName} health={this.props.playerHealthPoints} actionPoints={this.props.playerActionPoints} isOpponent={false}/>
+        </View>
         <View style={styles.Gameboard}>
           <View style={styles.Opponentfield} />
           <FlatList
