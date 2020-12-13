@@ -15,6 +15,17 @@ class TabNavigation extends React.Component<{}, {}> {
     super(props);
   }
 
+  getTabBarVisibility = (route: any) => {
+    const routeName = route.state
+      ? route.state.routes[route.state.index].name
+      : '';
+  
+    if (routeName === 'Play') {
+      return false;
+    }
+    return true;
+  }
+
   render(): JSX.Element {
     return (
       <Tab.Navigator
@@ -26,11 +37,13 @@ class TabNavigation extends React.Component<{}, {}> {
         tabBarOptions={{
           showLabel: false,
           activeBackgroundColor: theme.PRIMARY_COLOR,
-        }}>
+        }}
+        >
         <Tab.Screen
           name="Home"
           component={HomeScreenNavigator}
-          options={{
+          options={({ route }) => ({
+            tabBarVisible: this.getTabBarVisibility(route),
             tabBarIcon: () => {
               return (
                 <Image
@@ -40,7 +53,7 @@ class TabNavigation extends React.Component<{}, {}> {
                 />
               );
             },
-          }}
+          })}
         />
 
         <Tab.Screen
@@ -92,5 +105,7 @@ class TabNavigation extends React.Component<{}, {}> {
     );
   }
 }
+
+
 
 export default TabNavigation;

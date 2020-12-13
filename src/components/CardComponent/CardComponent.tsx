@@ -2,8 +2,11 @@ import * as React from 'react';
 import {
   Image,
   ImageBackground,
+  ImageStyle,
   StyleProp,
+  StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -18,6 +21,8 @@ interface CardProps {
   onPress?: (data: CardFlatListData) => void;
   onLongPress?: (data: CardFlatListData) => void;
   styleWrapper?: StyleProp<ViewStyle>;
+  descriptionSmall?: boolean;
+  mode?: string;
 }
 
 interface CardComponentState {
@@ -25,6 +30,9 @@ interface CardComponentState {
   isNotAnimal: boolean;
   isHerbivore: boolean;
   isFish: boolean;
+  descriptionSmall?: TextStyle
+  iconImageSmall?: ImageStyle
+  rotate90Degrees?: ImageStyle
 }
 
 class CardComponent extends React.Component<CardProps, CardComponentState> {
@@ -48,6 +56,23 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     await this.checkForCarnivore(this.props.card.type, this.state.isNotAnimal);
     await this.checkForHerbivore(this.props.card.type, this.state.isNotAnimal);
     await this.checkForFish(this.props.card.type, this.state.isNotAnimal);
+
+    // set style for small card component
+    if(this.props.descriptionSmall)  {
+      this.setState({
+        descriptionSmall: styles.CardDescriptionPointsSmall,
+        iconImageSmall: styles.CardDescriptionIconSmall
+      })
+    }
+    console.log(this.props.mode)
+
+    // set style for defense card
+    if(this.props.mode === 'defense') {
+      console.log('defense')
+      this.setState({
+        rotate90Degrees: styles.Rotate90Degrees
+      })
+    }
   }
 
   private getIcon(): any {
@@ -127,7 +152,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
           source={{
             uri: `${Environment.BASE_URL}/images/${this.props.card.cardId}_card.jpg`,
           }}
-          style={styles.ImageBackground}
+          style={[styles.ImageBackground, this.state.rotate90Degrees]}
           imageStyle={styles.Image}>
           <View style={styles.IconView}>
             <Image
@@ -144,27 +169,27 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
           </View>
           <View testID="cardDescription" style={styles.CardDescription}>
             <Image
-              style={styles.CardDescriptionIcon}
+              style={[styles.CardDescriptionIcon, this.state.iconImageSmall]}
               source={require('../../assets/images/icons/attack-icon.png')}
               resizeMode="contain"
             />
-            <Text style={styles.CardDescriptionPoints}>
+            <Text style={[styles.CardDescriptionPoints, this.state.descriptionSmall]}>
               {this.props.card.attackPoints}
             </Text>
             <Image
-              style={styles.CardDescriptionIcon}
+              style={[styles.CardDescriptionIcon, this.state.iconImageSmall]}
               source={require('../../assets/images/icons/defense-icon.png')}
               resizeMode="contain"
             />
-            <Text style={styles.CardDescriptionPoints}>
+            <Text style={[styles.CardDescriptionPoints, this.state.descriptionSmall]}>
               {this.props.card.defensePoints}
             </Text>
             <Image
-              style={styles.CardDescriptionIcon}
+              style={[styles.CardDescriptionIcon, this.state.iconImageSmall]}
               source={require('../../assets/images/icons/action-icon.png')}
               resizeMode="contain"
             />
-            <Text style={styles.CardDescriptionPoints}>
+            <Text style={[styles.CardDescriptionPoints, this.state.descriptionSmall]}>
               {this.props.card.actionPoints}
             </Text>
           </View>
