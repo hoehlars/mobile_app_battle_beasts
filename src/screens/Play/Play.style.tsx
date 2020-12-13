@@ -2,19 +2,18 @@ import {StyleSheet} from 'react-native';
 import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
-
-    PlayField: {
-        flex:1,
-        flexDirection: 'row'
-    },
+  PlayField: {
+    flex: 1,
+    flexDirection: 'row',
+  },
   PlayScreen: {
-      flex: 1,
+    flex: 1,
   },
   Gameboard: {
-      flex: 10.5
+    flex: 10.5,
   },
   Hand: {
-      flex: 3
+    flex: 3,
   },
   NextPhaseButton: {
     flex: 1,
@@ -24,8 +23,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     position: 'absolute',
     right: 0,
-    bottom: '58%'
-  }
+    bottom: '58%',
+  },
 });
 
 export default styles;

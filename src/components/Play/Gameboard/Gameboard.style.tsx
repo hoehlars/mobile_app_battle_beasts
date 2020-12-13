@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
   },
   Turn: {
     flex: 0.07,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignContent: 'center',
-    backgroundColor: 'yellow'
+    backgroundColor: 'yellow',
   },
   TextTurn: {
     backgroundColor: theme.DARK_GRAY_COLOR,
@@ -46,17 +46,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     borderRadius: 10,
     padding: '0.5%',
-    marginBottom: '2%'
+    marginBottom: '2%',
   },
   PlayedCardsOffense: {
-      flex: 1,
-      backgroundColor: theme.LIGHT_COLOR,
-      padding: '4%',
-      marginVertical: '1%',
-      marginHorizontal: 5,
-      borderRadius: 10,
-      width: 150,
-      height: '90%'
+    flex: 1,
+    backgroundColor: theme.LIGHT_COLOR,
+    padding: '4%',
+    marginVertical: '1%',
+    marginHorizontal: 5,
+    borderRadius: 10,
+    width: 150,
+    height: '90%',
   },
   PlayedCardsDefense: {
     flex: 1,
@@ -66,14 +66,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 150,
     height: '100%',
-    marginTop: '-2%'
-},
-AttackableOpponentCard: {
-  backgroundColor: theme.SUCCESS_COLOR
-},
-SilencedOpponentCard: {
-  backgroundColor: theme. ERROR_COLOR
-}
+    marginTop: '-2%',
+  },
+  AttackableOpponentCard: {
+    backgroundColor: theme.SUCCESS_COLOR,
+  },
+  SilencedOpponentCard: {
+    backgroundColor: theme.ERROR_COLOR,
+  },
 });
 
 export default styles;

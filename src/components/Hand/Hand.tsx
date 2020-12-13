@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  ListRenderItemInfo,
-  SafeAreaView,
-  StyleProp,
-  View,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import {ListRenderItemInfo, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {Card} from '../../models/card';
 import {CardFlatListData} from '../../models/cardFlatListData';
@@ -82,7 +75,6 @@ class Hand extends React.Component<HandProps, HandState> {
   private renderCardInHand(
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
-
     let silenced: any;
 
     if (

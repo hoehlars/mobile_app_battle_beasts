@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import {StyleSheet} from 'react-native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import theme from '../../../assets/styles/theme.style';
@@ -11,7 +10,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   TitleBox: {
-      flex: 1,
+    flex: 1,
   },
   TitleBoxText: {
     color: theme.PRIMARY_COLOR,
@@ -22,10 +21,10 @@ const styles = StyleSheet.create({
     marginTop: '10%',
     flex: 1,
   },
-  CardBox:{
-        flex: 1,
-        alignItems: 'flex-start',
-        justifyContent: 'center',
+  CardBox: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   CardItem: {
     backgroundColor: theme.LIGHT_COLOR,

@@ -3,14 +3,18 @@ import Orientation from 'react-native-orientation-locker';
 import {User} from '../../models/user';
 import {GameUpdate} from '../../models/gameUpdate';
 import Environment from '../../../environment';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import io, {Socket} from 'socket.io-client';
 import Gameboard from '../../components/Play/Gameboard/Gameboard';
 import Hand from '../../components/Hand/Hand';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import styles from './Play.style'
-import { CardFlatListData } from '../../models/cardFlatListData';
-import { Card } from '../../models/card';
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
+import styles from './Play.style';
+import {CardFlatListData} from '../../models/cardFlatListData';
+import {Card} from '../../models/card';
 import Button from '../../components/Button/Button';
 import SearchingBox from '../../components/Play/SearchingBox/SearchingBox';
 import EndBox from '../../components/Play/EndBox/EndBox';
@@ -197,13 +201,13 @@ class Play extends React.Component<PlayProps, PlayState> {
   }
 
   private onPressNextPhaseButton() {
-      if (this.clients.game) {
-        this.clients.game.emit('nextPhase');
+    if (this.clients.game) {
+      this.clients.game.emit('nextPhase');
 
-        if (this.state.targetMode !== null) {
-          this.setState({ targetMode: null });
-        }
+      if (this.state.targetMode !== null) {
+        this.setState({targetMode: null});
       }
+    }
   }
 
   render(): JSX.Element {
@@ -214,7 +218,7 @@ class Play extends React.Component<PlayProps, PlayState> {
     if (this.state.winner) {
       return (
         <EndBox
-          won={this.state.winner == this.props.user.username}
+          won={this.state.winner === this.props.user.username}
           rewardCardID={this.state.rewardCardId}
           navigation={this.props.navigation}
         />
@@ -229,148 +233,153 @@ class Play extends React.Component<PlayProps, PlayState> {
 
     return (
       <>
-      <View style={styles.PlayScreen}>
-        <View style={styles.Gameboard}>
-          <Gameboard
-            playerName={this.props.route.params.username}
-            playerCards={this.cardToCardListData(
-              this.state.gameState.boardCards[this.props.route.params.username],
-            )}
-            playerHealthPoints={
-              this.state.gameState.healthPoints[
-                this.props.route.params.username
-              ]
-            }
-            playerActionPoints={
-              this.state.gameState.actionPoints[
-                this.props.route.params.username
-              ]
-            }
-            opponent={this.state.opponent!}
-            opponentCards={this.cardToCardListData(
-              this.state.gameState.boardCards[this.state.opponent!],
-            )}
-            opponentHealthPoints={
-              this.state.gameState.healthPoints[this.state.opponent!]
-            }
-            opponentActionPoints={
-              this.state.gameState.actionPoints[this.state.opponent!]
-            }
-            turn={this.state.gameState.playerTurn}
-            nextTurnButton={nextPhaseButton}
-            phase={this.state.gameState.round.phase}
-            attackCard={(
-              ownCardPlayId: number,
-              opponentCardPlayId: number,
-            ): void => {
-              if (this.clients.game) {
-                this.clients.game.emit(
-                  'attackCard',
-                  ownCardPlayId,
-                  opponentCardPlayId,
-                );
+        <View style={styles.PlayScreen}>
+          <View style={styles.Gameboard}>
+            <Gameboard
+              playerName={this.props.route.params.username}
+              playerCards={this.cardToCardListData(
+                this.state.gameState.boardCards[
+                  this.props.route.params.username
+                ],
+              )}
+              playerHealthPoints={
+                this.state.gameState.healthPoints[
+                  this.props.route.params.username
+                ]
               }
-            }}
-            attackPlayer={(ownCardPlayId: number): void => {
-              if (this.clients.game) {
-                this.clients.game.emit('attackPlayer', ownCardPlayId);
+              playerActionPoints={
+                this.state.gameState.actionPoints[
+                  this.props.route.params.username
+                ]
               }
-            }}
-            activityAttackTarget={(
-              attackerUniquePlayId: number,
-              targetUniquePlayId: number,
-            ): void => {
-              if (this.clients.game) {
-                this.clients.game.emit(
-                  'activityAttackTarget',
-                  attackerUniquePlayId,
-                  targetUniquePlayId,
-                );
+              opponent={this.state.opponent!}
+              opponentCards={this.cardToCardListData(
+                this.state.gameState.boardCards[this.state.opponent!],
+              )}
+              opponentHealthPoints={
+                this.state.gameState.healthPoints[this.state.opponent!]
               }
-            }}
-            activityCurrentAttackerUniquePlayId={
-              this.state.activityCurrentAttackerUniquePlayId
-            }
-            activityCurrentTargetUniquePlayId={
-              this.state.activityCurrentTargetUniquePlayId
-            }
-            targetCard={
-              this.state.targetMode !== null
-                ? this.state.gameState.handCards.find(
-                    (handCard) =>
-                      handCard.uniquePlayId === this.state.targetMode,
-                  ) || null
-                : null
-            }
-            setTarget={(cardPlayId): void => {
-              if (this.clients.game) {
-                this.clients.game.emit(
-                  'placeEquipmentOrSpell',
-                  this.state.targetMode,
-                  cardPlayId,
-                );
+              opponentActionPoints={
+                this.state.gameState.actionPoints[this.state.opponent!]
               }
+              turn={this.state.gameState.playerTurn}
+              nextTurnButton={nextPhaseButton}
+              phase={this.state.gameState.round.phase}
+              attackCard={(
+                ownCardPlayId: number,
+                opponentCardPlayId: number,
+              ): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit(
+                    'attackCard',
+                    ownCardPlayId,
+                    opponentCardPlayId,
+                  );
+                }
+              }}
+              attackPlayer={(ownCardPlayId: number): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit('attackPlayer', ownCardPlayId);
+                }
+              }}
+              activityAttackTarget={(
+                attackerUniquePlayId: number,
+                targetUniquePlayId: number,
+              ): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit(
+                    'activityAttackTarget',
+                    attackerUniquePlayId,
+                    targetUniquePlayId,
+                  );
+                }
+              }}
+              activityCurrentAttackerUniquePlayId={
+                this.state.activityCurrentAttackerUniquePlayId
+              }
+              activityCurrentTargetUniquePlayId={
+                this.state.activityCurrentTargetUniquePlayId
+              }
+              targetCard={
+                this.state.targetMode !== null
+                  ? this.state.gameState.handCards.find(
+                      (handCard) =>
+                        handCard.uniquePlayId === this.state.targetMode,
+                    ) || null
+                  : null
+              }
+              setTarget={(cardPlayId): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit(
+                    'placeEquipmentOrSpell',
+                    this.state.targetMode,
+                    cardPlayId,
+                  );
+                }
 
-              this.setState({
-                targetMode: null,
-              });
-            }}
-            gameState={this.state.gameState}
-          />
-        </View>
+                this.setState({
+                  targetMode: null,
+                });
+              }}
+              gameState={this.state.gameState}
+            />
+          </View>
 
-        <View style={styles.Hand}>
-          <Hand
-            gameState={this.state.gameState}
-            cards={this.cardToCardListData(this.state.gameState.handCards)}
-            boardCards={
-              this.state.gameState.boardCards[this.props.route.params.username]
-            }
-            hoverCard={(hoveredCardPlayId): void => {
-              if (this.clients.game) {
-                this.clients.game.emit('hoveredHandCard', hoveredCardPlayId);
+          <View style={styles.Hand}>
+            <Hand
+              gameState={this.state.gameState}
+              cards={this.cardToCardListData(this.state.gameState.handCards)}
+              boardCards={
+                this.state.gameState.boardCards[
+                  this.props.route.params.username
+                ]
               }
-            }}
-            canPlace={
-              this.state.gameState.playerTurn ===
-                this.props.route.params.username &&
-              this.state.gameState.round.phase === 'cast'
-            }
-            placeCard={(
-              cardPlayId: number,
-              mode: 'attack' | 'defense',
-            ): void => {
-              if (this.clients.game) {
-                this.clients.game.emit('placeCard', cardPlayId, mode);
+              hoverCard={(hoveredCardPlayId): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit('hoveredHandCard', hoveredCardPlayId);
+                }
+              }}
+              canPlace={
+                this.state.gameState.playerTurn ===
+                  this.props.route.params.username &&
+                this.state.gameState.round.phase === 'cast'
               }
-            }}
-            placeSpell={(cardPlayId: number): void => {
-              if (this.clients.game) {
-                this.clients.game.emit('placeSpell', cardPlayId);
+              placeCard={(
+                cardPlayId: number,
+                mode: 'attack' | 'defense',
+              ): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit('placeCard', cardPlayId, mode);
+                }
+              }}
+              placeSpell={(cardPlayId: number): void => {
+                if (this.clients.game) {
+                  this.clients.game.emit('placeSpell', cardPlayId);
+                }
+              }}
+              enableTargetMode={(cardPlayId): void =>
+                this.setState({targetMode: cardPlayId})
               }
-            }}
-            enableTargetMode={(cardPlayId): void =>
-              this.setState({targetMode: cardPlayId})
-            }
-            targetMode={this.state.targetMode}
-            actionPoints={
-              this.state.gameState.actionPoints[
-                this.props.route.params.username
-              ]
-            }
-          />
-
-        </View>
-        <Button
+              targetMode={this.state.targetMode}
+              actionPoints={
+                this.state.gameState.actionPoints[
+                  this.props.route.params.username
+                ]
+              }
+            />
+          </View>
+          <Button
             styleWrapper={styles.NextPhaseButton}
             title={this.getNextPhase()}
             onPress={() => this.onPressNextPhaseButton()}
-            disabled={this.state.gameState.playerTurn !== this.props.route.params.username}
-         />
-      </View>
+            disabled={
+              this.state.gameState.playerTurn !==
+              this.props.route.params.username
+            }
+          />
+        </View>
+      </>
     );
-      </> 
-    )
   }
 }
 

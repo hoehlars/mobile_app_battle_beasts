@@ -4,7 +4,6 @@ import {
   ImageBackground,
   ImageStyle,
   StyleProp,
-  StyleSheet,
   Text,
   TextStyle,
   TouchableOpacity,
@@ -74,12 +73,12 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     }
 
     // set style for defense card
-    if(this.props.mode === 'defense') {
+    if (this.props.mode === 'defense') {
       this.setState({
         rotate90Degrees: styles.Rotate90Degrees,
         descriptionSmall: styles.CardDescriptionPointsSmall,
-        iconImageSmall: styles.CardDescriptionIconSmall
-      })
+        iconImageSmall: styles.CardDescriptionIconSmall,
+      });
     }
   }
 
