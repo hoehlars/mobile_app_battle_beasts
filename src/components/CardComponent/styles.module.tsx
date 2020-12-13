@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
+  Rotate90Degrees: {
+    transform: [{ rotate: '270deg' }]
+  },
   Image: {
     borderRadius: 10,
   },
@@ -50,12 +53,20 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2.2),
     marginLeft: '3%',
   },
+  CardDescriptionPointsSmall: {
+    fontSize: RFPercentage(1.5),
+  },
   CardDescriptionIcon: {
     height: '100%',
     width: '15%',
     marginTop: '3%',
     marginLeft: '3%',
   },
+  CardDescriptionIconSmall: {
+    height: '90%',
+    width: '10%',
+    marginLeft: '8%'
+  }
 });
 
 export default styles;
