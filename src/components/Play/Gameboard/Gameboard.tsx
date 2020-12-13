@@ -326,29 +326,29 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
           />
         </View>
         <View style={styles.Gameboard}>
-        <ImageBackground source={background} style={styles.GameboardImage}>
-          <FlatList
-            horizontal={true}
-            data={this.props.opponentCards}
-            renderItem={(item) => this.renderCardsOnOpponentBoard(item)}
-            keyExtractor={(item) => item.id}
-            style={styles.Opponentfield}
-          />
-          <View style={styles.Turn}>
-            <Text style={styles.TextTurn}>
-              Turn:{' '}
-              {this.props.turn === this.props.playerName
-                ? 'You'
-                : this.props.turn}
-            </Text>
-          </View>
-          <FlatList
-            horizontal={true}
-            data={this.props.playerCards}
-            renderItem={(item) => this.renderCardsOnPlayerBoard(item)}
-            keyExtractor={(item) => item.id}
-            style={styles.Playerfield}
-          />
+          <ImageBackground source={background} style={styles.GameboardImage}>
+            <FlatList
+              horizontal={true}
+              data={this.props.opponentCards}
+              renderItem={(item) => this.renderCardsOnOpponentBoard(item)}
+              keyExtractor={(item) => item.id}
+              style={styles.Opponentfield}
+            />
+            <View style={styles.Turn}>
+              <Text style={styles.TextTurn}>
+                Turn:{' '}
+                {this.props.turn === this.props.playerName
+                  ? 'You'
+                  : this.props.turn}
+              </Text>
+            </View>
+            <FlatList
+              horizontal={true}
+              data={this.props.playerCards}
+              renderItem={(item) => this.renderCardsOnPlayerBoard(item)}
+              keyExtractor={(item) => item.id}
+              style={styles.Playerfield}
+            />
           </ImageBackground>
         </View>
       </View>
