@@ -104,6 +104,27 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     }
   }
 
+  private canOpponentAttack(): boolean {
+    return (
+      this.props.phase === 'attack' &&
+      this.state.selectedAttackCard !== undefined &&
+      !this.props.opponentCards.some((card) => card.mode === 'defense')
+    );
+  }
+
+  private onPlayerAttack() {
+    if (
+      this.props.phase === 'attack' &&
+      this.state.selectedAttackCard !== undefined
+    ) {
+      this.props.attackPlayer(this.state.selectedAttackCard);
+      this.setState((state) => ({
+        selectedAttackCard: undefined,
+        numAttacked: state.numAttacked + 1,
+      }));
+    }
+  }
+
   private renderCardsOnPlayerBoard(
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
@@ -294,8 +315,8 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
             health={this.props.opponentHealthPoints}
             actionPoints={this.props.opponentActionPoints}
             isOpponent={true}
-            canAttack={this.canAttack()}
-            onAttack={this.onAttack}
+            canAttack={this.canOpponentAttack()}
+            onAttack={this.onPlayerAttack.bind(this)}
           />
           <PlayerAvatar
             username={this.props.playerName}

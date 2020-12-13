@@ -215,11 +215,11 @@ class Play extends React.Component<PlayProps, PlayState> {
       return <SearchingBox />;
     }
 
-    if (this.state.winner) {
+    if (this.state.winner && this.state.rewardCardId) {
       return (
         <EndBox
-          won={this.state.winner === this.props.user.username}
-          rewardCardID={this.state.rewardCardId}
+          won={this.state.winner === this.props.route.params.username}
+          rewardCardID={this.state.rewardCardId?.cardId}
           navigation={this.props.navigation}
         />
       );
