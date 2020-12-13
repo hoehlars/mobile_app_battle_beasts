@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
   SilencedOpponentCard: {
     backgroundColor: theme.ERROR_COLOR,
   },
+  CardDescriptionPointsRedStyle: {
+    color: theme.ERROR_COLOR
+  }
 });
 
 export default styles;

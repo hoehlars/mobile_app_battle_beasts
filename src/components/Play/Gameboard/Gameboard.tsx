@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ImageBackground, ListRenderItemInfo, Text, View} from 'react-native';
+import {ImageBackground, ListRenderItemInfo, Text, TextStyle, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
 import {Card} from '../../../models/card';
@@ -61,6 +61,7 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     } else {
       // do nothing
     }
+
   }
 
   private onPressCardOnPlayerBoard(card: CardFlatListData) {
@@ -70,7 +71,6 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
       !card.isPlayed &&
       card.mode === 'attack'
     ) {
-      console.log('attacked');
       this.props.activityAttackTarget(card.uniquePlayId, 0);
       this.setState(() => ({selectedAttackCard: card.uniquePlayId}));
     } else if (
@@ -150,21 +150,30 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
 
     const silencedStyle = silenced ? styles.SilencedOpponentCard : null;
 
-    // show placed opponentSpellCard
+    // opponentSpellCard placed by opponent
     if (data.item.opponentSpellCard) {
       data.item.opponentSpellCard.cardId;
     }
 
-    // show placed spellcards
+    // spellCard placed by opponent
     if (data.item.spellCard) {
+      //console.log('spellcard', data.item.spellCard)
     }
+
+    // equipment card placed by player
+    let attackPointsStyle: TextStyle | undefined
+    let defensePointsStyle: TextStyle | undefined
 
     // show placed equipmentcards
     if (data.item.equipmentCard) {
+        attackPointsStyle = data.item.equipmentCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle: undefined;
+        defensePointsStyle = data.item.equipmentCard.defensePoints> 0 ? styles.CardDescriptionPointsRedStyle: undefined;
     }
-
+  
     return (
       <CardComponent
+        attackPointsStyle={attackPointsStyle}
+        defensePointsStyle={defensePointsStyle}
         mode={data.item.mode}
         testID="cardInDeck"
         card={data.item}
@@ -282,20 +291,29 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     const silencedStyle = silenced ? styles.SilencedOpponentCard : null;
     const attackableStyle = attackable ? styles.AttackableOpponentCard : null;
 
-    // opponentSpellCard placed by opponent
+    // opponentSpellCard placed by player
     if (data.item.opponentSpellCard) {
+      //console.log('spellcard opponent', data.item.spellCard)
     }
 
     // spellCard placed by opponent
     if (data.item.spellCard) {
+      //console.log('spellcard', data.item.spellCard)
     }
 
     // equipment cards placed by opponent
-    if (data.item.equipmentCard) {
+    let attackPointsStyle: TextStyle | undefined
+    let defensePointsStyle: TextStyle | undefined
+
+    if(data.item.equipmentCard) {
+      attackPointsStyle = data.item.equipmentCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle: undefined;
+      defensePointsStyle = data.item.equipmentCard.defensePoints> 0 ? styles.CardDescriptionPointsRedStyle: undefined;
     }
 
     return (
       <CardComponent
+      attackPointsStyle={attackPointsStyle}
+      defensePointsStyle={defensePointsStyle}
         mode={data.item.mode}
         testID="cardInDeck"
         card={data.item}
