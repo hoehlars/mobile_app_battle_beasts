@@ -1,12 +1,4 @@
 import * as React from 'react';
-<<<<<<< Updated upstream
-import {ListRenderItemInfo, Text, View} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
-import Orientation from 'react-native-orientation-locker';
-import {Card} from '../../../models/card';
-import {CardFlatListData} from '../../../models/cardFlatListData';
-import {GameUpdate} from '../../../models/gameUpdate';
-=======
 import {ListRenderItemInfo, Text, View} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
@@ -14,7 +6,6 @@ import { Card } from '../../../models/card';
 import { CardFlatListData } from '../../../models/cardFlatListData';
 import { GameUpdate } from '../../../models/gameUpdate';
 import Button from '../../Button/Button';
->>>>>>> Stashed changes
 import CardComponent from '../../CardComponent/CardComponent';
 import Hand from '../../Hand/Hand';
 import styles from './Gameboard.style';

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 150,
     height: '90%',
-  }
+  },
   Turn: {
     flex: 0.07,
     flexWrap: "wrap",
