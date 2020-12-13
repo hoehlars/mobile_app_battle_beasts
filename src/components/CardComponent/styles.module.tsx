@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     borderBottomRightRadius: 10,
+    borderTopLeftRadius: 10
   },
   IconImage: {
     width: 20,
@@ -38,8 +39,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     borderTopLeftRadius: 10,
+    borderBottomRightRadius: 10,
     flex: 1,
     flexDirection: 'row',
+    
   },
   CardDescriptionPoints: {
     fontFamily: 'Nunito-Bold',
