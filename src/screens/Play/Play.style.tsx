@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
       flex: 10
   },
   Hand: {
-      flex: 5
+      flex: 3
   }
 });
 
