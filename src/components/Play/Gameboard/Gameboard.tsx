@@ -78,14 +78,20 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
 
+    // set style depending on mode
+    const style = data.item.mode === 'defense' ? styles.PlayedPlayerCardsDefense : styles.PlayedPlayerCardsOffense
+
+
+
     return (
       <>
       <CardComponent
-        testID="cardInDeck"
-        card={data.item}
-        onPress={(card) => this.onPressCardOnPlayerBoard(card)}
-        onLongPress={() => {}}
-        styleWrapper={styles.PlayedPlayerCards}
+      mode={data.item.mode}
+      testID="cardInDeck"
+      card={data.item}
+      onPress={(card) => this.onPressCardOnPlayerBoard(card)}
+      onLongPress={() => {}}
+      styleWrapper={style}
       />
       </>
     );
