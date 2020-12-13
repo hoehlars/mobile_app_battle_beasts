@@ -9,7 +9,7 @@ import CardComponent from '../CardComponent/CardComponent';
 import styles from './Hand.style'
 
 interface HandProps {
-  cards: Card[];
+  cards: CardFlatListData[];
   boardCards: Card[];
   hoverCard: (hoveredCardPlayId: number) => void;
   placeCard: (cardPlayId: number, mode: 'attack' | 'defense') => void;
@@ -35,13 +35,6 @@ class Hand extends React.Component<HandProps, HandState> {
     }
   }
 
-  componentDidMount() {
-    const cardsFlatList = this.cardToCardListData();
-    this.setState({
-      cardsListData: cardsFlatList
-    })
-  }
-
   private placeCard(cardPlayId: number, mode: 'attack' | 'defense'): void {
     this.props.placeCard(cardPlayId, mode);
     this.setState({ 
@@ -58,15 +51,25 @@ class Hand extends React.Component<HandProps, HandState> {
     this.setState({ selectedCard: undefined });
   }
 
-  private cardToCardListData(): CardFlatListData[] {
-    const cardFlatListData: CardFlatListData[] = []
-    for(let i = 0; i < this.props.cards.length; i++) {
-      cardFlatListData.push({
-        ...this.props.cards[i],
-        id: i.toString()
-      })
+  private onPressHandCard(card: CardFlatListData) {
+    if (this.props.canPlace && this.props.actionPoints >= card.actionPoints) {
+      if (card.isEquipment && this.canPlaceEquipmentCard(card)) {
+        this.props.enableTargetMode(card.uniquePlayId);
+      } else if (card.isSpell && !card.needsTarget) {
+        this.setState({ selectedCard: card });
+      } else if (card.isSpell && card.needsTarget) {
+        this.props.enableTargetMode(card.uniquePlayId);
+      } else if (!card.isEquipment) {
+        this.setState({
+          selectedCard: card,
+        });
+
+        if (this.props.targetMode !== null) {
+          this.props.enableTargetMode(null);
+        }
+        
+      }
     }
-    return cardFlatListData;
   }
 
   private renderCardInHand(
@@ -90,26 +93,7 @@ this.props.actionPoints < card.actionPoints,
       <CardComponent
         testID="cardInDeck"
         card={data.item}
-        onPress={(card: CardFlatListData): void => {
-          if (this.props.canPlace && this.props.actionPoints >= card.actionPoints) {
-            if (card.isEquipment && this.canPlaceEquipmentCard(card)) {
-              this.props.enableTargetMode(card.uniquePlayId);
-            } else if (card.isSpell && !card.needsTarget) {
-              this.setState({ selectedCard: card });
-            } else if (card.isSpell && card.needsTarget) {
-              this.props.enableTargetMode(card.uniquePlayId);
-            } else if (!card.isEquipment) {
-              this.setState({
-                selectedCard: card,
-              });
-
-              if (this.props.targetMode !== null) {
-                this.props.enableTargetMode(null);
-              }
-              
-            }
-          }
-        }}
+        onPress={(card) => this.onPressHandCard(card)}
         onLongPress={() => {}}
         styleWrapper={[styles.HandCard, silenced]}
       />
@@ -139,7 +123,7 @@ this.props.actionPoints < card.actionPoints,
           <View style={styles.HandWrapper}>
             <FlatList
               horizontal={true}
-              data={this.state.cardsListData}
+              data={this.props.cards}
               renderItem={(item) => this.renderCardInHand(item)}
               keyExtractor={(item) => item.id}
             />

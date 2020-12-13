@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 10,
     width: 150,
-    height: '90%'
+    height: '100%'
   },
   SilencedCard: {
     backgroundColor: theme.ERROR_COLOR
