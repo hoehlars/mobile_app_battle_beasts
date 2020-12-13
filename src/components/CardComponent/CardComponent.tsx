@@ -20,6 +20,8 @@ interface CardProps {
   onPress?: (data: CardFlatListData) => void;
   onLongPress?: (data: CardFlatListData) => void;
   styleWrapper?: StyleProp<ViewStyle>;
+  attackPointsStyle?: TextStyle;
+  defensePointsStyle?: TextStyle;
   descriptionSmall?: boolean;
   mode?: string;
 }
@@ -66,7 +68,6 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
 
     // set style for defense card
     if (this.props.mode === 'defense') {
-      console.log('defense');
       this.setState({
         rotate90Degrees: styles.Rotate90Degrees,
       });
@@ -183,7 +184,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             <Text
               style={[
                 styles.CardDescriptionPoints,
-                this.state.descriptionSmall,
+                this.state.descriptionSmall, this.props.attackPointsStyle
               ]}>
               {this.props.card.attackPoints}
             </Text>
@@ -195,7 +196,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
             <Text
               style={[
                 styles.CardDescriptionPoints,
-                this.state.descriptionSmall,
+                this.state.descriptionSmall, this.props.defensePointsStyle
               ]}>
               {this.props.card.defensePoints}
             </Text>
