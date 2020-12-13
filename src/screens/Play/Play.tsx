@@ -225,12 +225,6 @@ class Play extends React.Component<PlayProps, PlayState> {
       );
     }
 
-    const nextPhaseButton = (numAttacked: number): React.ReactNode => {
-      if (!this.state.gameState) {
-        return null;
-      }
-    };
-
     return (
       <>
         <View style={styles.PlayScreen}>
@@ -263,7 +257,6 @@ class Play extends React.Component<PlayProps, PlayState> {
                 this.state.gameState.actionPoints[this.state.opponent!]
               }
               turn={this.state.gameState.playerTurn}
-              nextTurnButton={nextPhaseButton}
               phase={this.state.gameState.round.phase}
               attackCard={(
                 ownCardPlayId: number,

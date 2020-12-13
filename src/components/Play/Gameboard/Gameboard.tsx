@@ -24,7 +24,6 @@ interface GameBoardProps {
   opponentHealthPoints: number;
   opponentActionPoints: number;
   turn: string;
-  nextTurnButton: (numAttacked: number) => React.ReactNode;
   phase: string;
   attackCard: (ownCardPlayId: number, opponentCardPlayId: number) => void;
   attackPlayer: (ownCardPlayId: number) => void;
