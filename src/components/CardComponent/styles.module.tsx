@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   Rotate90Degrees: {
-    transform: [{rotate: '270deg'}],
+    transform: [{ rotate: '270deg' }],
+    width: '95%'
   },
   Image: {
     borderRadius: 10,

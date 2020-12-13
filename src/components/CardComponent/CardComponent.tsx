@@ -64,7 +64,6 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
         iconImageSmall: styles.CardDescriptionIconSmall,
       });
     }
-    console.log(this.props.mode);
 
     // set style for defense card
     if (this.props.mode === 'defense') {
@@ -72,6 +71,15 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
       this.setState({
         rotate90Degrees: styles.Rotate90Degrees,
       });
+    }
+
+    // set style for defense card
+    if(this.props.mode === 'defense') {
+      this.setState({
+        rotate90Degrees: styles.Rotate90Degrees,
+        descriptionSmall: styles.CardDescriptionPointsSmall,
+        iconImageSmall: styles.CardDescriptionIconSmall
+      })
     }
   }
 
