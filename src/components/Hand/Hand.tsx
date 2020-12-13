@@ -91,6 +91,7 @@ this.props.actionPoints < card.actionPoints,
     return (
       <>
       <CardComponent
+        descriptionSmall={true}
         testID="cardInDeck"
         card={data.item}
         onPress={(card) => this.onPressHandCard(card)}
@@ -126,6 +127,7 @@ this.props.actionPoints < card.actionPoints,
               data={this.props.cards}
               renderItem={(item) => this.renderCardInHand(item)}
               keyExtractor={(item) => item.id}
+              style={styles.HandList}
             />
           </View>
     );

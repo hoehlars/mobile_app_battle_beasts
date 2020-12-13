@@ -5,17 +5,20 @@ import theme from '../../assets/styles/theme.style';
 const styles = StyleSheet.create({
   HandWrapper: {
     flex: 1,
-    backgroundColor: theme.DARK_GRAY_COLOR
+    backgroundColor: theme.DARK_GRAY_COLOR,
+  },
+  HandList: {
+    marginLeft: '2%'
   },
   HandCard: {
     flex: 1,
     backgroundColor: theme.LIGHT_COLOR,
-    padding: '1%',
+    padding: '2%',
     marginVertical: '2%',
     marginHorizontal: 5,
     borderRadius: 10,
     width: 150,
-    height: '100%'
+    height: '95%',
   },
   SilencedCard: {
     backgroundColor: theme.ERROR_COLOR
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
   SelectMode: {
     flexDirection: 'column',
     justifyContent: 'center',
+    flex: 1
   },
   SelectButton: {
     flex: 1,
