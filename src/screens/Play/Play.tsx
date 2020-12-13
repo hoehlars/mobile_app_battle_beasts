@@ -159,9 +159,9 @@ class Play extends React.Component<PlayProps, PlayState> {
           activityCurrentAttackerUniquePlayId: 0,
           activityCurrentTargetUniquePlayId: 0,
         }),
-        () => this.addStatsFromEquipmentCards())
+        () => this.addStatsFromEquipmentCards(),
+      );
     });
-
 
     connection.on('opponentHoveredHandCard', (cardPlayId: number) => {
       this.setState(() => ({

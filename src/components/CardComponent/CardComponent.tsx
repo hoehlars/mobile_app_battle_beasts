@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-mount-set-state */
 import * as React from 'react';
 import {
   Image,

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-update-set-state */
 import * as React from 'react';
 import {
   ImageBackground,
