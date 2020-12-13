@@ -2,13 +2,11 @@
 import * as React from 'react';
 import {ListRenderItemInfo, Text} from 'react-native';
 import {View} from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
 import { Card } from '../../../models/card';
 import { CardFlatListData } from '../../../models/cardFlatListData';
 import { CardService } from '../../../services/cardService';
 import CardComponent from '../../CardComponent/CardComponent';
-import Header from '../../Header/Header';
 import styles  from './UnlockedCard.style';
 
 interface UnlockedCardProps {
@@ -38,7 +36,7 @@ class UnlockedCard extends React.Component<UnlockedCardProps, UnlockedCardState>
   }
 
   async componentDidMount() {
-    Orientation.lockToPortrait();
+    Orientation.lockToLandscape();
     await this.getCard();
   }
 
@@ -55,13 +53,11 @@ class UnlockedCard extends React.Component<UnlockedCardProps, UnlockedCardState>
       return cardFlatListData;
   }
 
-  nothing(){}
-
   render() {
     return (
       <View style={styles.Background}>
           <View style={styles.TitleBox}>
-            <Text style={styles.TitleBoxText}>Congratulations! You have unlocked: </Text>
+            <Text style={styles.TitleBoxText}>Congratulations!{"\n"} You have unlocked: </Text>
           </View>
           <View style={styles.CardBox}>
             <CardComponent testID={"unlockedCard"} card={this.cardToCardListData()[0]} styleWrapper={styles.CardItem}/>

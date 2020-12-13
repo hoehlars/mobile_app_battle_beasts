@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   Background: {
     flex: 1,
     backgroundColor: theme.DARK_GRAY_COLOR,
+    borderWidth: 3,
   },
   HeaderBox: {
     flex: 1,
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     marginLeft: '3%',
   },
   Header: {
-    flex: 4,
+    flex: 2,
     alignItems: 'center',
   },
   ButtonBox: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   CardBox: {
-    flex: 4,
+    flex: 2,
     backgroundColor: 'white',
   },
 });

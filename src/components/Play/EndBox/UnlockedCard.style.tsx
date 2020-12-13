@@ -6,7 +6,9 @@ import theme from '../../../assets/styles/theme.style';
 const styles = StyleSheet.create({
   Background: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: theme.DARK_GRAY_COLOR,
+    justifyContent: 'center',
   },
   TitleBox: {
       flex: 1,
@@ -14,13 +16,15 @@ const styles = StyleSheet.create({
   TitleBoxText: {
     color: theme.PRIMARY_COLOR,
     fontSize: RFPercentage(3),
-    textAlign: 'center',
+    textAlign: 'left',
     fontFamily: 'Nunito-Bold',
+    marginLeft: '30%',
+    marginTop: '10%',
     flex: 1,
   },
   CardBox:{
-        flex: 4,
-        alignItems: 'center',
+        flex: 1,
+        alignItems: 'flex-start',
         justifyContent: 'center',
   },
   CardItem: {

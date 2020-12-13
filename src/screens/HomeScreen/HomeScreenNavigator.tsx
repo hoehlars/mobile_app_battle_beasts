@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import Play from '../Play/Play';
 import ChooseDeckScreen from '../ChooseDeckScreen/ChooseDeckScreen';
+import EndBox from '../../components/Play/EndBox/EndBox';
 
 const Stack = createStackNavigator();
 
