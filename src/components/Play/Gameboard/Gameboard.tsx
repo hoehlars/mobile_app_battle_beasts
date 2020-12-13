@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ListRenderItemInfo, Text, View} from 'react-native';
+import {ImageBackground, ListRenderItemInfo, Text, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
 import {Card} from '../../../models/card';
@@ -7,6 +7,7 @@ import {CardFlatListData} from '../../../models/cardFlatListData';
 import {GameUpdate} from '../../../models/gameUpdate';
 import CardComponent from '../../CardComponent/CardComponent';
 import PlayerAvatar from '../PlayerAvatar/PlayerAvatar';
+import background from '../../../assets/images/backgrounds/background-gameboard.png';
 import styles from './Gameboard.style';
 
 interface GameState {
@@ -325,6 +326,7 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
           />
         </View>
         <View style={styles.Gameboard}>
+        <ImageBackground source={background} style={styles.GameboardImage}>
           <FlatList
             horizontal={true}
             data={this.props.opponentCards}
@@ -347,6 +349,7 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
             keyExtractor={(item) => item.id}
             style={styles.Playerfield}
           />
+          </ImageBackground>
         </View>
       </View>
     );

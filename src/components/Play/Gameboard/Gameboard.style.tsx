@@ -9,19 +9,19 @@ const styles = StyleSheet.create({
   },
   PlayerAvatarBox: {
     flex: 1,
-    backgroundColor: 'red',
   },
   Opponentfield: {
     flex: 1,
-    backgroundColor: 'green',
   },
   Playerfield: {
     flex: 1,
-    backgroundColor: 'yellow',
   },
   Gameboard: {
     flex: 5,
-    backgroundColor: 'pink',
+  },
+  GameboardImage: {
+    flex: 1,
+    resizeMode: 'repeat',
   },
   PlayedPlayerCardsOffense: {
     flex: 1,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignContent: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: theme.GRAY_COLOR,
   },
   TextTurn: {
     backgroundColor: theme.DARK_GRAY_COLOR,
