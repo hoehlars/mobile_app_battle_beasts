@@ -4,7 +4,6 @@ import {
   ImageBackground,
   ImageStyle,
   StyleProp,
-  StyleSheet,
   Text,
   TextStyle,
   TouchableOpacity,
