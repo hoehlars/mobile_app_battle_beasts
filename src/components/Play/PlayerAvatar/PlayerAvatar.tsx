@@ -17,7 +17,7 @@ class PlayerAvatar extends React.Component<PlayerAvatarProps, {}> {
   }
 
   private onAttack() {
-      console.log("--------------------yes");
+    console.log('--------------------yes');
     if (this.props.canAttack && this.props.onAttack) {
       this.props.onAttack();
     }
@@ -25,7 +25,9 @@ class PlayerAvatar extends React.Component<PlayerAvatarProps, {}> {
 
   render() {
     return (
-      <TouchableOpacity style={styles.TouchableArea} onPress={() => this.onAttack()}>
+      <TouchableOpacity
+        style={styles.TouchableArea}
+        onPress={() => this.onAttack()}>
         <View style={styles.Background}>
           <View style={styles.PlayerImageBox}>
             <Image
