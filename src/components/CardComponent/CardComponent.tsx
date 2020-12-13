@@ -15,8 +15,8 @@ import Environment from '../../../environment';
 interface CardProps {
   testID: string;
   card: CardFlatListData;
-  onPress: (data: CardFlatListData) => void;
-  onLongPress: (data: CardFlatListData) => void;
+  onPress?: (data: CardFlatListData) => void;
+  onLongPress?: (data: CardFlatListData) => void;
   styleWrapper?: StyleProp<ViewStyle>;
 }
 
