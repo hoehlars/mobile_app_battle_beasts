@@ -57,7 +57,11 @@ class Hand extends React.Component<HandProps, HandState> {
       if (card.isEquipment && this.canPlaceEquipmentCard(card)) {
         this.props.enableTargetMode(card.uniquePlayId);
       } else if (card.isSpell && !card.needsTarget) {
-        this.setState({selectedCard: card});
+        console.log('spellcard');
+        // place spell card
+        this.setState({selectedCard: card}, () =>
+          this.placeSpell(card.uniquePlayId),
+        );
       } else if (card.isSpell && card.needsTarget) {
         this.props.enableTargetMode(card.uniquePlayId);
       } else if (!card.isEquipment) {
@@ -69,6 +73,13 @@ class Hand extends React.Component<HandProps, HandState> {
           this.props.enableTargetMode(null);
         }
       }
+
+      /*// spell cards
+      if(this.props.canPlace &&
+        this.state.selectedCard === card &&
+        card.isSpell) {
+          this.placeSpell(card.uniquePlayId)
+      }*/
     }
   }
 
@@ -95,11 +106,6 @@ class Hand extends React.Component<HandProps, HandState> {
           onLongPress={() => {}}
           styleWrapper={[styles.HandCard, silenced]}
         />
-        {this.props.canPlace &&
-          this.state.selectedCard === data.item &&
-          data.item.isSpell &&
-          this.placeSpell(data.item.uniquePlayId)}
-
         {this.props.canPlace &&
         this.state.selectedCard === data.item &&
         !data.item.isSpell ? (
