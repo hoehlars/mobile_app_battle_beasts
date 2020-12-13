@@ -7,10 +7,11 @@ import {Text, View} from 'react-native';
 import io, {Socket} from 'socket.io-client';
 import Gameboard from '../../components/Play/Gameboard/Gameboard';
 import Hand from '../../components/Hand/Hand';
-import {NavigationScreenProp, NavigationState} from 'react-navigation';
-import styles from './Play.style';
-import {CardFlatListData} from '../../models/cardFlatListData';
-import {Card} from '../../models/card';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import styles from './Play.style'
+import { CardFlatListData } from '../../models/cardFlatListData';
+import { Card } from '../../models/card';
+import Button from '../../components/Button/Button';
 import SearchingBox from '../../components/Play/SearchingBox/SearchingBox';
 import EndBox from '../../components/Play/EndBox/EndBox';
 
@@ -195,6 +196,16 @@ class Play extends React.Component<PlayProps, PlayState> {
     return cardFlatListData;
   }
 
+  private onPressNextPhaseButton() {
+      if (this.clients.game) {
+        this.clients.game.emit('nextPhase');
+
+        if (this.state.targetMode !== null) {
+          this.setState({ targetMode: null });
+        }
+      }
+  }
+
   render(): JSX.Element {
     if (!this.state.inGame || !this.state.opponent || !this.state.gameState) {
       return <SearchingBox />;
@@ -217,6 +228,7 @@ class Play extends React.Component<PlayProps, PlayState> {
     };
 
     return (
+      <>
       <View style={styles.PlayScreen}>
         <View style={styles.Gameboard}>
           <Gameboard
@@ -347,9 +359,18 @@ class Play extends React.Component<PlayProps, PlayState> {
               ]
             }
           />
+
         </View>
+        <Button
+            styleWrapper={styles.NextPhaseButton}
+            title={this.getNextPhase()}
+            onPress={() => this.onPressNextPhaseButton()}
+            disabled={this.state.gameState.playerTurn !== this.props.route.params.username}
+         />
       </View>
     );
+      </> 
+    )
   }
 }
 
