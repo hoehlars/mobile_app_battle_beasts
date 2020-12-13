@@ -3,7 +3,7 @@ import Orientation from 'react-native-orientation-locker';
 import {User} from '../../models/user';
 import {GameUpdate} from '../../models/gameUpdate';
 import Environment from '../../../environment';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import io, {Socket} from 'socket.io-client';
 import Gameboard from '../../components/Play/Gameboard/Gameboard';
 import Hand from '../../components/Hand/Hand';
