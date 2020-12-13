@@ -1,5 +1,4 @@
 import * as React from 'react';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import AboutTheGameScreen from '../screens/AboutTheGameScreen/AboutTheGameScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
@@ -7,6 +6,7 @@ import LeaderboardScreen from '../screens/LeaderBoardScreen/LeaderboardScreen';
 import styles from './TabNavigation.styles';
 import theme from '../assets/styles/theme.style';
 import DeckManagerNavigator from '../screens/DeckManager/DeckManagerNavigator';
+import HomeScreenNavigator from '../screens/HomeScreen/HomeScreenNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +14,17 @@ class TabNavigation extends React.Component<{}, {}> {
   constructor(props: Readonly<{}>) {
     super(props);
   }
+
+  getTabBarVisibility = (route: any) => {
+    const routeName = route.state
+      ? route.state.routes[route.state.index].name
+      : '';
+
+    if (routeName === 'Play') {
+      return false;
+    }
+    return true;
+  };
 
   render(): JSX.Element {
     return (
@@ -29,8 +40,9 @@ class TabNavigation extends React.Component<{}, {}> {
         }}>
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
-          options={{
+          component={HomeScreenNavigator}
+          options={({route}) => ({
+            tabBarVisible: this.getTabBarVisibility(route),
             tabBarIcon: () => {
               return (
                 <Image
@@ -40,7 +52,7 @@ class TabNavigation extends React.Component<{}, {}> {
                 />
               );
             },
-          }}
+          })}
         />
 
         <Tab.Screen

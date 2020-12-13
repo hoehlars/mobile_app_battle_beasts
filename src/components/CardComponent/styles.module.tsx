@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
+  Rotate90Degrees: {
+    transform: [{rotate: '270deg'}],
+    width: '95%',
+  },
   Image: {
     borderRadius: 10,
   },
@@ -17,6 +21,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     borderBottomRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   IconImage: {
     width: 20,
@@ -38,6 +43,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     borderTopLeftRadius: 10,
+    borderBottomRightRadius: 10,
     flex: 1,
     flexDirection: 'row',
   },
@@ -47,11 +53,19 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2.2),
     marginLeft: '3%',
   },
+  CardDescriptionPointsSmall: {
+    fontSize: RFPercentage(1.5),
+  },
   CardDescriptionIcon: {
     height: '100%',
     width: '15%',
     marginTop: '3%',
     marginLeft: '3%',
+  },
+  CardDescriptionIconSmall: {
+    height: '90%',
+    width: '10%',
+    marginLeft: '8%',
   },
 });
 

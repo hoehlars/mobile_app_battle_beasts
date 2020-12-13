@@ -40,7 +40,17 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
     }
   }
 
-  playGame() {}
+  playRanked() {
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ranked'});
+  }
+
+  playUnranked() {
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'unranked'});
+  }
+
+  playAgainstBot() {
+    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ai-easy'});
+  }
 
   render(): JSX.Element {
     return (
@@ -59,26 +69,26 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
           <View style={styles.ImageBox}>
             <Image
               style={styles.HeaderImage}
-              source={require('../../assets/images/logos/battlebeasts-logo-white.png')}
+              source={require('../../assets/images/logos/player-avatar-white.png')}
             />
           </View>
           <View style={styles.ButtonBox}>
             <Button
               title="PLAY RANKED!"
               styleWrapper={styles.Button}
-              onPress={this.playGame.bind(this)}
+              onPress={this.playRanked.bind(this)}
             />
 
             <Button
               title="PLAY UNRANKED!"
               styleWrapper={styles.Button}
-              onPress={this.playGame.bind(this)}
+              onPress={this.playUnranked.bind(this)}
             />
 
             <Button
               title="PLAY AGAINST A BOT!"
               styleWrapper={styles.Button}
-              onPress={this.playGame.bind(this)}
+              onPress={this.playAgainstBot.bind(this)}
             />
           </View>
         </View>
