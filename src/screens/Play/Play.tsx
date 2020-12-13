@@ -40,6 +40,13 @@ class Play extends React.Component<PlayProps, PlayState> {
   constructor(props: Readonly<PlayProps>) {
     super(props);
 
+    this.props.navigation.addListener('beforeRemove', (event) => {
+      // prevent user from going back to choosing deck
+      if (event.data.action.type !== 'NAVIGATE') {
+        event.preventDefault();
+      }
+    });
+
     this.state = {
       inGame: false,
       targetMode: null,
