@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   },
   Rotate90Degrees: {
     transform: [{rotate: '270deg'}],
+    width: '95%',
   },
   Image: {
     borderRadius: 10,

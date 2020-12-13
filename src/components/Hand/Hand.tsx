@@ -75,12 +75,6 @@ class Hand extends React.Component<HandProps, HandState> {
   private renderCardInHand(
     data: ListRenderItemInfo<CardFlatListData>,
   ): JSX.Element {
-    /*[styles.SilencedCard]:
-        !this.props.canPlace ||
-(card.isEquipment && !this.canPlaceEquipmentCard(card)) ||
-this.props.actionPoints < card.actionPoints,
-[styles.SelectedCard]: this.props.canPlace && card.uniquePlayId === this.props.targetMode,*/
-
     let silenced: any;
 
     if (
