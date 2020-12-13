@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignContent: 'center',
-    backgroundColor: theme.GRAY_COLOR,
+    borderTopWidth: 4,
+    borderColor: 'black',
   },
   TextTurn: {
     backgroundColor: theme.DARK_GRAY_COLOR,
