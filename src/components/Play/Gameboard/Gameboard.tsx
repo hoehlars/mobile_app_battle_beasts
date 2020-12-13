@@ -113,22 +113,25 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
         ? styles.PlayedCardsDefense
         : styles.PlayedCardsOffense;
 
-
-    const silenced = (this.props.phase === 'attack' &&
-    ((this.state.selectedAttackCard !== undefined &&
-      this.state.selectedAttackCard !== data.item.uniquePlayId) ||
-      data.item.isPlayed ||
-      (data.item.mode !== 'attack' && this.props.turn !== this.props.opponent))) ||
-  (this.props.targetCard !== null && this.props.targetCard.isSpell && data.item.spellCard) ||
-  (this.props.targetCard !== null &&
-    this.props.targetCard.isEquipment &&
-    data.item.equipmentCard);
+    const silenced =
+      (this.props.phase === 'attack' &&
+        ((this.state.selectedAttackCard !== undefined &&
+          this.state.selectedAttackCard !== data.item.uniquePlayId) ||
+          data.item.isPlayed ||
+          (data.item.mode !== 'attack' &&
+            this.props.turn !== this.props.opponent))) ||
+      (this.props.targetCard !== null &&
+        this.props.targetCard.isSpell &&
+        data.item.spellCard) ||
+      (this.props.targetCard !== null &&
+        this.props.targetCard.isEquipment &&
+        data.item.equipmentCard);
 
     const silencedStyle = silenced ? styles.SilencedOpponentCard : null;
 
     // show placed opponentSpellCard
     if (data.item.opponentSpellCard) {
-        data.item.opponentSpellCard.cardId
+      data.item.opponentSpellCard.cardId;
     }
 
     // show placed spellcards
@@ -137,7 +140,6 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
 
     // show placed equipmentcards
     if (data.item.equipmentCard) {
-       
     }
 
     return (

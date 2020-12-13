@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import theme from '../../assets/styles/theme.style';
 
 const styles = StyleSheet.create({
   PlayField: {
