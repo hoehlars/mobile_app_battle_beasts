@@ -12,7 +12,7 @@ const deckItem: DeckItemList = {
 
 describe('ChooseDeckItem', () => {
   describe('rendering', () => {
-    it('renders touchable highlight with test id choosedeckitem', () => {
+    it('renders touchable highlight with test id choosedeckitem', async () => {
       const testRenderer = renderer.create(
         <ChooseDeckItem play={jest.fn} deckItem={deckItem} />,
       );
@@ -22,7 +22,7 @@ describe('ChooseDeckItem', () => {
       ).not.toBeNull();
     });
 
-    it('renders the title of the deck', () => {
+    it('renders the title of the deck', async () => {
       const testRenderer = renderer.create(
         <ChooseDeckItem play={jest.fn} deckItem={deckItem} />,
       );

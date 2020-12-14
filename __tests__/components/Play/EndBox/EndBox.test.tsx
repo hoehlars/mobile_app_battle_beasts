@@ -13,7 +13,7 @@ const navigation: any = {
 
 describe('EndBox', () => {
   describe('rendering', () => {
-    it('renders the header', () => {
+    it('renders the header', async () => {
       const testRenderer = renderer.create(
         <EndBox navigation={navigation} won={true} rewardCardID={1} />,
       );
@@ -21,7 +21,7 @@ describe('EndBox', () => {
       expect(testInstance.findAllByType(Header)).not.toBeNull();
     });
 
-    it('renders the unlocked card', () => {
+    it('renders the unlocked card',async  () => {
       const testRenderer = renderer.create(
         <EndBox navigation={navigation} won={true} rewardCardID={1} />,
       );
@@ -29,7 +29,7 @@ describe('EndBox', () => {
       expect(testInstance.findAllByType(UnlockedCard)).not.toBeNull();
     });
 
-    it('renders the back to menu button', () => {
+    it('renders the back to menu button', async () => {
       const testRenderer = renderer.create(
         <EndBox navigation={navigation} won={true} rewardCardID={1} />,
       );
