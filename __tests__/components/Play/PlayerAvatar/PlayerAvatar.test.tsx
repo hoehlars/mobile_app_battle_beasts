@@ -18,19 +18,6 @@ describe('PlayerAvatar', () => {
       expect(testInstance.findAllByType(Image).length).not.toBeNull();
     });
 
-    it('renders the player image', () => {
-      const testRenderer = renderer.create(
-        <PlayerAvatar
-          username="test"
-          health={30}
-          actionPoints={10}
-          isOpponent={false}
-        />,
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findAllByType(Image)).not.toBeNull();
-    });
-
     it('renders the player username', () => {
       const testRenderer = renderer.create(
         <PlayerAvatar

@@ -13,7 +13,7 @@ describe('UnlockedCard', () => {
       ).not.toBeNull();
     });
 
-    it('renders the card component', async() => {
+    it('renders the card component', async () => {
       const testRenderer = renderer.create(<UnlockedCard rewardCardID={1} />);
       const testInstance = testRenderer.root;
       expect(testInstance.findAllByType(CardComponent)).not.toBeNull();

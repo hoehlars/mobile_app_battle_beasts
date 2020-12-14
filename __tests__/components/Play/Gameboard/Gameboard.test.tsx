@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, ImageBackgroundBase} from 'react-native';
+import {ImageBackground} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import renderer from 'react-test-renderer';
 import Gameboard from '../../../../src/components/Play/Gameboard/Gameboard';

@@ -1,5 +1,4 @@
 import React from 'react';
-import {FlatList} from 'react-native-gesture-handler';
 import renderer from 'react-test-renderer';
 import Button from '../../../src/components/Button/Button';
 import Hand from '../../../src/components/Hand/Hand';
