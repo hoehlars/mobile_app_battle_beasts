@@ -13,12 +13,14 @@ class ChooseDeckItem extends React.Component<DeckItemProps, {}> {
   render(): JSX.Element {
     return (
       <TouchableHighlight
-        testID="deckItem"
+        testID="chooseDeckItem"
         onPress={() => this.props.play(this.props.deckItem)}
         style={styles.RowFront}
         underlayColor={theme.PRIMARY_COLOR}>
         <View>
-          <Text style={styles.ListItem}>{this.props.deckItem.name}</Text>
+          <Text 
+          testID="chooseDeckItemName"
+          style={styles.ListItem}>{this.props.deckItem.name}</Text>
         </View>
       </TouchableHighlight>
     );
