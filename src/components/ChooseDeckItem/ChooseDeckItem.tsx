@@ -18,9 +18,9 @@ class ChooseDeckItem extends React.Component<DeckItemProps, {}> {
         style={styles.RowFront}
         underlayColor={theme.PRIMARY_COLOR}>
         <View>
-          <Text 
-          testID="chooseDeckItemName"
-          style={styles.ListItem}>{this.props.deckItem.name}</Text>
+          <Text testID="chooseDeckItemName" style={styles.ListItem}>
+            {this.props.deckItem.name}
+          </Text>
         </View>
       </TouchableHighlight>
     );

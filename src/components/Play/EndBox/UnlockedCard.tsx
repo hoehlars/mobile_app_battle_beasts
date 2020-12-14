@@ -64,9 +64,7 @@ class UnlockedCard extends React.Component<
     return (
       <View style={styles.Background}>
         <View style={styles.TitleBox}>
-          <Text 
-          testID="youHaveWonText"
-          style={styles.TitleBoxText}>
+          <Text testID="youHaveWonText" style={styles.TitleBoxText}>
             Congratulations!{'\n'} You have unlocked:{' '}
           </Text>
         </View>
