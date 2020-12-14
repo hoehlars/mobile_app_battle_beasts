@@ -50,7 +50,37 @@ describe('HomeScreen', () => {
       );
       const testInstance = testRenderer.root;
       expect(
-        testInstance.findByProps({title: 'PLAY AGAINST A BOT!'}),
+        testInstance.findByProps({testID: 'unrankedButton'}),
+      ).not.toBeNull();
+    });
+
+    it('renders the easy difficulty button', () => {
+      const testRenderer = renderer.create(
+        <HomeScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(
+        testInstance.findByProps({title: 'Easy'}),
+      ).not.toBeNull();
+    });
+
+    it('renders the medium difficulty button', () => {
+      const testRenderer = renderer.create(
+        <HomeScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(
+        testInstance.findByProps({title: 'Medium'}),
+      ).not.toBeNull();
+    });
+
+    it('renders the hard difficulty button', () => {
+      const testRenderer = renderer.create(
+        <HomeScreen navigation={navigation} />,
+      );
+      const testInstance = testRenderer.root;
+      expect(
+        testInstance.findByProps({title: 'Hard'}),
       ).not.toBeNull();
     });
   });

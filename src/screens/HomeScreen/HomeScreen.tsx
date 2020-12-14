@@ -100,6 +100,7 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
 
             <SmallButton
               title={`PLAY AGAINST A ${this.state.difficulty.toUpperCase()} BOT!`}
+              testID="unrankedButton"
               styleWrapper={styles.BotButton}
               onPress={this.playAgainstBot.bind(this)}
             />
@@ -125,10 +126,6 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
             </View>
 
             </View>
-
-            
-
-
           </View>
         </View>
       </>
