@@ -59,9 +59,7 @@ describe('HomeScreen', () => {
         <HomeScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(
-        testInstance.findByProps({title: 'Easy'}),
-      ).not.toBeNull();
+      expect(testInstance.findByProps({title: 'Easy'})).not.toBeNull();
     });
 
     it('renders the medium difficulty button', () => {
@@ -69,9 +67,7 @@ describe('HomeScreen', () => {
         <HomeScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(
-        testInstance.findByProps({title: 'Medium'}),
-      ).not.toBeNull();
+      expect(testInstance.findByProps({title: 'Medium'})).not.toBeNull();
     });
 
     it('renders the hard difficulty button', () => {
@@ -79,9 +75,7 @@ describe('HomeScreen', () => {
         <HomeScreen navigation={navigation} />,
       );
       const testInstance = testRenderer.root;
-      expect(
-        testInstance.findByProps({title: 'Hard'}),
-      ).not.toBeNull();
+      expect(testInstance.findByProps({title: 'Hard'})).not.toBeNull();
     });
   });
 });

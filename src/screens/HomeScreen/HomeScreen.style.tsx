@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   BotAndDifficultyButton: {
     flex: 1,
     flexDirection: 'row',
-    marginLeft: '14%'
+    marginLeft: '14%',
   },
   BotButton: {
     backgroundColor: theme.PRIMARY_COLOR,
@@ -67,15 +67,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   DifficultyButtons: {
-    flex: 1, 
+    flex: 1,
     marginLeft: '2%',
-    marginBottom: '12%'
+    marginBottom: '12%',
   },
   DifficultyButton: {
     flex: 1,
     marginTop: '4%',
     width: '60%',
-  }
+  },
 });
 
 export default styles;

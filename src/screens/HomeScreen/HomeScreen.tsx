@@ -33,8 +33,8 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
     });
 
     this.state = {
-      difficulty: 'easy'
-    }
+      difficulty: 'easy',
+    };
   }
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
   }
 
   playAgainstBot() {
-    const gameModeChosen = `ai-${this.state.difficulty}`
+    const gameModeChosen = `ai-${this.state.difficulty}`;
     this.props.navigation.navigate('ChooseDeck', {gameMode: gameModeChosen});
   }
 
@@ -95,36 +95,33 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
               onPress={this.playUnranked.bind(this)}
             />
 
-            <View
-            style={styles.BotAndDifficultyButton}>
-
-            <SmallButton
-              title={`PLAY AGAINST A ${this.state.difficulty.toUpperCase()} BOT!`}
-              testID="unrankedButton"
-              styleWrapper={styles.BotButton}
-              onPress={this.playAgainstBot.bind(this)}
-            />
-
-            <View style={styles.DifficultyButtons}>
+            <View style={styles.BotAndDifficultyButton}>
               <SmallButton
-                title="Easy"
-                styleWrapper={styles.DifficultyButton}
-                onPress={() => this.setState({difficulty: 'easy'})}
+                title={`PLAY AGAINST A ${this.state.difficulty.toUpperCase()} BOT!`}
+                testID="unrankedButton"
+                styleWrapper={styles.BotButton}
+                onPress={this.playAgainstBot.bind(this)}
               />
 
-              <SmallButton
-                title="Medium"
-                styleWrapper={styles.DifficultyButton}
-                onPress={() => this.setState({difficulty: 'medium'})}
-              />
+              <View style={styles.DifficultyButtons}>
+                <SmallButton
+                  title="Easy"
+                  styleWrapper={styles.DifficultyButton}
+                  onPress={() => this.setState({difficulty: 'easy'})}
+                />
 
-              <SmallButton
-                title="Hard"
-                styleWrapper={styles.DifficultyButton}
-                onPress={() => this.setState({difficulty: 'hard'})}
-              />
-            </View>
+                <SmallButton
+                  title="Medium"
+                  styleWrapper={styles.DifficultyButton}
+                  onPress={() => this.setState({difficulty: 'medium'})}
+                />
 
+                <SmallButton
+                  title="Hard"
+                  styleWrapper={styles.DifficultyButton}
+                  onPress={() => this.setState({difficulty: 'hard'})}
+                />
+              </View>
             </View>
           </View>
         </View>
