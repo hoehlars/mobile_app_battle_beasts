@@ -371,7 +371,8 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
               style={styles.Opponentfield}
             />
             <View style={styles.Turn}>
-              <Text style={styles.TextTurn}>
+              <Text
+              testID="turnInfoText" style={styles.TextTurn}>
                 Turn:{' '}
                 {this.props.turn === this.props.playerName
                   ? 'You'
