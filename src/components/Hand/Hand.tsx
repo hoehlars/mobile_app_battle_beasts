@@ -11,7 +11,6 @@ import styles from './Hand.style';
 interface HandProps {
   cards: CardFlatListData[];
   boardCards: Card[];
-  hoverCard: (hoveredCardPlayId: number) => void;
   placeCard: (cardPlayId: number, mode: 'attack' | 'defense') => void;
   placeSpell: (cardPlayId: number) => void;
   enableTargetMode: (cardPlayId: number | null) => void;

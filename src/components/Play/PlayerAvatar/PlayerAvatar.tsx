@@ -40,13 +40,19 @@ class PlayerAvatar extends React.Component<PlayerAvatarProps, {}> {
             />
           </View>
           <View style={styles.StatBox}>
-            <Text style={styles.StatText}>{this.props.username}</Text>
+            <Text testID="username" style={styles.StatText}>
+              {this.props.username}
+            </Text>
           </View>
           <View style={[styles.StatBox, styles.Health]}>
-            <Text style={styles.StatText}>{this.props.health}</Text>
+            <Text testID="health" style={styles.StatText}>
+              {this.props.health}
+            </Text>
           </View>
           <View style={[styles.StatBox, styles.ActionPoints]}>
-            <Text style={styles.StatText}>{this.props.actionPoints}</Text>
+            <Text testID="actionPoints" style={styles.StatText}>
+              {this.props.actionPoints}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>

@@ -36,18 +36,7 @@ jest.mock('react-native-orientation-locker', () => {
 		lockToLandscapeLeft: jest.fn(),
 		lockToLandscapeRight: jest.fn(),
 		unlockAllOrientations: jest.fn(),
-	};
-});
-
-
-jest.mock('react-native-orientation-locker', () => {
-	return {
-		addEventListener: jest.fn(),
-		removeEventListener: jest.fn(),
-		lockToPortrait: jest.fn(),
-		lockToLandscapeLeft: jest.fn(),
-		lockToLandscapeRight: jest.fn(),
-		unlockAllOrientations: jest.fn(),
+		lockToLandscape: jest.fn()
 	};
 });
 
@@ -61,4 +50,9 @@ jest.mock('react-native-iap', () => {
 		purchaseErrorListener: jest.fn()
 	};
 });
+
+// mock console
+global.console = {
+	log: jest.fn(), // console.log are ignored in tests
+  };
 
