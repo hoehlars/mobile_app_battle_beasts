@@ -37,13 +37,13 @@ class UserRow extends React.Component<UserRowProps, UserRowState> {
             ? styles.HighlightedBackground
             : styles.Background,
         ]}>
-        <View style={styles.ItemBoxRank}>
+        <View testID="itemBoxRank" style={styles.ItemBoxRank}>
           <Text style={styles.ItemsText}>{this.props.rank.toString()}</Text>
         </View>
-        <View style={styles.ItemBoxUsername}>
+        <View testID="itemBoxUsername" style={styles.ItemBoxUsername}>
           <Text style={styles.ItemsText}>{this.props.username}</Text>
         </View>
-        <View style={styles.ItemBoxSkill}>
+        <View testID="itemBoxSkill" style={styles.ItemBoxSkill}>
           <Text style={styles.ItemsText}>{this.props.skill}</Text>
         </View>
       </View>
