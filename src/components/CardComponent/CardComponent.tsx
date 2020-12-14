@@ -14,6 +14,8 @@ import {
 import {CardFlatListData} from '../../models/cardFlatListData';
 import styles from './styles.module';
 import Environment from '../../../environment';
+import { CardService } from '../../services/cardService';
+import { Card } from '../../models/card';
 
 interface CardProps {
   testID: string;
@@ -49,17 +51,28 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     };
   }
 
-  async componentDidMount() {
-    // await because of setState operations
-    await this.checkForAnimal(
-      this.props.card.isEquipment,
-      this.props.card.isSpell,
-    );
-    await this.checkForCarnivore(this.props.card.type, this.state.isNotAnimal);
-    await this.checkForHerbivore(this.props.card.type, this.state.isNotAnimal);
-    await this.checkForFish(this.props.card.type, this.state.isNotAnimal);
+  public async componentDidUpdate(prevProps: CardProps): Promise<void> {
+    if (prevProps.card.cardId !== this.props.card.cardId) {
+      await this.updateCard();
+    }
+  }
 
-    // set style for small card component
+  async componentDidMount() {
+    await this.updateCard();
+  }
+
+  private async updateCard(): Promise<void> {
+    const { cardId } = this.props.card;
+    const card: Card = await CardService.getCard(cardId);
+
+    // check if the loaded card is still the correct one to display or if the id has changed in the meantime
+    if (cardId === this.props.card.cardId) {
+      this.checkForAnimal(card.isEquipment, card.isSpell);
+      this.checkForCarnivore(card.type, this.state.isNotAnimal);
+      this.checkForHerbivore(card.type, this.state.isNotAnimal);
+      this.checkForFish(card.type, this.state.isNotAnimal);
+
+       // set style for small card component
     if (this.props.descriptionSmall) {
       this.setState({
         descriptionSmall: styles.CardDescriptionPointsSmall,
@@ -83,6 +96,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
       });
     }
   }
+  }
 
   private getIcon(): any {
     if (this.state.isCarnivore && this.state.isNotAnimal) {
@@ -100,6 +114,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     if (this.props.card.isSpell) {
       return require('../../assets/images/icons/spell-icon.png');
     }
+    console.log('icon undefined')
     return undefined;
   }
 
