@@ -97,7 +97,7 @@ class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
 
             <View style={styles.BotAndDifficultyButton}>
               <SmallButton
-                title={`PLAY AGAINST A ${this.state.difficulty.toUpperCase()} BOT!`}
+                title={`PLAY AGAINST A\n${this.state.difficulty.toUpperCase()} BOT!`}
                 testID="unrankedButton"
                 styleWrapper={styles.BotButton}
                 onPress={this.playAgainstBot.bind(this)}
