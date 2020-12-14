@@ -156,21 +156,11 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
 
     const silencedStyle = silenced ? styles.SilencedOpponentCard : null;
 
-    // opponentSpellCard placed by opponent
-    if (data.item.opponentSpellCard) {
-      data.item.opponentSpellCard.cardId;
-    }
-
-    // spellCard placed by opponent
-    if (data.item.spellCard) {
-      //console.log('spellcard', data.item.spellCard)
-    }
-
     // equipment card placed by player
     let attackPointsStyle: TextStyle | undefined;
     let defensePointsStyle: TextStyle | undefined;
 
-    // show placed equipmentcards
+    // show placed equipmentcards by coloring the boosted points red
     if (data.item.equipmentCard) {
       attackPointsStyle =
         data.item.equipmentCard.attackPoints > 0
@@ -178,6 +168,29 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
           : undefined;
       defensePointsStyle =
         data.item.equipmentCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+    }
+
+    // show placed spell cards by coloring the boosted points red
+    if (data.item.spellCard) {
+      attackPointsStyle =
+        data.item.spellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.spellCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+    }
+
+    if (data.item.opponentSpellCard) {
+      attackPointsStyle =
+        data.item.opponentSpellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.opponentSpellCard.defensePoints > 0
           ? styles.CardDescriptionPointsRedStyle
           : undefined;
     }
@@ -303,16 +316,6 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     const silencedStyle = silenced ? styles.SilencedOpponentCard : null;
     const attackableStyle = attackable ? styles.AttackableOpponentCard : null;
 
-    // opponentSpellCard placed by player
-    if (data.item.opponentSpellCard) {
-      //console.log('spellcard opponent', data.item.spellCard)
-    }
-
-    // spellCard placed by opponent
-    if (data.item.spellCard) {
-      //console.log('spellcard', data.item.spellCard)
-    }
-
     // equipment cards placed by opponent
     let attackPointsStyle: TextStyle | undefined;
     let defensePointsStyle: TextStyle | undefined;
@@ -324,6 +327,29 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
           : undefined;
       defensePointsStyle =
         data.item.equipmentCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+    }
+
+    // show placed spell cards by coloring the boosted points red
+    if (data.item.spellCard) {
+      attackPointsStyle =
+        data.item.spellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.spellCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+    }
+
+    if (data.item.opponentSpellCard) {
+      attackPointsStyle =
+        data.item.opponentSpellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.opponentSpellCard.defensePoints > 0
           ? styles.CardDescriptionPointsRedStyle
           : undefined;
     }

@@ -159,7 +159,9 @@ class Play extends React.Component<PlayProps, PlayState> {
           activityCurrentAttackerUniquePlayId: 0,
           activityCurrentTargetUniquePlayId: 0,
         }),
-        () => this.addStatsFromEquipmentCards(),
+        () => {
+          this.addStatsFromSpellAndEquipmentCards();
+        },
       );
     });
 
@@ -199,24 +201,48 @@ class Play extends React.Component<PlayProps, PlayState> {
     this.clients.game = connection;
   }
 
-  private addStatsFromEquipmentCards() {
+  private addStatsFromSpellAndEquipmentCards() {
     const updatedBoardCards = this.state.gameState!.boardCards;
 
-    // add equipment card stats to player cards
     updatedBoardCards[this.props.route.params.username].forEach(
       (card: Card) => {
+        // add equipment card stats of player
         if (card.equipmentCard) {
           card.attackPoints += card.equipmentCard.attackPoints;
           card.defensePoints += card.equipmentCard.defensePoints;
         }
+
+        // add spellcard stat of player
+        if (card.spellCard) {
+          card.attackPoints += card.spellCard.attackPoints;
+          card.defensePoints += card.spellCard.defensePoints;
+        }
+
+        // subtract opponent spell card stats
+        if (card.opponentSpellCard) {
+          card.attackPoints -= card.opponentSpellCard.attackPoints;
+          card.defensePoints -= card.opponentSpellCard.defensePoints;
+        }
       },
     );
 
-    // add equipment card stats to opponent cards
     updatedBoardCards[this.state.opponent!].forEach((card: Card) => {
+      // add equipment card stats of opponent
       if (card.equipmentCard) {
         card.attackPoints += card.equipmentCard.attackPoints;
         card.defensePoints += card.equipmentCard.defensePoints;
+      }
+
+      // add spellcard stats of opponent
+      if (card.spellCard) {
+        card.attackPoints += card.spellCard.attackPoints;
+        card.defensePoints += card.spellCard.defensePoints;
+      }
+
+      // subtract player spell card stats
+      if (card.opponentSpellCard) {
+        card.attackPoints -= card.opponentSpellCard.attackPoints;
+        card.defensePoints -= card.opponentSpellCard.defensePoints;
       }
     });
 
