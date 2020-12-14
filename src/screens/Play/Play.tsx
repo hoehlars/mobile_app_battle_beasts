@@ -366,11 +366,6 @@ class Play extends React.Component<PlayProps, PlayState> {
                   this.props.route.params.username
                 ]
               }
-              hoverCard={(hoveredCardPlayId): void => {
-                if (this.clients.game) {
-                  this.clients.game.emit('hoveredHandCard', hoveredCardPlayId);
-                }
-              }}
               canPlace={
                 this.state.gameState.playerTurn ===
                   this.props.route.params.username &&
