@@ -12,5 +12,5 @@ let _Environments = {
   },
 };
 
-var Environment = _Environments.production;
+var Environment = _Environments.development;
 export default Environment;
