@@ -43,7 +43,7 @@ const cards: CardFlatListData[] = [
 
 describe('Hand', () => {
   describe('rendering', () => {
-    it('renders the flatlist for the hand', async() => {
+    it('renders the flatlist for the hand', async () => {
       const testRenderer = renderer.create(
         <Hand
           cards={[]}
@@ -61,7 +61,7 @@ describe('Hand', () => {
       expect(testInstance.findAllByType(FlatList)).not.toBeNull();
     });
 
-    it('renders the card component', async() => {
+    it('renders the card component', async () => {
       const testRenderer = renderer.create(
         <Hand
           cards={cards}

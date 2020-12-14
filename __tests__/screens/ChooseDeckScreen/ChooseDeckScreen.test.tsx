@@ -19,7 +19,7 @@ describe('ChooseDeckScreen', () => {
       expect(testInstance.findAllByType(Header)).not.toBeNull();
     });
 
-    it('renders the line below the header',async () => {
+    it('renders the line below the header', async () => {
       const testRenderer = renderer.create(
         <ChooseDeckScreen navigation={navigation} />,
       );
@@ -29,7 +29,7 @@ describe('ChooseDeckScreen', () => {
       ).not.toBeNull();
     });
 
-    it('renders the swipeable list', async() => {
+    it('renders the swipeable list', async () => {
       const testRenderer = renderer.create(
         <ChooseDeckScreen navigation={navigation} />,
       );
