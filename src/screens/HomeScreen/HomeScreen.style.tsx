@@ -46,11 +46,36 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: theme.PRIMARY_COLOR,
     minHeight: '10%',
-    minWidth: '80%',
+    minWidth: '45%',
     marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+  },
+  BotAndDifficultyButton: {
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: '27%',
+  },
+  BotButton: {
+    backgroundColor: theme.PRIMARY_COLOR,
+    height: '40%',
+    width: '62%',
+    marginTop: '10%',
+    marginRight: '3%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  DifficultyButtons: {
+    flex: 1,
+    marginLeft: '2%',
+    marginBottom: '16%',
+  },
+  DifficultyButton: {
+    flex: 1,
+    marginTop: '4%',
+    width: '60%',
   },
 });
 

@@ -10,12 +10,17 @@ import styles from './HomeScreen.style';
 import Orientation from 'react-native-orientation-locker';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
+import SmallButton from '../../components/SmallButton/SmallButton';
 
 interface HomeScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-class HomeScreen extends React.Component<HomeScreenProps, {}> {
+interface HomeScreenState {
+  difficulty: string;
+}
+
+class HomeScreen extends React.Component<HomeScreenProps, HomeScreenState> {
   constructor(props: Readonly<HomeScreenProps>) {
     super(props);
 
@@ -26,6 +31,10 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
         event.preventDefault();
       }
     });
+
+    this.state = {
+      difficulty: 'easy',
+    };
   }
 
   componentDidMount() {
@@ -49,7 +58,8 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
   }
 
   playAgainstBot() {
-    this.props.navigation.navigate('ChooseDeck', {gameMode: 'ai-easy'});
+    const gameModeChosen = `ai-${this.state.difficulty}`;
+    this.props.navigation.navigate('ChooseDeck', {gameMode: gameModeChosen});
   }
 
   render(): JSX.Element {
@@ -73,23 +83,46 @@ class HomeScreen extends React.Component<HomeScreenProps, {}> {
             />
           </View>
           <View style={styles.ButtonBox}>
-            <Button
+            <SmallButton
               title="PLAY RANKED!"
               styleWrapper={styles.Button}
               onPress={this.playRanked.bind(this)}
             />
 
-            <Button
+            <SmallButton
               title="PLAY UNRANKED!"
               styleWrapper={styles.Button}
               onPress={this.playUnranked.bind(this)}
             />
 
-            <Button
-              title="PLAY AGAINST A BOT!"
-              styleWrapper={styles.Button}
-              onPress={this.playAgainstBot.bind(this)}
-            />
+            <View style={styles.BotAndDifficultyButton}>
+              <SmallButton
+                title={`PLAY AGAINST A\n${this.state.difficulty.toUpperCase()} BOT!`}
+                testID="unrankedButton"
+                styleWrapper={styles.BotButton}
+                onPress={this.playAgainstBot.bind(this)}
+              />
+
+              <View style={styles.DifficultyButtons}>
+                <SmallButton
+                  title="Easy"
+                  styleWrapper={styles.DifficultyButton}
+                  onPress={() => this.setState({difficulty: 'easy'})}
+                />
+
+                <SmallButton
+                  title="Medium"
+                  styleWrapper={styles.DifficultyButton}
+                  onPress={() => this.setState({difficulty: 'medium'})}
+                />
+
+                <SmallButton
+                  title="Hard"
+                  styleWrapper={styles.DifficultyButton}
+                  onPress={() => this.setState({difficulty: 'hard'})}
+                />
+              </View>
+            </View>
           </View>
         </View>
       </>
