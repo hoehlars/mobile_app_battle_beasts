@@ -51,3 +51,8 @@ jest.mock('react-native-iap', () => {
 	};
 });
 
+// mock console
+global.console = {
+	log: jest.fn(), // console.log are ignored in tests
+  };
+
