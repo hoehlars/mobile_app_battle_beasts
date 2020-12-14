@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
   },
   SearchingBox: {
     flex: 1,
-    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   SearchingBoxText: {
     color: theme.PRIMARY_COLOR,

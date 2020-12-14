@@ -10,7 +10,7 @@ class SearchingBox extends React.Component<{}, {}> {
   }
 
   componentDidMount() {
-    Orientation.lockToPortrait();
+    Orientation.lockToLandscape();
   }
 
   render() {
