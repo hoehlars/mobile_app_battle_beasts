@@ -1,5 +1,9 @@
 let _Environments = {
-  production: {BASE_URL: '', API_KEY: ''},
+  production: {
+    BASE_URL: 'https://battlebeasts-api.echolot.io',
+    CARD_PRODUCT: 'android.test.purchased',
+    DECK_PRODUCT: 'android.test.purchased',
+  },
   staging: {BASE_URL: '', API_KEY: ''},
   development: {
     BASE_URL: 'http://localhost:5000',
@@ -8,5 +12,5 @@ let _Environments = {
   },
 };
 
-var Environment = _Environments.development;
+var Environment = _Environments.production;
 export default Environment;
