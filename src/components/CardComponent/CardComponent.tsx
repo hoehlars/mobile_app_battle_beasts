@@ -1,4 +1,3 @@
-/* eslint-disable react/no-did-mount-set-state */
 import * as React from 'react';
 import {
   Image,
@@ -14,8 +13,8 @@ import {
 import {CardFlatListData} from '../../models/cardFlatListData';
 import styles from './styles.module';
 import Environment from '../../../environment';
-import { CardService } from '../../services/cardService';
-import { Card } from '../../models/card';
+import {CardService} from '../../services/cardService';
+import {Card} from '../../models/card';
 
 interface CardProps {
   testID: string;
@@ -62,7 +61,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
   }
 
   private async updateCard(): Promise<void> {
-    const { cardId } = this.props.card;
+    const {cardId} = this.props.card;
     const card: Card = await CardService.getCard(cardId);
 
     // check if the loaded card is still the correct one to display or if the id has changed in the meantime
@@ -72,30 +71,30 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
       this.checkForHerbivore(card.type, this.state.isNotAnimal);
       this.checkForFish(card.type, this.state.isNotAnimal);
 
-       // set style for small card component
-    if (this.props.descriptionSmall) {
-      this.setState({
-        descriptionSmall: styles.CardDescriptionPointsSmall,
-        iconImageSmall: styles.CardDescriptionIconSmall,
-      });
-    }
+      // set style for small card component
+      if (this.props.descriptionSmall) {
+        this.setState({
+          descriptionSmall: styles.CardDescriptionPointsSmall,
+          iconImageSmall: styles.CardDescriptionIconSmall,
+        });
+      }
 
-    // set style for defense card
-    if (this.props.mode === 'defense') {
-      this.setState({
-        rotate90Degrees: styles.Rotate90Degrees,
-      });
-    }
+      // set style for defense card
+      if (this.props.mode === 'defense') {
+        this.setState({
+          rotate90Degrees: styles.Rotate90Degrees,
+        });
+      }
 
-    // set style for defense card
-    if (this.props.mode === 'defense') {
-      this.setState({
-        rotate90Degrees: styles.Rotate90Degrees,
-        descriptionSmall: styles.CardDescriptionPointsSmall,
-        iconImageSmall: styles.CardDescriptionIconSmall,
-      });
+      // set style for defense card
+      if (this.props.mode === 'defense') {
+        this.setState({
+          rotate90Degrees: styles.Rotate90Degrees,
+          descriptionSmall: styles.CardDescriptionPointsSmall,
+          iconImageSmall: styles.CardDescriptionIconSmall,
+        });
+      }
     }
-  }
   }
 
   private getIcon(): any {
@@ -114,7 +113,7 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     if (this.props.card.isSpell) {
       return require('../../assets/images/icons/spell-icon.png');
     }
-    console.log('icon undefined')
+    console.log('icon undefined');
     return undefined;
   }
 

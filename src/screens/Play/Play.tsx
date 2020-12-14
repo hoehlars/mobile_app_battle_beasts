@@ -204,10 +204,8 @@ class Play extends React.Component<PlayProps, PlayState> {
   private addStatsFromSpellAndEquipmentCards() {
     const updatedBoardCards = this.state.gameState!.boardCards;
 
-    
     updatedBoardCards[this.props.route.params.username].forEach(
       (card: Card) => {
-
         // add equipment card stats of player
         if (card.equipmentCard) {
           card.attackPoints += card.equipmentCard.attackPoints;
@@ -215,22 +213,20 @@ class Play extends React.Component<PlayProps, PlayState> {
         }
 
         // add spellcard stat of player
-        if(card.spellCard) {
+        if (card.spellCard) {
           card.attackPoints += card.spellCard.attackPoints;
           card.defensePoints += card.spellCard.defensePoints;
         }
 
-        // subtract opponent spell card stats 
-        if(card.opponentSpellCard) {
+        // subtract opponent spell card stats
+        if (card.opponentSpellCard) {
           card.attackPoints -= card.opponentSpellCard.attackPoints;
           card.defensePoints -= card.opponentSpellCard.defensePoints;
         }
       },
     );
 
-    
     updatedBoardCards[this.state.opponent!].forEach((card: Card) => {
-
       // add equipment card stats of opponent
       if (card.equipmentCard) {
         card.attackPoints += card.equipmentCard.attackPoints;
@@ -238,13 +234,13 @@ class Play extends React.Component<PlayProps, PlayState> {
       }
 
       // add spellcard stats of opponent
-      if(card.spellCard) {
+      if (card.spellCard) {
         card.attackPoints += card.spellCard.attackPoints;
         card.defensePoints += card.spellCard.defensePoints;
       }
 
-      // subtract player spell card stats 
-      if(card.opponentSpellCard) {
+      // subtract player spell card stats
+      if (card.opponentSpellCard) {
         card.attackPoints -= card.opponentSpellCard.attackPoints;
         card.defensePoints -= card.opponentSpellCard.defensePoints;
       }

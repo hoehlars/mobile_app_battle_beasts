@@ -173,14 +173,26 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     }
 
     // show placed spell cards by coloring the boosted points red
-    if(data.item.spellCard) {
-      attackPointsStyle = data.item.spellCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
-      defensePointsStyle = data.item.spellCard.defensePoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
+    if (data.item.spellCard) {
+      attackPointsStyle =
+        data.item.spellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.spellCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
     }
 
-    if(data.item.opponentSpellCard) {
-      attackPointsStyle = data.item.opponentSpellCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
-      defensePointsStyle = data.item.opponentSpellCard.defensePoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
+    if (data.item.opponentSpellCard) {
+      attackPointsStyle =
+        data.item.opponentSpellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.opponentSpellCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
     }
 
     return (
@@ -320,14 +332,26 @@ class Gameboard extends React.Component<GameBoardProps, GameState> {
     }
 
     // show placed spell cards by coloring the boosted points red
-    if(data.item.spellCard) {
-      attackPointsStyle = data.item.spellCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
-      defensePointsStyle = data.item.spellCard.defensePoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
+    if (data.item.spellCard) {
+      attackPointsStyle =
+        data.item.spellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.spellCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
     }
 
-    if(data.item.opponentSpellCard) {
-      attackPointsStyle = data.item.opponentSpellCard.attackPoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
-      defensePointsStyle = data.item.opponentSpellCard.defensePoints > 0 ? styles.CardDescriptionPointsRedStyle : undefined;
+    if (data.item.opponentSpellCard) {
+      attackPointsStyle =
+        data.item.opponentSpellCard.attackPoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
+      defensePointsStyle =
+        data.item.opponentSpellCard.defensePoints > 0
+          ? styles.CardDescriptionPointsRedStyle
+          : undefined;
     }
 
     return (
