@@ -17,7 +17,6 @@ class PlayerAvatar extends React.Component<PlayerAvatarProps, {}> {
   }
 
   private onAttack() {
-    console.log('--------------------yes');
     if (this.props.canAttack && this.props.onAttack) {
       this.props.onAttack();
     }
