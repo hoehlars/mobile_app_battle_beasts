@@ -151,11 +151,10 @@ class DeckManagerScreen extends React.Component<
       await RNIap.requestPurchase(this.DECKSPACE_ITEM, false);
       // payment was successful
       // unlock deckspace
-      const deckspaceRes = await PaymentService.executePaymentAndGetBoughtDeckspacesMobile(
+      await PaymentService.executePaymentAndGetBoughtDeckspacesMobile(
         this.state.user!.token,
         1,
       );
-      const deckSpaceResJson = await deckspaceRes.json();
       this.setState({
         amountOfDeckspaceOwned: this.state.amountOfDeckspaceOwned + 1,
       });
@@ -178,12 +177,10 @@ class DeckManagerScreen extends React.Component<
 
       // payment was successful
       // unlock card
-      const cardsRes = await PaymentService.executePaymentAndGetBoughtCardsMobile(
+      await PaymentService.executePaymentAndGetBoughtCardsMobile(
         this.state.user!.token,
         1,
       );
-      const cardsResJson = await cardsRes.json();
-
     } catch (err) {
       this.setState({
         error: 'Payment is cancelled.',
