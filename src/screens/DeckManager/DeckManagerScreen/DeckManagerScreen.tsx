@@ -156,12 +156,10 @@ class DeckManagerScreen extends React.Component<
         1,
       );
       const deckSpaceResJson = await deckspaceRes.json();
-      console.log('deckSpaceResJson', deckSpaceResJson);
       this.setState({
         amountOfDeckspaceOwned: this.state.amountOfDeckspaceOwned + 1,
       });
     } catch (err) {
-      console.log('error', err);
       this.setState({
         error: 'Payment was cancelled.',
       });
@@ -186,9 +184,7 @@ class DeckManagerScreen extends React.Component<
       );
       const cardsResJson = await cardsRes.json();
 
-      console.log('cardResJson', cardsResJson);
     } catch (err) {
-      console.log(err);
       this.setState({
         error: 'Payment is cancelled.',
       });

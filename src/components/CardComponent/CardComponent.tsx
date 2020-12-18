@@ -113,7 +113,6 @@ class CardComponent extends React.Component<CardProps, CardComponentState> {
     if (this.props.card.isSpell) {
       return require('../../assets/images/icons/spell-icon.png');
     }
-    console.log('icon undefined');
     return undefined;
   }
 

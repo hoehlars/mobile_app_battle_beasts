@@ -56,7 +56,6 @@ class Hand extends React.Component<HandProps, HandState> {
       if (card.isEquipment && this.canPlaceEquipmentCard(card)) {
         this.props.enableTargetMode(card.uniquePlayId);
       } else if (card.isSpell && !card.needsTarget) {
-        console.log('spellcard');
         // place spell card
         this.setState({selectedCard: card}, () =>
           this.placeSpell(card.uniquePlayId),
